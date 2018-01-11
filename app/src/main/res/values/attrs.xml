@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SettingItemView">
+        <attr name="isShowTitle" format="boolean"/>
+        <attr name="isShowContent" format="boolean"/>
+        <attr name="isShowSwitch" format="boolean"/>
+        <attr name="isSwitched" format="boolean"/>
+        <attr name="settingTitle" format="string"/>
+        <attr name="settingContent" format="string"/>
+    </declare-styleable>
+
+</resources>

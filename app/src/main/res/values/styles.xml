@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:windowBackground">@color/viewBackground</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <!--浸入式状态栏-->
+    <style name="AppTheme.Immersive" parent="AppTheme"/>
+
+    <!--全屏-->
+    <style name="AppTheme.FullScreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <!--NavigationView以及TabLayout的字体大小-->
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <!--水平线-->
+    <style name="HorizontalLine">
+        <item name="android:background">@color/gray</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!--垂直线-->
+    <style name="VerticalLine">
+        <item name="android:background">@color/gray</item>
+        <item name="android:layout_width">0.5dp</item>
+    </style>
+</resources>

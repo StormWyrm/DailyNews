@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <group
+        android:id="@+id/first_group"
+        >
+        <item
+            android:id="@+id/nav_zh_hot"
+            android:icon="@drawable/icon_main_nav_zhhot"
+            android:title="@string/main_nav_zhhot"
+            />
+        <item
+            android:id="@+id/nav_change_theme"
+            android:icon="@drawable/icon_main_nav_theme"
+            android:title="@string/main_nav_change_theme"/>
+
+    </group>
+    <group
+        android:id="@+id/second_group"
+        >
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/icon_main_nav_setting"
+            android:title="@string/main_nav_setting"
+            />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/icon_main_nav_about"
+            android:title="@string/main_nav_about"/>
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/icon_main_nav_exit"
+            android:title="@string/main_nav_exit"/>
+    </group>
+
+</menu>

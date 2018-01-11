@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_menu_item_home"
+        android:icon="@drawable/ic_vector_bottom_home"
+        android:title="@string/main_bottom_home_title"/>
+
+    <item android:id="@+id/bottom_menu_item_gankio"
+        android:icon="@drawable/ic_vector_bottom_gankio"
+        android:title="@string/main_bottom_gankio_title"/>
+
+    <item android:id="@+id/bottom_menu_item_movie"
+        android:icon="@drawable/ic_vector_bottom_movie"
+        android:title="@string/main_bottom_movie_title"/>
+
+    <item
+        android:id="@+id/bottom_menu_item_personal"
+        android:icon="@drawable/ic_vector_bottom_personal"
+        android:title="@string/main_bottom_personal_title" />
+
+</menu>

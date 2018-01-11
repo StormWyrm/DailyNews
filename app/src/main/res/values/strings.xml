@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">DailyNews</string>
+    <!--Splash模块-->
+    <string name="splash_copyright">copyright 2017 版本号 1.0</string>
+
+
+
+
+    <!--Home模块-->
+    <string name="main_bottom_home_title">主页</string>
+    <string name="main_bottom_gankio_title">干货</string>
+    <string name="main_bottom_movie_title">电影</string>
+    <string name="main_bottom_personal_title">个人</string>
+
+    <string name="gank_title">干货</string>
+    <string name="personal_title">我的</string>
+
+    <string name="main_fragment_zhihu">知乎日报</string>
+    <string name="main_fragment_guoke">果壳精选</string>
+    <string name="main_fragment_douban">豆瓣一刻</string>
+    <string name="main_recycler_loading_more">上拉加载更多</string>
+    <string name="main_nav_zhhot">知乎热搜</string>
+    <string name="main_nav_change_theme">切换主题</string>
+    <string name="main_nav_setting">设置</string>
+    <string name="main_nav_about">关于</string>
+    <string name="main_nav_exit">退出</string>
+    <string name="main_exit_app_message">再按一下退出DailyNews</string>
+
+
+    <!--detail模块-->
+    <string name="detail_copy_link">复制链接</string>
+    <string name="detail_copy_link_message">已复制到剪贴板</string>
+    <string name="detail_open_link_in_browser">在浏览器中打开链接</string>
+    <string name="detail_change_text_size">调整字体大小</string>
+    <string name="about_app_version_no_find">版本号未知</string>
+    <string name="about_author_dialog_title">你是不是已经爱上我了?</string>
+    <string name="about_author_dialog_message">我也爱你...</string>
+    <string name="about_author_dialog_positive">是的</string>
+    <string name="about_author_dialog_negative">YES</string>
+
+
+    <!--设置模块-->
+    <string name="setting">设置</string>
+    <string name="setting_normal">常规</string>
+    <string name="setting_normal_image_title">无图模式</string>
+    <string name="setting_normal_image_content">仅wifi模式下加载图片</string>
+    <string name="setting_normal_web_title">使用内置浏览器</string>
+    <string name="setting_normal_web_content">应用内查看链接</string>
+    <string name="setting_other">其他</string>
+    <string name="setting_other_clear">清空缓存</string>
+    <string name="setting_other_clear_message">清理完成</string>
+    <string name="setting_other_update">检查更新</string>
+
+
+    <!--about模块-->
+    <string name="about_app_version">版本 v </string>
+    <string name="about_app_evaluation_title">评分</string>
+    <string name="about_app_evaluation_content">如果你喜欢DailyNews，请在Github上中给一个star吧！</string>
+    <string name="about_author">作者</string>
+    <string name="about_author_name">李青峰</string>
+    <string name="about_author_location">黑龙江，哈尔滨</string>
+    <string name="about_author_github_care">关注我的Github</string>
+    <string name="about_author_github_location">https://github.com/StormWyrm</string>
+    <string name="about_author_zhihu_care">关注我的知乎</string>
+    <string name="about_author_zhihu_location">https://www.zhihu.com/people/liqingfeng.love</string>
+    <string name="about_support">支持</string>
+    <string name="about_support_feedback_title">反馈Bug / 建议</string>
+    <string name="about_support_feedback_content">帮助我改进DailyApp</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="load_error_message">偶，网络开小小差了，请检查后重试</string>
+
+
+    <string name="movie_title">豆瓣热搜</string>
+    <string name="movie_top_movie_title">豆瓣电影Top250</string>
+    <string name="movie_top_movie_content">从前过去了再不来~</string>
+    <string name="movie_hot_movie_director">导演：$1%s</string>
+    <string name="movie_hot_movie_starring">主演：$1%s</string>
+    <string name="movie_hot_movie_type">类型：$1%s</string>
+    <string name="movie_hot_movie_score">评分：$1%s</string>
+    <string name="movie_hot_movie_title">热映榜</string>
+    <string name="transition_movie_img">transition_movie_img</string>
+
+
+</resources>

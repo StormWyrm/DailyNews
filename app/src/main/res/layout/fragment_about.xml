@@ -1,0 +1,105 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/app_name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/font_normal"
+            android:textStyle="bold"/>
+
+        <View
+            style="@style/HorizontalLine"/>
+
+        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+            android:id="@+id/sv_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isShowContent="false"
+            app:isShowSwitch="false"
+            app:settingTitle="版本: V 1.0"
+            />
+
+        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+            android:id="@+id/sv_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isShowSwitch="false"
+            app:settingContent="@string/about_app_evaluation_content"
+            app:settingTitle="@string/about_app_evaluation_title"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/about_author"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/font_normal"
+            android:textStyle="bold"/>
+
+        <View
+            style="@style/HorizontalLine"/>
+
+        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+            android:id="@+id/sv_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isShowSwitch="false"
+            app:settingContent="@string/about_author_location"
+            app:settingTitle="@string/about_author_name"
+            />
+
+        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+            android:id="@+id/sv_github"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isShowSwitch="false"
+            app:settingContent="@string/about_author_github_location"
+            app:settingTitle="@string/about_author_github_care"
+            />
+
+        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+            android:id="@+id/sv_zhihu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isShowSwitch="false"
+            app:settingContent="@string/about_author_zhihu_location"
+            app:settingTitle="@string/about_author_zhihu_care"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/about_support"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/font_normal"
+            android:textStyle="bold"/>
+
+        <View
+            style="@style/HorizontalLine"/>
+
+        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+            android:id="@+id/sv_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isShowSwitch="false"
+            app:settingContent="@string/about_support_feedback_content"
+            app:settingTitle="@string/about_support_feedback_title"
+            />
+    </LinearLayout>
+
+</ScrollView>
