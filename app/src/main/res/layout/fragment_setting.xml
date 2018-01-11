@@ -3,7 +3,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.example.liqingfeng.DailyNews.setting.SettingFragment">
+            tools:context="com.liqingfeng.DailyNews.setting.SettingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         <View
             style="@style/HorizontalLine"/>
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             app:settingTitle="@string/setting_normal_image_title"
             />
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_browser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         <View
             style="@style/HorizontalLine"/>
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_clear_cache"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             app:settingTitle="@string/setting_other_clear"
             />
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

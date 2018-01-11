@@ -22,7 +22,7 @@
         <View
             style="@style/HorizontalLine"/>
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             app:settingTitle="版本: V 1.0"
             />
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_star"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         <View
             style="@style/HorizontalLine"/>
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             app:settingTitle="@string/about_author_name"
             />
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             app:settingTitle="@string/about_author_github_care"
             />
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_zhihu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
         <View
             style="@style/HorizontalLine"/>
 
-        <com.example.liqingfeng.DailyNews.setting.widget.SettingItemView
+        <com.liqingfeng.DailyNews.setting.widget.SettingItemView
             android:id="@+id/sv_feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

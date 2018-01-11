@@ -41,7 +41,7 @@
 
 
 #不混淆使用第三方框架解析的modle
--keep class com.example.liqingfeng.DailyNews.medel.**{*;}
+-keep class com.liqingfeng.DailyNews.medel.**{*;}
 
 
 #Gson
@@ -91,7 +91,7 @@
 -keepclassmembers class * {
    public <init> (org.json.JSONObject);
 }
--keep public class com.example.liqingfeng.DailyNews.R$*{
+-keep public class com.liqingfeng.DailyNews.R$*{
 public static final int *;
 }
 -keepclassmembers enum * {

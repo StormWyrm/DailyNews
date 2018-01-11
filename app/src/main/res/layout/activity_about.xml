@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.liqingfeng.DailyNews.about.AboutActivity">
+    tools:context="com.liqingfeng.DailyNews.about.AboutActivity">
 
     <include layout="@layout/layout_toolbar"/>
 

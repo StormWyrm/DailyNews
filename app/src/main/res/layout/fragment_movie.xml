@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context="com.example.liqingfeng.DailyNews.main.movie.HotMovieFragment">
+    tools:context="com.liqingfeng.DailyNews.main.movie.HotMovieFragment">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
