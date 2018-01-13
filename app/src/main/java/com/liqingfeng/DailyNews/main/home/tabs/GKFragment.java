@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.home;
+package com.liqingfeng.DailyNews.main.home.tabs;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;

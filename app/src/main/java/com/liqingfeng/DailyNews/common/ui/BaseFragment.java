@@ -46,16 +46,11 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        initData();
+        initData(savedInstanceState);
         initListener();
-        initView(null);
+        initView(savedInstanceState);
     }
+
 
     @Override
     public void onDestroyView() {
@@ -80,7 +75,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 初始化数据
      */
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
     }
 
     /**

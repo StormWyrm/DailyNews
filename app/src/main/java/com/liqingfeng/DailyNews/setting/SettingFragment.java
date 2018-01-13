@@ -1,6 +1,8 @@
 package com.liqingfeng.DailyNews.setting;
 
 
+import android.os.Bundle;
+
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.setting.widget.SettingItemView;
@@ -61,7 +63,7 @@ public class SettingFragment extends BaseFragment implements SettingContract.Vie
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         mPresenter.initImageMode();
         mPresenter.initBrowserMode();
     }

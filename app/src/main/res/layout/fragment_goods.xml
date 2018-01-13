@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.liqingfeng.DailyNews.main.goods.GoodsFragment">
+    tools:context="com.liqingfeng.DailyNews.main.gankio.GankioFragment">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -37,6 +37,18 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_gank"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_vector_classify_white" />
 
 </android.support.design.widget.CoordinatorLayout>

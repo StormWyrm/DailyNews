@@ -3,9 +3,9 @@ package com.liqingfeng.DailyNews.common.util;
 import android.util.SparseArray;
 
 import com.liqingfeng.DailyNews.common.ui.BaseLazyLoadFragment;
-import com.liqingfeng.DailyNews.main.home.DBFragment;
-import com.liqingfeng.DailyNews.main.home.GKFragment;
-import com.liqingfeng.DailyNews.main.home.ZHFragment;
+import com.liqingfeng.DailyNews.main.home.tabs.DBFragment;
+import com.liqingfeng.DailyNews.main.home.tabs.GKFragment;
+import com.liqingfeng.DailyNews.main.home.tabs.ZHFragment;
 
 /**
  * @AUTHER: 李青峰

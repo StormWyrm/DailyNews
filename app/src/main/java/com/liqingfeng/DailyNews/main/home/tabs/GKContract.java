@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.home;
+package com.liqingfeng.DailyNews.main.home.tabs;
 
 import com.liqingfeng.DailyNews.common.ui.BasePresenter;
 import com.liqingfeng.DailyNews.common.ui.BaseView;

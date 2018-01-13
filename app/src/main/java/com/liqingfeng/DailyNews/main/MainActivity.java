@@ -21,7 +21,7 @@ import com.liqingfeng.DailyNews.common.util.BottomNavigationViewHelper;
 import com.liqingfeng.DailyNews.common.util.Constant;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
-import com.liqingfeng.DailyNews.main.goods.GoodsFragment;
+import com.liqingfeng.DailyNews.main.gankio.GankioFragment;
 import com.liqingfeng.DailyNews.main.home.HomeFragment;
 import com.liqingfeng.DailyNews.hot.ZHHotActivity;
 import com.liqingfeng.DailyNews.main.movie.HotMovieFragment;
@@ -58,14 +58,14 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bniv_bar);
         if(saveInstanceState == null){
             mFragments[0] = HomeFragment.newInstance();
-            mFragments[1] = GoodsFragment.newInstance();
+            mFragments[1] = GankioFragment.newInstance();
             mFragments[2] = HotMovieFragment.newInstance();
             mFragments[3] = PersonalFragment.newInstance();
         }else{
             mFragments[0] = (BaseFragment) getSupportFragmentManager()
                     .findFragmentByTag(HomeFragment.class.getSimpleName());
             mFragments[1] = (BaseFragment) getSupportFragmentManager()
-                    .findFragmentByTag(GoodsFragment.class.getSimpleName());
+                    .findFragmentByTag(GankioFragment.class.getSimpleName());
             mFragments[2] = (BaseFragment) getSupportFragmentManager()
                     .findFragmentByTag(HotMovieFragment.class.getSimpleName());
             mFragments[3] = (BaseFragment) getSupportFragmentManager()

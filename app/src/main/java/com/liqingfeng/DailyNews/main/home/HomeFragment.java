@@ -56,8 +56,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
-        super.initData();
+    protected void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
         titles = new String[]{getString(R.string.main_fragment_zhihu), getString(R.string
                 .main_fragment_guoke), getString(R.string.main_fragment_douban)};
 

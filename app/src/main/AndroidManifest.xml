@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.liqingfeng.DailyNews">
+    package="com.liqingfeng.DailyNews">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!--友盟-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 友盟 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".common.AppApplication"
@@ -21,38 +21,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Immersive">
 
-        <!--友盟-->
+        <!-- 友盟 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="591c23b3aed17938670014b0"/>
-
+            android:value="591c23b3aed17938670014b0" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}"/>
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
         <activity
             android:name=".splash.SplashActivity"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".main.MainActivity"/>
-
-        <activity android:name=".setting.SettingActivity"/>
-
-        <activity android:name=".about.AboutActivity"/>
-
-        <activity android:name=".hot.ZHHotActivity"/>
-
-        <activity android:name=".detail.news.NewsDetailActivity"/>
-
-        <activity android:name=".browser.BrowserActivity"/>
-
-        <activity android:name=".detail.movie.MovieDetailActivity"/>
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".setting.SettingActivity" />
+        <activity android:name=".about.AboutActivity" />
+        <activity android:name=".hot.ZHHotActivity" />
+        <activity android:name=".detail.news.NewsDetailActivity" />
+        <activity android:name=".browser.BrowserActivity" />
+        <activity android:name=".detail.movie.MovieDetailActivity" />
+        <activity android:name=".detail.gankio.ImageDetailActivity"></activity>
     </application>
 
 </manifest>

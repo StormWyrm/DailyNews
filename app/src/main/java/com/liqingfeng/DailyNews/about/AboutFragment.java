@@ -1,6 +1,8 @@
 package com.liqingfeng.DailyNews.about;
 
 
+import android.os.Bundle;
+
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.setting.widget.SettingItemView;
@@ -37,7 +39,7 @@ public class AboutFragment extends BaseFragment implements AboutContract.View {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         //设置版本号
         mPresenter.getVersionName();
     }

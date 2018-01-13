@@ -54,8 +54,8 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
     }
 
     @Override
-    protected void initData() {
-        super.initData();
+    protected void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
         mPresenter.getHotMovie();
     }
 

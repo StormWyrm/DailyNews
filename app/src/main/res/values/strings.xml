@@ -4,8 +4,6 @@
     <string name="splash_copyright">copyright 2017 版本号 1.0</string>
 
 
-
-
     <!--Home模块-->
     <string name="main_bottom_home_title">主页</string>
     <string name="main_bottom_gankio_title">干货</string>
@@ -80,6 +78,10 @@
     <string name="movie_hot_movie_score">评分：$1%s</string>
     <string name="movie_hot_movie_title">热映榜</string>
     <string name="transition_movie_img">transition_movie_img</string>
+    <string name="gankio_day">每日推荐</string>
+    <string name="gankio_custom">专属定制</string>
+    <string name="gankio_welfare">福利</string>
+    <string name="gankio_custom_select_category">选择分类</string>
 
 
 </resources>

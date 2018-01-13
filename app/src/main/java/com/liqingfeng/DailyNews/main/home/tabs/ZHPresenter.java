@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.home;
+package com.liqingfeng.DailyNews.main.home.tabs;
 
 import android.text.TextUtils;
 

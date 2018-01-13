@@ -1,6 +1,7 @@
 package com.liqingfeng.DailyNews.detail.news;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -64,7 +65,7 @@ public class NewsDetailFragment extends BaseFragment implements NewsDetailContra
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                initData();
+                initData(null);
             }
         });
         fabShare.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,7 @@ public class NewsDetailFragment extends BaseFragment implements NewsDetailContra
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         initToolBar();
         initWebViewSetting();
