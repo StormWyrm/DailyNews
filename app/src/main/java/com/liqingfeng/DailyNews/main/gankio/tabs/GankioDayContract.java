@@ -1,18 +1,16 @@
 package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 
-import com.liqingfeng.DailyNews.bean.gankio.GankIoDayBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
-import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareListBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
-import rx.Observable;
+
 
 
 /**

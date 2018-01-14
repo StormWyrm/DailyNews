@@ -3,8 +3,9 @@ package com.liqingfeng.DailyNews.network;
 import com.liqingfeng.DailyNews.bean.gk.GKHotNews;
 import com.liqingfeng.DailyNews.bean.gk.GKNews;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
-import rx.Observable;
+
 
 /**
  * @AUTHER: 李青峰

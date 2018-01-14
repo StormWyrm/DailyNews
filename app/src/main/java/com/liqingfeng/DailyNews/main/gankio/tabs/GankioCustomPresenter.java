@@ -4,7 +4,8 @@ import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomListBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 
-import rx.Subscriber;
+import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by lonlife on 2018/1/11.
@@ -15,6 +16,7 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
     private int mCurPage = 1;
 
     private boolean isLoading = false;
+
     @Override
     public IBaseModel getModel() {
         return new GankioCustomModel();
@@ -25,28 +27,23 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
         if (mModel == null || mView == null) {
             return;
         }
-       mCurPage = 1;
+        mCurPage = 1;
         mModel.getGankIoCustomList(mView.getCustomType(), pre_page, mCurPage)
-                .subscribe(new Subscriber<GankIoCustomListBean>() {
+                .subscribe(new Consumer<GankIoCustomListBean>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        mView.showNetworkError();
-                    }
-
-                    @Override
-                    public void onNext(GankIoCustomListBean gankIoCustomListBean) {
+                    public void accept(GankIoCustomListBean gankIoCustomListBean) throws Exception {
                         if (gankIoCustomListBean.isError()) {
                             mView.showNetworkError();
                         } else {
                             mCurPage++;
                             mView.updateContentList(gankIoCustomListBean.getResults());
                         }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                        mView.showNetworkError();
                     }
                 });
     }
@@ -56,32 +53,27 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
         if (!isLoading) {
             isLoading = true;
             mModel.getGankIoCustomList(mView.getCustomType(), pre_page, mCurPage)
-                    .subscribe(new Subscriber<GankIoCustomListBean>() {
+                    .subscribe(new Consumer<GankIoCustomListBean>() {
                         @Override
-                        public void onCompleted() {
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            e.printStackTrace();
-                            isLoading = false;
-                            mView.showLoadMoreError();
-                        }
-
-                        @Override
-                        public void onNext(GankIoCustomListBean gankIoCustomListBean) {
+                        public void accept(GankIoCustomListBean gankIoCustomListBean) throws Exception {
                             isLoading = false;
                             if (gankIoCustomListBean.isError()) {
                                 mView.showLoadMoreError();
                             } else {
-                                if (gankIoCustomListBean.getResults().size()  == 0) {
+                                if (gankIoCustomListBean.getResults().size() == 0) {
                                     mView.showNoMoreData();
                                 } else {
                                     mCurPage++;
                                     mView.updateContentList(gankIoCustomListBean.getResults());
                                 }
                             }
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            throwable.printStackTrace();
+                            isLoading = false;
+                            mView.showLoadMoreError();
                         }
                     });
         }
@@ -94,26 +86,15 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
         }
         mCurPage = 1;
         mModel.getGankIoCustomList(customType, pre_page, mCurPage)
-                .subscribe(new Subscriber<GankIoCustomListBean>() {
+                .subscribe(new Consumer<GankIoCustomListBean>() {
                     @Override
-                    public void onCompleted() {
+                    public void accept(GankIoCustomListBean gankIoCustomListBean) throws Exception {
 
                     }
-
+                }, new Consumer<Throwable>() {
                     @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        mView.showNetworkError();
-                    }
+                    public void accept(Throwable throwable) throws Exception {
 
-                    @Override
-                    public void onNext(GankIoCustomListBean gankIoCustomListBean) {
-                        if (gankIoCustomListBean.isError()) {
-                            mView.showNetworkError();
-                        } else {
-                            mCurPage++;
-                            mView.refreshContentList(gankIoCustomListBean.getResults());
-                        }
                     }
                 });
     }

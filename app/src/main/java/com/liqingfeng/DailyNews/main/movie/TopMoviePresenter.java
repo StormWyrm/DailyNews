@@ -6,7 +6,8 @@ import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 
-import rx.Subscriber;
+import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by lonlife on 2018/1/5.
@@ -27,23 +28,19 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
         if (mModel == null || mView == null)
             return;
         mStart = 0;
-        mModel.getMovieTop250(mStart, mCount).subscribe(new Subscriber<HotMovieBean>() {
-            @Override
-            public void onCompleted() {
+        mModel.getMovieTop250(mStart, mCount)
+                .subscribe(new Consumer<HotMovieBean>() {
+                    @Override
+                    public void accept(HotMovieBean hotMovieBean) throws Exception {
+                        mStart += mCount;
+                        mView.showTopMovie(hotMovieBean.getSubjects());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
 
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(HotMovieBean hotMovieBean) {
-                mStart += mCount;
-                mView.showTopMovie(hotMovieBean.getSubjects());
-            }
-        });
+                    }
+                });
     }
 
     @Override
@@ -53,20 +50,9 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
 
         if (!isLoading) {
             isLoading = true;
-            mModel.getMovieTop250(mStart, mCount).subscribe(new Subscriber<HotMovieBean>() {
+            mModel.getMovieTop250(mStart, mCount).subscribe(new Consumer<HotMovieBean>() {
                 @Override
-                public void onCompleted() {
-                    isLoading = false;
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    isLoading = false;
-                    mView.showNetworkError();
-                }
-
-                @Override
-                public void onNext(HotMovieBean hotMovieBean) {
+                public void accept(HotMovieBean hotMovieBean) throws Exception {
                     isLoading = false;
                     if (hotMovieBean != null && hotMovieBean.getSubjects() != null &&
                             hotMovieBean.getSubjects().size() > 0) {
@@ -75,6 +61,12 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                     } else {
                         mView.showNoMoreData();
                     }
+                }
+            }, new Consumer<Throwable>() {
+                @Override
+                public void accept(Throwable throwable) throws Exception {
+                    isLoading = false;
+                    mView.showNetworkError();
                 }
             });
         }

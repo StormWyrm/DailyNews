@@ -5,7 +5,8 @@ import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * Created by lonlife on 2018/1/5.

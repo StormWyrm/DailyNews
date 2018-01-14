@@ -10,7 +10,8 @@ import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * Created by lonlife on 2018/1/5.
@@ -18,7 +19,7 @@ import rx.Observable;
 
 public interface TopMovieContract {
     interface Model extends IBaseModel {
-        Observable<HotMovieBean> getMovieTop250(int start,int end);
+        Observable<HotMovieBean> getMovieTop250(int start, int end);
     }
 
     interface View extends IBaseView {

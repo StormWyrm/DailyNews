@@ -2,6 +2,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,6 +14,8 @@ import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioDayAdapter;
+
+
 
 import java.util.List;
 
@@ -32,6 +35,15 @@ public class GankioDayFragment
 
     private GankioDayAdapter mAdapter;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     protected int getViewId() {
@@ -95,11 +107,11 @@ public class GankioDayFragment
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                     switch (view.getId()){
                         case R.id.ll_more:
-                            ToastUtil.shortMessage(mActivity,"更多");
+                            ToastUtil.shortMessage(mActivity,"position:+"+position+"更多");
                             mPresenter.onGetMoreClick(position, (GankIoDayItemBean) adapter.getItem(position));
                             break;
                         case R.id.ll_refesh:
-                            ToastUtil.shortMessage(mActivity,"刷新");
+                            ToastUtil.shortMessage(mActivity,"position:+"+position+"刷新");
                             mPresenter.onRefreshItemClick(position, (GankIoDayItemBean) adapter.getItem(position));
                             break;
                     }

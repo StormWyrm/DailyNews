@@ -1,16 +1,17 @@
 package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 
-import android.graphics.YuvImage;
-
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 
-import java.util.Calendar;
-import java.util.Date;
+
+
 import java.util.List;
 
-import rx.Subscriber;
+
+
+import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by lonlife on 2018/1/11.
@@ -38,20 +39,15 @@ public class GankioDayPresenter extends GankioDayContract.Presenter{
             return;
         }
         mModel.getGankIoDay(year,month,day)
-                .subscribe(new Subscriber<List<GankIoDayItemBean>>() {
+                .subscribe(new Consumer<List<GankIoDayItemBean>>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        mView.showNetworkError();
-                    }
-
-                    @Override
-                    public void onNext(List<GankIoDayItemBean> gankIoDayItemBeans) {
+                    public void accept(List<GankIoDayItemBean> gankIoDayItemBeans) throws Exception {
                         mView.updateContentList(gankIoDayItemBeans);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showNetworkError();
                     }
                 });
     }
@@ -68,6 +64,5 @@ public class GankioDayPresenter extends GankioDayContract.Presenter{
 
     @Override
     void onGetMoreClick(int position,GankIoDayItemBean item) {
-
     }
 }

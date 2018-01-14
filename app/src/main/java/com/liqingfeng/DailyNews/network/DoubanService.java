@@ -2,9 +2,10 @@ package com.liqingfeng.DailyNews.network;
 
 import com.liqingfeng.DailyNews.bean.douban.news.DBNews;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
+
 
 /**
  * @AUTHER: 李青峰

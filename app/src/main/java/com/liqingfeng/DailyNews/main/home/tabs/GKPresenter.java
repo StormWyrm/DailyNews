@@ -17,9 +17,10 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.Calendar;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * @AUTHER: 李青峰
@@ -67,25 +68,20 @@ public class GKPresenter implements GKContract.Presenter {
         mGuokeService.getGKHotNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<GKHotNews>() {
+                .subscribe(new Consumer<GKHotNews>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(GKHotNews hotNews) {
-                        mGKView.showSliderData(hotNews);
+                    public void accept(GKHotNews gkHotNews) throws Exception {
+                        mGKView.showSliderData(gkHotNews);
 
                         //将json缓存到本地
-                        String json = mGson.toJson(hotNews);
+                        String json = mGson.toJson(gkHotNews);
                         mGuokeHotCache.addCache(DateFormatter.ZhihuDailyNowDateFormat(Calendar
                                 .getInstance()), json);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
                     }
                 });
     }
@@ -113,28 +109,24 @@ public class GKPresenter implements GKContract.Presenter {
         mGuokeService.getGKNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<GKNews>() {
+                .subscribe(new Consumer<GKNews>() {
                     @Override
-                    public void onCompleted() {
+                    public void accept(GKNews gkNews) throws Exception {
                         mGKView.endLoadMore();
                         mGKView.endRefresh();
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        mGKView.showError();
-                        mGKView.endLoadMore();
-                        mGKView.endRefresh();
-                    }
-
-                    @Override
-                    public void onNext(GKNews gkNews) {
                         mGKView.showData(gkNews);
-
                         //将json缓存到本地
                         String json = mGson.toJson(gkNews);
                         mGuokeCache.addCache(DateFormatter.ZhihuDailyNowDateFormat(Calendar
                                 .getInstance()), json);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mGKView.showError();
+                        mGKView.endLoadMore();
+                        mGKView.endRefresh();
                     }
                 });
 

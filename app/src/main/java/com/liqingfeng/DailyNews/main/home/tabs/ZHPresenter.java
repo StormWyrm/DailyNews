@@ -17,9 +17,10 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.Calendar;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * @AUTHER: 李青峰
@@ -66,25 +67,20 @@ public class ZHPresenter implements ZHContract.Presenter {
         mZhihuService.getZHHotNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ZHHotNews>() {
+                .subscribe(new Consumer<ZHHotNews>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(ZHHotNews hotNews) {
-                        mZHView.showSliderData(hotNews);
+                    public void accept(ZHHotNews zhHotNews) throws Exception {
+                        mZHView.showSliderData(zhHotNews);
 
                         //将json缓存到本地
-                        String json = mGson.toJson(hotNews);
+                        String json = mGson.toJson(zhHotNews);
                         mZhihuHotCache.addCache(DateFormatter.ZhihuDailyNowDateFormat(Calendar
                                 .getInstance()), json);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
                     }
                 });
     }
@@ -112,27 +108,24 @@ public class ZHPresenter implements ZHContract.Presenter {
         mZhihuService.getZHNews(DateFormatter.ZhihuDailyNowDateFormat(mCurCalendar))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ZHNews>() {
+                .subscribe(new Consumer<ZHNews>() {
                     @Override
-                    public void onCompleted() {
+                    public void accept(ZHNews zhNews) throws Exception {
                         mZHView.endRefresh();
                         mZHView.endLoadMore();
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        mZHView.showError();
-                        mZHView.endRefresh();
-                        mZHView.endLoadMore();
-                    }
-
-                    @Override
-                    public void onNext(ZHNews zhNews) {
                         mZHView.showData(zhNews);
                         //将json缓存到本地
                         String json = mGson.toJson(zhNews);
                         mZhihuCache.addCache(new DateFormatter().ZhihuDailyNowDateFormat
                                 (mCurCalendar), json);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mZHView.showError();
+                        mZHView.endRefresh();
+                        mZHView.endLoadMore();
                     }
                 });
 

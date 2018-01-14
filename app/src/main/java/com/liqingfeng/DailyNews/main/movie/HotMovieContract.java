@@ -12,7 +12,7 @@ import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
 
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 
 /**

@@ -4,9 +4,10 @@ import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 import com.liqingfeng.DailyNews.network.DoubanMovieService;
 import com.liqingfeng.DailyNews.network.NetworkHelper;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by lonlife on 2018/1/5.
@@ -22,6 +23,8 @@ public class MovieDetailModel implements MovieDetailContract.Model {
 
     @Override
     public Observable<MovieDetailBean> getMovieDetail(String id) {
-        return doubanMovieService.getMovieDetail(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return doubanMovieService.getMovieDetail(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

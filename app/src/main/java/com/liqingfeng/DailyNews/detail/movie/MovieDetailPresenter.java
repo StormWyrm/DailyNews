@@ -5,7 +5,8 @@ import com.liqingfeng.DailyNews.common.AppApplication;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 
-import rx.Subscriber;
+import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by lonlife on 2018/1/5.
@@ -19,35 +20,33 @@ public class MovieDetailPresenter extends MovieDetailContract.Presenter {
 
     @Override
     void getMovieDetail(String id) {
-        if(mModel != null){
-            mModel.getMovieDetail(id).subscribe(new Subscriber<MovieDetailBean>() {
-                @Override
-                public void onCompleted() {
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-
-                }
-
-                @Override
-                public void onNext(MovieDetailBean movieDetailBean) {
-                    if(mView != null){
-                        mView.showMovieDetail(movieDetailBean);
+        if (mModel == null || mView == null)
+            return;
+        mModel.getMovieDetail(id)
+                .subscribe(new Consumer<MovieDetailBean>() {
+                    @Override
+                    public void accept(MovieDetailBean movieDetailBean) throws Exception {
+                        if (mView != null) {
+                            mView.showMovieDetail(movieDetailBean);
+                        }
                     }
-                }
-            });
-        }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                });
+
+
     }
 
     @Override
     void onHeaderClick(String id) {
-        ToastUtil.shortMessage(AppApplication.getInstance(),"头部点击");
+        ToastUtil.shortMessage(AppApplication.getInstance(), "头部点击");
     }
 
     @Override
     void onItemCLick() {
-        ToastUtil.shortMessage(AppApplication.getInstance(),"item点击");
+        ToastUtil.shortMessage(AppApplication.getInstance(), "item点击");
     }
 }

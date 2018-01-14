@@ -8,8 +8,8 @@ import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
 import java.util.List;
 
-import retrofit2.http.Path;
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * Created by lonlife on 2018/1/11.

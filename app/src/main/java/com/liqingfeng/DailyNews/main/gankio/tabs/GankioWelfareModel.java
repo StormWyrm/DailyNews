@@ -4,9 +4,10 @@ import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareListBean;
 import com.liqingfeng.DailyNews.network.GankioService;
 import com.liqingfeng.DailyNews.network.NetworkHelper;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by lonlife on 2018/1/11.

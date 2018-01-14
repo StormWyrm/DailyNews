@@ -12,7 +12,8 @@ import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
 
-import rx.Subscriber;
+import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by lonlife on 2018/1/4.
@@ -31,26 +32,21 @@ public class HotMoviePresenter extends HotMovieContract.Presenter {
             return;
         }
         mModel.getHotMovie()
-                .subscribe(new Subscriber<HotMovieBean>() {
+                .subscribe(new Consumer<HotMovieBean>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                        mView.showNetworkError();
-                    }
-
-                    @Override
-                    public void onNext(HotMovieBean hotMovieBean) {
+                    public void accept(HotMovieBean hotMovieBean) throws Exception {
                         if(mView == null)
                             return;
                         mView.showHotMovie(hotMovieBean.getSubjects());
                     }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showNetworkError();
+                    }
                 });
     }
+
 
     @Override
     void onMovieItemClick(HotMovieAdapter adapter, View view, int position, SubjectsBean subjectsBean) {

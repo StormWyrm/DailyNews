@@ -3,10 +3,11 @@ package com.liqingfeng.DailyNews.network;
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
+
 
 /**
  * Created by lonlife on 2018/1/5.

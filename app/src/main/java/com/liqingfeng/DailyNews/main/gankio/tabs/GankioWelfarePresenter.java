@@ -4,7 +4,8 @@ import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareListBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 
-import rx.Subscriber;
+import io.reactivex.functions.Consumer;
+
 
 
 /**
@@ -26,28 +27,23 @@ public class GankioWelfarePresenter extends GankioWelfareContract.Presenter {
     void loadLastestList() {
         if (mModel == null || mView == null)
             return;
-        mModel.getGankIoWelfareList(pre_page, mCurPage).subscribe(new Subscriber<GankIoWelfareListBean>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                mView.showNetworkError();
-            }
-
-            @Override
-            public void onNext(GankIoWelfareListBean gankIoWelfareListBean) {
-                if (gankIoWelfareListBean.isError()) {
-                    mView.showNetworkError();
-                } else {
-                    mCurPage++;
-                    mView.updateContentList(gankIoWelfareListBean.getResults());
-                }
-
-            }
-        });
+        mModel.getGankIoWelfareList(pre_page, mCurPage)
+                .subscribe(new Consumer<GankIoWelfareListBean>() {
+                    @Override
+                    public void accept(GankIoWelfareListBean gankIoWelfareListBean) throws Exception {
+                        if (gankIoWelfareListBean.isError()) {
+                            mView.showNetworkError();
+                        } else {
+                            mCurPage++;
+                            mView.updateContentList(gankIoWelfareListBean.getResults());
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showNetworkError();
+                    }
+                });
     }
 
     @Override
@@ -56,35 +52,31 @@ public class GankioWelfarePresenter extends GankioWelfareContract.Presenter {
             return;
         if (!isLoading) {
             isLoading = true;
-            mModel.getGankIoWelfareList(pre_page, mCurPage).subscribe(new Subscriber<GankIoWelfareListBean>() {
-                @Override
-                public void onCompleted() {
+            mModel.getGankIoWelfareList(pre_page, mCurPage)
+                    .subscribe(new Consumer<GankIoWelfareListBean>() {
+                        @Override
+                        public void accept(GankIoWelfareListBean gankIoWelfareListBean) throws Exception {
+                            isLoading = false;
+                            if (gankIoWelfareListBean.isError()) {
+                                mView.showNetworkError();
+                            } else {
+                                if (gankIoWelfareListBean.getResults().size() > 0) {
+                                    mCurPage++;
+                                    mView.updateContentList(gankIoWelfareListBean.getResults());
 
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    isLoading = false;
-                    //加载更多失败
-                    mView.showLoadMoreError();
-                }
-
-                @Override
-                public void onNext(GankIoWelfareListBean gankIoWelfareListBean) {
-                    isLoading = false;
-                    if (gankIoWelfareListBean.isError()) {
-                        mView.showNetworkError();
-                    } else {
-                        if (gankIoWelfareListBean.getResults().size() > 0) {
-                            mCurPage++;
-                            mView.updateContentList(gankIoWelfareListBean.getResults());
-
-                        } else {
-                            mView.showNoMoreData();
+                                } else {
+                                    mView.showNoMoreData();
+                                }
+                            }
                         }
-                    }
-                }
-            });
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            isLoading = false;
+                            //加载更多失败
+                            mView.showLoadMoreError();
+                        }
+                    });
         }
 
     }

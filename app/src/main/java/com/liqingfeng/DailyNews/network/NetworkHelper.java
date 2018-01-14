@@ -3,7 +3,8 @@ package com.liqingfeng.DailyNews.network;
 import com.liqingfeng.DailyNews.common.util.Api;
 
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -25,7 +26,7 @@ public class NetworkHelper {
                     networkHelper = new NetworkHelper();
                     mBuilder = new Retrofit.Builder()
                             .addConverterFactory(GsonConverterFactory.create())
-                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
                 }
             }
         }

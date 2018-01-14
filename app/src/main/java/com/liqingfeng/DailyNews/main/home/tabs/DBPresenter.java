@@ -16,9 +16,10 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.Calendar;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * @AUTHER: 李青峰
@@ -69,27 +70,23 @@ public class DBPresenter implements DBContract.Presenter {
         mDoubanServie.getDBNews(new DateFormatter().DoubanDateFormat(mCurCalendar))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<DBNews>() {
+                .subscribe(new Consumer<DBNews>() {
                     @Override
-                    public void onCompleted() {
+                    public void accept(DBNews dbNews) throws Exception {
                         mDBView.endRefresh();
                         mDBView.endLoadMore();
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        mDBView.showError();
-                        mDBView.endRefresh();
-                        mDBView.endLoadMore();
-                    }
-
-                    @Override
-                    public void onNext(DBNews dbNews) {
                         mDBView.showData(dbNews);
-
                         //将json缓存到本地
                         String json = mGson.toJson(dbNews);
                         mDoubanCache.addCache(new DateFormatter().DoubanDateFormat(mCurCalendar),json);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mDBView.showError();
+                        mDBView.endRefresh();
+                        mDBView.endLoadMore();
                     }
                 });
 

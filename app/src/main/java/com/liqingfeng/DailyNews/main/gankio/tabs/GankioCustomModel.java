@@ -5,10 +5,12 @@ import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomListBean;
 import com.liqingfeng.DailyNews.network.GankioService;
 import com.liqingfeng.DailyNews.network.NetworkHelper;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by lonlife on 2018/1/11.
@@ -24,9 +26,9 @@ public class GankioCustomModel implements GankioCustomContract.Model {
     @Override
     public Observable<GankIoCustomListBean> getGankIoCustomList(String type, int pre_page, int page) {
         return mGankioService.getGankIoCustomList(type,pre_page,page)
-                .map(new Func1<GankIoCustomListBean, GankIoCustomListBean>() {
+                .map(new Function<GankIoCustomListBean, GankIoCustomListBean>() {
                     @Override
-                    public GankIoCustomListBean call(GankIoCustomListBean gankIoCustomListBean) {
+                    public GankIoCustomListBean apply(GankIoCustomListBean gankIoCustomListBean) throws Exception {
                         for(GankIoCustomItemBean bean : gankIoCustomListBean.getResults()){
                             if(bean.getType().equals("福利")){
                                 bean.itemType = GankIoCustomItemBean.GANK_IO_DAY_ITEM_CUSTOM_IMAGE;
