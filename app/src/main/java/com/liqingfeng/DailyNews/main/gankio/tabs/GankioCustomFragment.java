@@ -15,6 +15,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.cocosw.bottomsheet.BottomSheet;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomItemBean;
+import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
+import com.liqingfeng.DailyNews.common.rxbus.RxBus;
+import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
@@ -48,10 +51,16 @@ public class GankioCustomFragment
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
+        RxBus.get().register(this);
         initRecylerView(null);
         mPresenter.loadLastestList();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unRegister(this);
+    }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -202,5 +211,15 @@ public class GankioCustomFragment
                 }).show();
     }
 
+    /**
+     * 每日推荐页面点击更多
+     * @param customType
+     */
+    @Subscribe(code = RxBusCodeCanstant.RX_BUS_CODE_GANKIO_CUSTOM_TYPE)
+    public void rxBusEvent(String customType){
+        mCustomType = customType;
+        initHeaderView();
+        mPresenter.onCustomTypeChange(mCustomType);
+    }
 
 }

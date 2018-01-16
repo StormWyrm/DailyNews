@@ -2,6 +2,8 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareListBean;
+import com.liqingfeng.DailyNews.common.ui.IBaseActivity;
+import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
@@ -20,7 +22,7 @@ public interface GankioWelfareContract {
         Observable<GankIoWelfareListBean> getGankIoWelfareList(int pre_page, int page);
     }
 
-    interface View extends IBaseView {
+    interface View extends IBaseFragment {
         void updateContentList(List<GankIoWelfareItemBean> list);
 
         void showNetworkError();

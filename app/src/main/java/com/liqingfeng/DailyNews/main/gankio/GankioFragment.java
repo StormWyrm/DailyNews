@@ -6,11 +6,16 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.liqingfeng.DailyNews.R;
+import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
+import com.liqingfeng.DailyNews.common.rxbus.RxBus;
+import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioMainPagerApater;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioCustomFragment;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioDayFragment;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioWelfareFragment;
+
+import java.util.logging.Logger;
 
 import butterknife.BindView;
 
@@ -46,6 +51,7 @@ public class GankioFragment extends BaseFragment {
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
+        RxBus.get().register(this);
         titles = new String[]{
                 getString(R.string.gankio_day),
                 getString(R.string.gankio_custom),
@@ -62,10 +68,25 @@ public class GankioFragment extends BaseFragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unRegister(this);
+    }
+
+    @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
         vpGank.setAdapter(mAdapter);
         tabGank.setupWithViewPager(vpGank);
+    }
+
+    /**
+     * 切换tabs
+     */
+    @Subscribe(code = RxBusCodeCanstant.RX_BUS_CODE_GANKIO_SELECT_TO_CHILD)
+    public void rxBusEvent(Integer index) {
+        tabGank.setVerticalScrollbarPosition(index);
+        vpGank.setCurrentItem(index);
     }
 
 }

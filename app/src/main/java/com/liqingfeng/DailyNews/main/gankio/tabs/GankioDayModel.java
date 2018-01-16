@@ -67,14 +67,17 @@ public class GankioDayModel implements GankioDayContract.Model {
         public GankIoDayItemBean getGankIoDayAndroid ( int page){
             if (mGankIoDayBean == null)
                 return null;
-            return mGankIoDayBean.getResults().getAndroid().get(page);
-
+            GankIoDayItemBean bean = mGankIoDayBean.getResults().getAndroid().get(page);
+            bean.itemType = GankIoDayItemBean.GANK_IO_DAY_ITEM_DAY_REFESH;
+            return bean;
         }
 
         @Override
         public GankIoDayItemBean getGankIoDayIOS ( int page){
             if (mGankIoDayBean == null)
                 return null;
-            return mGankIoDayBean.getResults().getiOS().get(page);
+            GankIoDayItemBean bean = mGankIoDayBean.getResults().getiOS().get(page);
+            bean.itemType = GankIoDayItemBean.GANK_IO_DAY_ITEM_DAY_REFESH;
+            return bean;
         }
     }

@@ -1,8 +1,12 @@
 package com.liqingfeng.DailyNews.main.gankio.tabs;
 
+import android.os.Bundle;
+
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareListBean;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.detail.gankio.ImageDetailActivity;
 
 import io.reactivex.functions.Consumer;
 
@@ -83,6 +87,10 @@ public class GankioWelfarePresenter extends GankioWelfareContract.Presenter {
 
     @Override
     void onItemClick(int position, GankIoWelfareItemBean item) {
-
+        if(mView == null)
+            return;
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKeyConstant.BUNDLE_KEY_IMAGE_DETAIL_URL,item.getUrl());
+        mView.startNewActivity(ImageDetailActivity.class,bundle);
     }
 }

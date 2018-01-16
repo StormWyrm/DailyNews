@@ -2,6 +2,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomListBean;
+import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
@@ -21,7 +22,7 @@ public interface GankioCustomContract {
                 pre_page, int page);
     }
 
-    interface View extends IBaseView {
+    interface View extends IBaseFragment {
         //获取自定义类型
         String getCustomType();
 

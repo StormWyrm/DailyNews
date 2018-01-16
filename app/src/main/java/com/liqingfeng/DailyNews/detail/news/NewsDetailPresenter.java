@@ -4,15 +4,17 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.common.framework.HttpRequestCallback;
 import com.liqingfeng.DailyNews.common.framework.HttpRequestManager;
 import com.liqingfeng.DailyNews.common.net.HttpRequestByVolley;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.util.Constant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.util.NetworkUtil;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
@@ -86,8 +88,8 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
     public void jumpToBrowser(String url) {
         if ((Boolean) SPUtils.get(mActivity, Constant.Config.WAY_OF_BROWSER, true)) {
             Intent intent = new Intent(mActivity, BrowserActivity.class);
-            intent.putExtra("url", url);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Bundle extra = new Bundle();
+            extra.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL,url);
             mActivity.startActivity(intent);
         } else {
             mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));

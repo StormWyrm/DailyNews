@@ -10,8 +10,10 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
+import com.liqingfeng.DailyNews.common.rxbus.RxBus;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
+import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioDayAdapter;
 
@@ -36,16 +38,6 @@ public class GankioDayFragment
     private GankioDayAdapter mAdapter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
     protected int getViewId() {
         return R.layout.fragment_gankio_recommend;
     }
@@ -53,8 +45,15 @@ public class GankioDayFragment
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
+        RxBus.get().register(this);
         initRecyclerView(null);
         mPresenter.loadLastestList();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unRegister(this);
     }
 
     @NonNull
@@ -75,12 +74,12 @@ public class GankioDayFragment
 
     @Override
     public void itemNotifyChange(int position, GankIoDayItemBean item) {
-
+        mAdapter.onRefreshItem(position,item);
     }
 
     @Override
     public void showNetworkError() {
-
+        SnackBarUtil.showMessage(getView().getRootView(),getString(R.string.load_error_message));
     }
 
     @Override
@@ -107,11 +106,9 @@ public class GankioDayFragment
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                     switch (view.getId()){
                         case R.id.ll_more:
-                            ToastUtil.shortMessage(mActivity,"position:+"+position+"更多");
                             mPresenter.onGetMoreClick(position, (GankIoDayItemBean) adapter.getItem(position));
                             break;
                         case R.id.ll_refesh:
-                            ToastUtil.shortMessage(mActivity,"position:+"+position+"刷新");
                             mPresenter.onRefreshItemClick(position, (GankIoDayItemBean) adapter.getItem(position));
                             break;
                     }

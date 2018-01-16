@@ -1,13 +1,16 @@
 package com.liqingfeng.DailyNews.common.ui;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 /**
  * Created by lonlife on 2018/1/3.
  * 实现mvp模式绑定的Fragment
  */
 
-public abstract class BaseMvpFragment<M extends IBaseModel,P extends IBasePresenter> extends BaseFragment implements IBaseView{
+public abstract class BaseMvpFragment<M extends IBaseModel,P extends IBasePresenter>
+        extends BaseFragment
+        implements IBaseFragment{
     protected P mPresenter;
     private M mModel;
 
@@ -30,5 +33,21 @@ public abstract class BaseMvpFragment<M extends IBaseModel,P extends IBasePresen
         if(mPresenter != null){
             mPresenter.dettachMV();
         }
+    }
+
+
+    @Override
+    public void startNewActivity(@NonNull Class<?> clz) {
+        mActivity.startActivity(clz);
+    }
+
+    @Override
+    public void startNewActivity(@NonNull Class<?> clz, Bundle bundle) {
+        mActivity.startActivity(clz, bundle);
+    }
+
+    @Override
+    public void startNewActivityForResult(@NonNull Class<?> clz, Bundle bundle, int requestCode) {
+        mActivity.startNewActivityForResult(clz,bundle,requestCode);
     }
 }

@@ -1,8 +1,13 @@
 package com.liqingfeng.DailyNews.main.gankio.tabs;
 
+import android.os.Bundle;
+
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomListBean;
+import com.liqingfeng.DailyNews.browser.BrowserActivity;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.detail.gankio.ImageDetailActivity;
 
 import io.reactivex.functions.Consumer;
 
@@ -101,6 +106,14 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
 
     @Override
     public void onItemClick(int position, GankIoCustomItemBean item) {
-
+        if(item.getType().equals("福利")){
+            Bundle bundle = new Bundle();
+            bundle.putString(BundleKeyConstant.BUNDLE_KEY_IMAGE_DETAIL_URL,item.getUrl());
+            mView.startNewActivity(ImageDetailActivity.class,bundle);
+        }else{
+            Bundle bundle = new Bundle();
+            bundle.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL,item.getUrl());
+            mView.startNewActivity(BrowserActivity.class,bundle);
+        }
     }
 }

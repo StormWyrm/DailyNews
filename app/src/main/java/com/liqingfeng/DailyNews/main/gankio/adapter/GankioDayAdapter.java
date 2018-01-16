@@ -49,6 +49,16 @@ public class GankioDayAdapter extends BaseMultiItemQuickAdapter<GankIoDayItemBea
         addItemType(GankIoDayItemBean.GANK_IO_DAY_ITEM_DAY_REFESH, R.layout.item_gankio_day_refresh);
     }
 
+    //刷新某一项数据
+    public void onRefreshItem(int position,GankIoDayItemBean item){
+        if(item.getType().equals("Android")){
+            mAndroidIndex ++;
+        }else{
+            mIOSIndex ++;
+        }
+        setData(position,item);
+    }
+
     @Override
     protected void convert(BaseViewHolder helper, GankIoDayItemBean item) {
         //设置标题

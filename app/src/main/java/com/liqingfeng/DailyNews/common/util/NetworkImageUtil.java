@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.R;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 
 /**
  * @AUTHER: 李青峰

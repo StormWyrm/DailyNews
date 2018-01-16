@@ -12,10 +12,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.liqingfeng.DailyNews.R;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.util.Constant;
 import com.liqingfeng.DailyNews.common.util.NetworkUtil;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
+import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 
 import butterknife.BindView;
 
@@ -50,13 +52,12 @@ public class BrowserActivity extends BaseActivity {
         initWebView();
         initWebViewSetting();
 
-        Intent intent = getIntent();
-        if (intent != null) {
-
-            mWebView.loadUrl(intent.getStringExtra("url"));
+        Bundle extrea = getIntent().getExtras();
+        if (extrea != null) {
+            String url = extrea.getString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL);
+            mWebView.loadUrl(url);
             mWebView.setBackgroundColor(0);
         }
-
     }
 
     @Override
@@ -117,7 +118,6 @@ public class BrowserActivity extends BaseActivity {
             }
         }
     }
-
 
 
     @Override

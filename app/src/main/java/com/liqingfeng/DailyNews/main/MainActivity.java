@@ -18,7 +18,7 @@ import com.liqingfeng.DailyNews.common.AppApplication;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.common.util.BottomNavigationViewHelper;
-import com.liqingfeng.DailyNews.common.util.Constant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioFragment;

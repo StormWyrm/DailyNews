@@ -15,7 +15,7 @@ import com.liqingfeng.DailyNews.common.framework.OnRecyclerViewClickListener;
 import com.liqingfeng.DailyNews.common.ui.BaseRecyclerAdapter;
 import com.liqingfeng.DailyNews.common.ui.BaseViewHolder;
 import com.liqingfeng.DailyNews.common.util.Api;
-import com.liqingfeng.DailyNews.common.util.Constant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.util.NetworkImageUtil;
 import com.liqingfeng.DailyNews.common.util.NetworkUtil;
 import com.liqingfeng.DailyNews.common.util.SPUtils;

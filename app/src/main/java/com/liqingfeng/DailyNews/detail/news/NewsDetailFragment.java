@@ -19,7 +19,7 @@ import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
-import com.liqingfeng.DailyNews.common.util.Constant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.util.GlideUtils;
 import com.liqingfeng.DailyNews.common.util.NetworkImageUtil;
 import com.liqingfeng.DailyNews.common.util.NetworkUtil;

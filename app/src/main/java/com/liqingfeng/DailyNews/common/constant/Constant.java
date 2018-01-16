@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.common.util;
+package com.liqingfeng.DailyNews.common.constant;
 
 
 /**

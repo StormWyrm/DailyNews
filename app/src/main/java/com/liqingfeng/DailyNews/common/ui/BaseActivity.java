@@ -1,6 +1,7 @@
 package com.liqingfeng.DailyNews.common.ui;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.AppApplication;
+import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
@@ -40,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //        initTransparentStatusBar();
+//        StatusBarUtils.setTransparent(this);
         setContentView(getViewId());
         unbinder = ButterKnife.bind(this);
         mActivity = this;
@@ -108,7 +111,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(title)) {
             mActionBar.setTitle(title);
         } else {
-            mActionBar.setTitle(R.string.app_name);
+            mActionBar.setTitle("");
         }
         if (isBackable) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -123,6 +126,57 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * [页面跳转]
+     *
+     * @param clz 要跳转的Activity
+     */
+    public void startActivity(Class<?> clz) {
+        startActivity(new Intent(this, clz));
+    }
+
+    /**
+     * [页面跳转]
+     *
+     * @param clz    要跳转的Activity
+     * @param intent intent
+     */
+    public void startActivity(Class<?> clz, Intent intent) {
+        intent.setClass(this, clz);
+        startActivity(intent);
+    }
+
+    /**
+     * [携带数据的页面跳转]
+     *
+     * @param clz    要跳转的Activity
+     * @param bundle bundel数据
+     */
+    public void startActivity(Class<?> clz, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(this, clz);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+    }
+
+    /**
+     * [含有Bundle通过Class打开编辑界面]
+     *
+     * @param clz         要跳转的Activity
+     * @param bundle      bundel数据
+     * @param requestCode requestCode
+     */
+    public void startNewActivityForResult(Class<?> clz, Bundle bundle,
+                                       int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, clz);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
 
     //兼容android4.4以上状态栏透明
     protected void initTransparentStatusBar() {

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.liqingfeng.DailyNews.browser.BrowserActivity">
 
-    <FrameLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <include
-            layout="@layout/layout_toolbar"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary" />
 
         <android.support.v4.widget.ContentLoadingProgressBar
             android:id="@+id/pb"
@@ -21,19 +23,17 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_gravity="bottom"
-            android:progressTint="@color/colorAccent"
-            />
-    </FrameLayout>
-
+            android:progressTint="@color/colorAccent" />
+    </android.support.design.widget.AppBarLayout>
 
     <WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_weight="1"
         android:background="@android:color/transparent"
-        android:backgroundTint="@color/viewBackground"
-        />
+        android:backgroundTint="@color/viewBackground" />
 </android.support.design.widget.CoordinatorLayout>
 
 

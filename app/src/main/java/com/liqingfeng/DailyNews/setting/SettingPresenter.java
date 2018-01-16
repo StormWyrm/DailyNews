@@ -4,7 +4,7 @@ package com.liqingfeng.DailyNews.setting;
 import com.bumptech.glide.Glide;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.util.Constant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ThreadUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;

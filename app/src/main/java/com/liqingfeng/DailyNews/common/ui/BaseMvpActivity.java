@@ -1,12 +1,15 @@
 package com.liqingfeng.DailyNews.common.ui;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 /**
  * Created by lonlife on 2018/1/4.
  */
 
-public abstract class BaseMvpActivity<M extends IBaseModel,P extends IBasePresenter> extends BaseActivity implements IBaseView {
+public abstract class BaseMvpActivity<M extends IBaseModel,P extends IBasePresenter>
+        extends BaseActivity
+        implements IBaseActivity {
     private M mModel;
     protected P mPresenter;
 
@@ -29,4 +32,20 @@ public abstract class BaseMvpActivity<M extends IBaseModel,P extends IBasePresen
             mPresenter.dettachMV();
         }
     }
+
+    @Override
+    public void startNewActivity(@NonNull Class<?> clz) {
+        startActivity(clz);
+    }
+
+    @Override
+    public void startNewActivity(@NonNull Class<?> clz, Bundle bundle) {
+        startActivity(clz, bundle);
+    }
+
+    @Override
+    public void startNewActivityForResult(@NonNull Class<?> clz, Bundle bundle, int requestCode) {
+        startNewActivityForResult(clz, bundle, requestCode);
+    }
+
 }

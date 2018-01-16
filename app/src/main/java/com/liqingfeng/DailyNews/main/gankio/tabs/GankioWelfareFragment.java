@@ -10,8 +10,12 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareItemBean;
+import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
+import com.liqingfeng.DailyNews.common.rxbus.RxBus;
+import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
+import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioWelfareAdapter;
 
 import java.util.List;
@@ -39,8 +43,15 @@ public class GankioWelfareFragment
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
+        RxBus.get().register(this);
         initRecycleView(null);
         mPresenter.loadLastestList();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unRegister(this);
     }
 
     @Override
@@ -62,6 +73,28 @@ public class GankioWelfareFragment
         } else {
             mAdapter.addData(list);
         }
+    }
+
+    @Override
+    public void showNoMoreData() {
+        mAdapter.loadMoreEnd();
+    }
+
+    @Override
+    public void showLoadMoreError() {
+        mAdapter.loadMoreFail();
+    }
+
+
+    @Override
+    public void showNetworkError() {
+        SnackBarUtil.showMessage(getView().getRootView(),getString(R.string.load_error_message));
+
+    }
+
+    @Override
+    public void showLoading() {
+
     }
 
     private void initRecycleView(List<GankIoWelfareItemBean> list) {
@@ -86,25 +119,12 @@ public class GankioWelfareFragment
         }
     }
 
-    @Override
-    public void showNoMoreData() {
-        mAdapter.loadMoreEnd();
-    }
-
-    @Override
-    public void showLoadMoreError() {
-        mAdapter.loadMoreFail();
-    }
-
-
-    @Override
-    public void showNetworkError() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
+    /**
+     * day页面查看更多事件触发
+     */
+    @Subscribe(code = RxBusCodeCanstant.RX_BUS_CODE_GANKIO_WELFARE_TYPE)
+    public void rxBusEvent() {
+        rvGankioWelfare.smoothScrollToPosition(0);
     }
 
 

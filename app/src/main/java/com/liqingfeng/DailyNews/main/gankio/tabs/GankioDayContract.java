@@ -2,6 +2,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
+import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
@@ -39,7 +40,7 @@ public interface GankioDayContract {
         GankIoDayItemBean getGankIoDayIOS(int page);
     }
 
-    interface View extends IBaseView {
+    interface View extends IBaseFragment {
         void updateContentList(List<GankIoDayItemBean> list);
 
         void itemNotifyChange(int position, GankIoDayItemBean item);

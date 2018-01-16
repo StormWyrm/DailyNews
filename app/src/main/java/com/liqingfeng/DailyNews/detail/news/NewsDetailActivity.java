@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
+import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 
 /**
  * @AUTHER: 李青峰
@@ -24,7 +25,7 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle saveInstanceState) {
-        initTransparentStatusBar();
+        StatusBarUtils.setTransparent(this);
         mDetailFragment = (NewsDetailFragment) getSupportFragmentManager().findFragmentById(R.id.fl_container);
 
 

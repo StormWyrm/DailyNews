@@ -3,20 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:fitsSystemWindows="true"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleGravity="left|bottom"
             app:expandedTitleMargin="20dp"
@@ -27,7 +24,6 @@
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 
@@ -36,7 +32,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="left"
-                android:fitsSystemWindows="true"
                 android:gravity="left"
                 app:background="@color/colorPrimary"
                 app:layout_collapseMode="pin" />
