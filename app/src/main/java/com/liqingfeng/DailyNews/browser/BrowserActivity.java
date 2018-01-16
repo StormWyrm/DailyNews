@@ -51,7 +51,7 @@ public class BrowserActivity extends BaseActivity {
         }
         initWebView();
         initWebViewSetting();
-
+        mActionBar.setTitle("加载中...");
         Bundle extrea = getIntent().getExtras();
         if (extrea != null) {
             String url = extrea.getString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL);

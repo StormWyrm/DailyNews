@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.movie;
+package com.liqingfeng.DailyNews.main.movie.hot;
 
 
 import android.os.Bundle;
@@ -56,6 +56,7 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
+        initRecyclerView(null);
         mPresenter.getHotMovie();
     }
 
@@ -67,16 +68,16 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
 
     @Override
     public void showHotMovie(List<SubjectsBean> subjectsBeans) {
-        if (mAdapter == null) {
+        if (mAdapter.getData().size() == 0) {
             initRecyclerView(subjectsBeans);
         } else {
-            mAdapter.setNewData(subjectsBeans);
+            mAdapter.addData(subjectsBeans);
         }
     }
 
     @Override
     public void showNetworkError() {
-        SnackBarUtil.showMessage(mActivity.getWindow().getDecorView(),getString(R.string.load_error_message));
+        SnackBarUtil.showMessage(mActivity.getWindow().getDecorView(), getString(R.string.load_error_message));
     }
 
     @Override
@@ -85,27 +86,34 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
     }
 
     private void initRecyclerView(List<SubjectsBean> subjectsBeans) {
-        mAdapter = new HotMovieAdapter(subjectsBeans);
+        if (subjectsBeans == null) {
+            mAdapter = new HotMovieAdapter();
+            rvHotMovie.setLayoutManager(new LinearLayoutManager(mActivity));
+            rvHotMovie.setAdapter(mAdapter);
+        } else {
+            initHeaderView();
+            mAdapter = new HotMovieAdapter(subjectsBeans);
+            mAdapter.setHeaderView(mheaderView);
+            mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    mPresenter.onMovieItemClick((HotMovieAdapter) adapter, view, position, (SubjectsBean) adapter.getData().get(position));
+                }
+            });
+            rvHotMovie.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
+            rvHotMovie.setLayoutManager(new LinearLayoutManager(mContext));
+            rvHotMovie.setAdapter(mAdapter);
+        }
+    }
 
+    private void initHeaderView() {
         mheaderView = View.inflate(mContext, R.layout.layout_hot_movie_header, null);
-
-        mheaderView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPresenter.onTopMovieClick();
-            }
-        });
-        mAdapter.setHeaderView(mheaderView);
-
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                mPresenter.onMovieItemClick((HotMovieAdapter) adapter, view, position,(SubjectsBean) adapter.getData().get(position));
-            }
-        });
-
-        rvHotMovie.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
-        rvHotMovie.setLayoutManager(new LinearLayoutManager(mContext));
-        rvHotMovie.setAdapter(mAdapter);
+        mheaderView.findViewById(R.id.rl_top_movie)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mPresenter.onTopMovieClick();
+                    }
+                });
     }
 }

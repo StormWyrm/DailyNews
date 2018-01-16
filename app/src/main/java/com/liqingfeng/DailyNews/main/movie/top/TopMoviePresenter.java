@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.movie;
+package com.liqingfeng.DailyNews.main.movie.top;
 
 import android.widget.ImageView;
 
@@ -24,7 +24,7 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
     }
 
     @Override
-    void getMovieTop250() {
+    void loadLastestTopMovie() {
         if (mModel == null || mView == null)
             return;
         mStart = 0;
@@ -33,18 +33,18 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                     @Override
                     public void accept(HotMovieBean hotMovieBean) throws Exception {
                         mStart += mCount;
-                        mView.showTopMovie(hotMovieBean.getSubjects());
+                        mView.updateTopMovieContent(hotMovieBean.getSubjects());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        mView.showNetworkError();
                     }
                 });
     }
 
     @Override
-    void getMoreTopMovie() {
+    void loadMoreTopMovie() {
         if (mModel == null || mView == null)
             return;
 
@@ -57,7 +57,7 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                     if (hotMovieBean != null && hotMovieBean.getSubjects() != null &&
                             hotMovieBean.getSubjects().size() > 0) {
                         mStart += mCount;
-                        mView.showTopMovie(hotMovieBean.getSubjects());
+                        mView.updateTopMovieContent(hotMovieBean.getSubjects());
                     } else {
                         mView.showNoMoreData();
                     }
@@ -66,7 +66,7 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                 @Override
                 public void accept(Throwable throwable) throws Exception {
                     isLoading = false;
-                    mView.showNetworkError();
+                    mView.showLoadMoreError();
                 }
             });
         }

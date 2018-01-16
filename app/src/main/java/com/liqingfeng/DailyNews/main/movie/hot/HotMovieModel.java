@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.movie;
+package com.liqingfeng.DailyNews.main.movie.hot;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.network.DoubanMovieService;

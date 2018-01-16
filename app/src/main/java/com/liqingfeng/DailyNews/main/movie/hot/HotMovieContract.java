@@ -1,10 +1,11 @@
-package com.liqingfeng.DailyNews.main.movie;
+package com.liqingfeng.DailyNews.main.movie.hot;
 
 
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
+import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
@@ -24,7 +25,7 @@ public interface HotMovieContract {
         Observable<HotMovieBean> getHotMovie();
     }
 
-    interface View extends IBaseView {
+    interface View extends IBaseFragment {
         void showHotMovie(List<SubjectsBean> subjectsBeans);
 
         void showNetworkError();

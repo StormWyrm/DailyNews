@@ -1,6 +1,7 @@
-package com.liqingfeng.DailyNews.main.movie;
+package com.liqingfeng.DailyNews.main.movie.hot;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
@@ -11,6 +12,8 @@ import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
+import com.liqingfeng.DailyNews.main.movie.adapter.TopMovieAdapter;
+import com.liqingfeng.DailyNews.main.movie.top.TopMovieActivity;
 
 import io.reactivex.functions.Consumer;
 
@@ -50,16 +53,15 @@ public class HotMoviePresenter extends HotMovieContract.Presenter {
 
     @Override
     void onMovieItemClick(HotMovieAdapter adapter, View view, int position, SubjectsBean subjectsBean) {
-        BaseActivity activity = mView.getBindActivity();
-        Intent intent = new Intent(activity,MovieDetailActivity.class);
-        intent.putExtra("SubjectBean",subjectsBean);
-        activity.startActivity(intent);
+        Bundle extra = new Bundle();
+        extra.putSerializable("SubjectBean",subjectsBean);
+        mView.startNewActivity(MovieDetailActivity.class,extra);
     }
 
 
     @Override
     void onTopMovieClick() {
+        mView.startNewActivity(TopMovieActivity.class);
         ToastUtil.shortMessage(AppApplication.getInstance(),"Top Movie: ");
-
     }
 }

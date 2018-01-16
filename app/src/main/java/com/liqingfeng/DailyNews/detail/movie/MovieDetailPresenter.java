@@ -1,7 +1,12 @@
 package com.liqingfeng.DailyNews.detail.movie;
 
+import android.os.Bundle;
+
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
+import com.liqingfeng.DailyNews.bean.douban.movie.PersonBean;
+import com.liqingfeng.DailyNews.browser.BrowserActivity;
 import com.liqingfeng.DailyNews.common.AppApplication;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 
@@ -41,12 +46,13 @@ public class MovieDetailPresenter extends MovieDetailContract.Presenter {
     }
 
     @Override
-    void onHeaderClick(String id) {
-        ToastUtil.shortMessage(AppApplication.getInstance(), "头部点击");
+    void onHeaderClick(int positon, MovieDetailBean movieDetailBean) {
     }
 
     @Override
-    void onItemCLick() {
-        ToastUtil.shortMessage(AppApplication.getInstance(), "item点击");
+    void onItemCLick(int positon, PersonBean personBean) {
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL,personBean.getAlt());
+        mView.startNewActivity(BrowserActivity.class,bundle);
     }
 }

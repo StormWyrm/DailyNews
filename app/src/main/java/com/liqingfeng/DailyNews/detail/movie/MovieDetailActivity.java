@@ -85,14 +85,14 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
     }
 
 
-
     @Override
     protected void initView(Bundle saveInstanceState) {
         super.initView(saveInstanceState);
-        if (getIntent() != null) {
-            mSubjectBean = (SubjectsBean) getIntent().getSerializableExtra("SubjectBean");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            mSubjectBean = (SubjectsBean) extras.getSerializable("SubjectBean");
         }
-        initTransparentStatusBar();
+        StatusBarUtils.setTransparent(this);
         addToolBar(mSubjectBean.getTitle(), true);
         toolbar.setBackgroundColor(Color.TRANSPARENT);
         nsvScrollView.bindAlphaView(ivToolbarBg);
@@ -110,24 +110,23 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
 
 
     private void initRecylerView(MovieDetailBean movieDetailBean) {
-        if(movieDetailBean == null){
+        if (movieDetailBean == null) {
             mAdapter = new MovieDetailAdapter();
+            rvMovieDetail.setLayoutManager(new LinearLayoutManager(mActivity));
+            rvMovieDetail.setAdapter(mAdapter);
+        } else {
+            List<PersonBean> list = movieDetailBean.getDirectors();
+            list.addAll(movieDetailBean.getCasts());
+            mAdapter = new MovieDetailAdapter(list);
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    mPresenter.onHeaderClick(position + "");
+                    mPresenter.onItemCLick(position, mAdapter.getItem(position));
                 }
             });
-            rvMovieDetail.addItemDecoration(new DividerItemDecoration(mActivity,DividerItemDecoration.VERTICAL));
-            rvMovieDetail.setLayoutManager(new LinearLayoutManager(mActivity));
+            rvMovieDetail.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL));
             rvMovieDetail.setAdapter(mAdapter);
-        }else{
-            List<PersonBean> list = movieDetailBean.getDirectors();
-            list.addAll(movieDetailBean.getCasts());
-
-            mAdapter.addData(list);
         }
-
 
     }
 
@@ -166,7 +165,7 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
 
     @Override
     public void showMovieDetail(MovieDetailBean movieDetailBean) {
-        tvMovieCity.setText("制片国家/地区："+movieDetailBean.getCountriesString());
+        tvMovieCity.setText("制片国家/地区：" + movieDetailBean.getCountriesString());
         tvMovieSubTitle.setText(movieDetailBean.getAkaString());
         tvMoiveSummary.setText(movieDetailBean.getSummary());
         initRecylerView(movieDetailBean);
@@ -185,21 +184,6 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
     @Override
     public void showNetworkError() {
 
-    }
-    protected void initTransparentStatusBar() {
-        //清除5.0以上状态栏半透明
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setNavigationBarColor(Color.TRANSPARENT);
-        }
     }
 
 }

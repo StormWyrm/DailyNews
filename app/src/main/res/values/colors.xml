@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="textColorPrimary">#000</color>
-    <color name="viewBackground">#efeded</color>
+    <color name="viewBackground">#ffeeeeee</color>
     <color name="textContentColor">@color/gray</color>
     <color name="textTitleColor">@color/black</color><!--黑色 -->
 

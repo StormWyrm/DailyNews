@@ -24,7 +24,7 @@ import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioFragment;
 import com.liqingfeng.DailyNews.main.home.HomeFragment;
 import com.liqingfeng.DailyNews.hot.ZHHotActivity;
-import com.liqingfeng.DailyNews.main.movie.HotMovieFragment;
+import com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment;
 import com.liqingfeng.DailyNews.main.personal.PersonalFragment;
 import com.liqingfeng.DailyNews.setting.SettingActivity;
 import com.umeng.analytics.MobclickAgent;

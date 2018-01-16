@@ -13,17 +13,17 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/iv_top_movie"
+            android:id="@+id/iv_top_moive_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <TextView
-            android:id="@+id/tv_top_movie_title"
+            android:id="@+id/tv_top_moive_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <ImageView
-            android:id="@+id/tv_top_movie_"
+            android:id="@+id/tv_top_moive_rate"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

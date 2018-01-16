@@ -1,6 +1,8 @@
 package com.liqingfeng.DailyNews.detail.movie;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
+import com.liqingfeng.DailyNews.bean.douban.movie.PersonBean;
+import com.liqingfeng.DailyNews.common.ui.IBaseActivity;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
@@ -17,7 +19,7 @@ public interface MovieDetailContract {
         Observable<MovieDetailBean> getMovieDetail(String id);
     }
 
-    interface View extends IBaseView {
+    interface View extends IBaseActivity {
         void showMovieDetail(MovieDetailBean movieDetailBean);
 
         void startLoading();
@@ -30,8 +32,8 @@ public interface MovieDetailContract {
     abstract class Presenter extends IBasePresenter<Model, View> {
         abstract void getMovieDetail(String id);
 
-        abstract void onHeaderClick(String id);
+        abstract void onHeaderClick(int positon,MovieDetailBean movieDetailBean);
 
-        abstract void onItemCLick();
+        abstract void onItemCLick(int positon, PersonBean personBean);
     }
 }

@@ -18,9 +18,16 @@ import java.util.List;
 public class HotMovieAdapter extends BaseQuickAdapter<SubjectsBean,BaseViewHolder>{
 
 
+    public HotMovieAdapter(){
+        this(null);
+    }
+
     public HotMovieAdapter(@Nullable List<SubjectsBean> data) {
         super(R.layout.item_hot_movie, data);
+        openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
+        isFirstOnly(false);
     }
+
 
     @Override
     protected void convert(BaseViewHolder holder, SubjectsBean item) {

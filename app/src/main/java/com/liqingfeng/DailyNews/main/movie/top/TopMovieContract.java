@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.movie;
+package com.liqingfeng.DailyNews.main.movie.top;
 
 import android.widget.ImageView;
 
@@ -23,17 +23,21 @@ public interface TopMovieContract {
     }
 
     interface View extends IBaseView {
-        void showTopMovie(List<SubjectsBean> list);
+        void updateTopMovieContent(List<SubjectsBean> list);
 
         void showNetworkError();
 
+        void showLoadMoreError();
+
         void showNoMoreData();
+
+
     }
 
     abstract class Presenter extends IBasePresenter<Model, View> {
-       abstract void getMovieTop250();
+       abstract void loadLastestTopMovie();
 
-       abstract void getMoreTopMovie();
+       abstract void loadMoreTopMovie();
 
        abstract void onItemClick(int position, SubjectsBean subjectsBean, ImageView imageView);
     }
