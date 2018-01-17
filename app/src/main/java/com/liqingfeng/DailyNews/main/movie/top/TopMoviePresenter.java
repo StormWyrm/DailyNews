@@ -31,13 +31,14 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
         mModel.getMovieTop250(mStart, mCount)
                 .subscribe(new Consumer<HotMovieBean>() {
                     @Override
-                    public void accept(HotMovieBean hotMovieBean) throws Exception {
+                    public void accept(HotMovieBean hotMovieBean) {
                         mStart += mCount;
                         mView.updateTopMovieContent(hotMovieBean.getSubjects());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable) throws Exception {
+                    public void accept(Throwable throwable)  {
+                        throwable.printStackTrace();
                         mView.showNetworkError();
                     }
                 });
@@ -65,6 +66,7 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
             }, new Consumer<Throwable>() {
                 @Override
                 public void accept(Throwable throwable) throws Exception {
+                    throwable.printStackTrace();
                     isLoading = false;
                     mView.showLoadMoreError();
                 }

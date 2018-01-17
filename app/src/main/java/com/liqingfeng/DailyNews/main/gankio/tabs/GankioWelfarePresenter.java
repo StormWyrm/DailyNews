@@ -60,6 +60,8 @@ public class GankioWelfarePresenter extends GankioWelfareContract.Presenter {
                     .subscribe(new Consumer<GankIoWelfareListBean>() {
                         @Override
                         public void accept(GankIoWelfareListBean gankIoWelfareListBean) throws Exception {
+                            if(mView == null)
+                                return;
                             isLoading = false;
                             if (gankIoWelfareListBean.isError()) {
                                 mView.showNetworkError();
@@ -76,6 +78,8 @@ public class GankioWelfarePresenter extends GankioWelfareContract.Presenter {
                     }, new Consumer<Throwable>() {
                         @Override
                         public void accept(Throwable throwable) throws Exception {
+                            if(mView == null)
+                                return;
                             isLoading = false;
                             //加载更多失败
                             mView.showLoadMoreError();

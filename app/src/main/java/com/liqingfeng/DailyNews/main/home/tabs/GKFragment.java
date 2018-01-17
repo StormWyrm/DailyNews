@@ -85,7 +85,7 @@ public class GKFragment extends BaseFragmentWithRecycler implements GKContract.V
 
     @Override
     public void showError() {
-        SnackBarUtil.showMessage(mActivity.getWindow().getDecorView(),getString(R.string.load_error_message));
+        SnackBarUtil.showMessage(getView(),getString(R.string.load_error_message));
     }
 
     @Override

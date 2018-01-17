@@ -7,6 +7,7 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
 
 public class TopMovieActivity
         extends BaseMvpActivity<TopMovieContract.Model, TopMovieContract.Presenter>
-        implements TopMovieContract.View ,BaseQuickAdapter.RequestLoadMoreListener{
+        implements TopMovieContract.View, BaseQuickAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.rv_top_movie)
     RecyclerView rvTopMovie;
@@ -46,6 +47,12 @@ public class TopMovieActivity
         mPresenter.loadLastestTopMovie();
     }
 
+    @Override
+    protected void initView(Bundle saveInstanceState) {
+        super.initView(saveInstanceState);
+        addToolBar("豆瓣电影Top250", true);
+    }
+
     @NonNull
     @Override
     public IBasePresenter initPresenter() {
@@ -55,16 +62,16 @@ public class TopMovieActivity
 
     @Override
     public void updateTopMovieContent(List<SubjectsBean> list) {
-        if(mAdapter.getData().size() == 0){
+        if (mAdapter.getData().size() == 0) {
             initRecyclerView(list);
-        }else{
+        } else {
             mAdapter.addData(list);
         }
     }
 
     @Override
     public void showNetworkError() {
-        SnackBarUtil.showMessage(getWindow().getDecorView(),getString(R.string.load_error_message));
+        SnackBarUtil.showMessage(getWindow().getDecorView(), getString(R.string.load_error_message));
     }
 
     @Override
@@ -76,18 +83,21 @@ public class TopMovieActivity
     public void showNoMoreData() {
         mAdapter.loadMoreEnd();
     }
+
     private void initRecyclerView(List<SubjectsBean> list) {
-        if(list == null || list.size() == 0){
+        if (list == null || list.size() == 0) {
             mAdapter = new TopMovieAdapter();
             rvTopMovie.setLayoutManager(new LinearLayoutManager(mActivity));
             rvTopMovie.setAdapter(mAdapter);
-        }else{
+        } else {
             mAdapter = new TopMovieAdapter(list);
-            mAdapter.setOnLoadMoreListener(this);
+            mAdapter.setOnLoadMoreListener(this, rvTopMovie);
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                    mPresenter.onItemClick(position,
+                            (SubjectsBean) adapter.getItem(position),
+                            (ImageView) view.findViewById(R.id.iv_top_moive_photo));
                 }
             });
             rvTopMovie.setLayoutManager(new StaggeredGridLayoutManager(3, OrientationHelper.VERTICAL));
@@ -97,6 +107,7 @@ public class TopMovieActivity
 
     @Override
     public void onLoadMoreRequested() {
+        mAdapter.loadMoreComplete();
         mPresenter.loadMoreTopMovie();
     }
 }
