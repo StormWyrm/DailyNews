@@ -19,7 +19,7 @@ public class NewsDetailActivity extends BaseActivity {
     private NewsDetailFragment mDetailFragment;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.layout_container;
     }
 

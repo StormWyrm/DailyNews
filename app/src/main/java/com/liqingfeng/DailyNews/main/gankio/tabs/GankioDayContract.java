@@ -47,7 +47,7 @@ public interface GankioDayContract {
 
         void showNetworkError();
 
-        void showLodding();
+        void showLoading();
     }
 
     abstract class Presenter extends IBasePresenter<Model, View> {

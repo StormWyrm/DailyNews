@@ -3,7 +3,6 @@ package com.liqingfeng.DailyNews.main.gankio.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 

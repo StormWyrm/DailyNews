@@ -2,8 +2,6 @@ package com.liqingfeng.DailyNews.common.ui;
 
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -11,16 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportActivity;
 
 
 /**
@@ -32,7 +28,7 @@ import butterknife.Unbinder;
  * @VERSION: V1.0
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity  extends SupportActivity {
     protected BaseActivity mActivity;
     protected Toolbar mToolBar;
     protected ActionBar mActionBar;
@@ -43,11 +39,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //        initTransparentStatusBar();
 //        StatusBarUtils.setTransparent(this);
-        setContentView(getViewId());
+        setContentView(getLayoutId());
         unbinder = ButterKnife.bind(this);
         mActivity = this;
-        initView(savedInstanceState);
         initData(savedInstanceState);
+        initView(savedInstanceState);
         initListener();
         AppApplication.getInstance().addActivity(this);
     }
@@ -73,7 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         AppApplication.getInstance().removeActivity(this);
     }
 
-    protected abstract int getViewId();
+    protected abstract int getLayoutId();
 
 
     /**
@@ -176,23 +172,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             intent.putExtras(bundle);
         }
         startActivityForResult(intent, requestCode);
-    }
-
-    //兼容android4.4以上状态栏透明
-    protected void initTransparentStatusBar() {
-        //清除5.0以上状态栏半透明
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setNavigationBarColor(Color.TRANSPARENT);
-        }
     }
 
 }

@@ -19,7 +19,7 @@ public class ZHHotActivity extends BaseActivity {
 
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_zh_hot;
     }
 

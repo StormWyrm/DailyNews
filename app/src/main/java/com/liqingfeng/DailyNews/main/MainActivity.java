@@ -1,11 +1,14 @@
 package com.liqingfeng.DailyNews.main;
 
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
@@ -15,19 +18,24 @@ import android.view.MenuItem;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.about.AboutActivity;
 import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseFragment;
-import com.liqingfeng.DailyNews.common.util.BottomNavigationViewHelper;
 import com.liqingfeng.DailyNews.common.constant.Constant;
+import com.liqingfeng.DailyNews.common.ui.BaseActivity;
+import com.liqingfeng.DailyNews.common.ui.BaseFragmentAdapter;
+import com.liqingfeng.DailyNews.common.util.BottomNavigationViewHelper;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
+import com.liqingfeng.DailyNews.hot.ZHHotActivity;
 import com.liqingfeng.DailyNews.main.gankio.GankioFragment;
 import com.liqingfeng.DailyNews.main.home.HomeFragment;
-import com.liqingfeng.DailyNews.hot.ZHHotActivity;
 import com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment;
 import com.liqingfeng.DailyNews.main.personal.PersonalFragment;
 import com.liqingfeng.DailyNews.setting.SettingActivity;
 import com.umeng.analytics.MobclickAgent;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * @AUTHER: 李青峰
@@ -38,50 +46,49 @@ import com.umeng.analytics.MobclickAgent;
  * @VERSION: V1.0
  */
 public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerLayoutOpenListener {
-    private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
-    private BottomNavigationView bottomNavigationView;
-    private BaseFragment[] mFragments = new BaseFragment[4];
+    @BindView(R.id.vp_main)
+    ViewPager vpMain;
+    @BindView(R.id.bniv_bar)
+    BottomNavigationView bottomNavigationView;
+    @BindView(R.id.nav_view)
+    NavigationView mNavigationView;
+    @BindView(R.id.drawerLayout)
+    DrawerLayout mDrawerLayout;
+
+    private List<Fragment> mFragments = new ArrayList<>(4);
 
     private long mLastPressBackTime;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_main;
     }
 
     @Override
-    protected void initView(Bundle saveInstanceState) {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mDrawerLayout.setDrawerElevation(0.6f);
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bniv_bar);
-        if(saveInstanceState == null){
-            mFragments[0] = HomeFragment.newInstance();
-            mFragments[1] = GankioFragment.newInstance();
-            mFragments[2] = HotMovieFragment.newInstance();
-            mFragments[3] = PersonalFragment.newInstance();
-        }else{
-            mFragments[0] = (BaseFragment) getSupportFragmentManager()
-                    .findFragmentByTag(HomeFragment.class.getSimpleName());
-            mFragments[1] = (BaseFragment) getSupportFragmentManager()
-                    .findFragmentByTag(GankioFragment.class.getSimpleName());
-            mFragments[2] = (BaseFragment) getSupportFragmentManager()
-                    .findFragmentByTag(HotMovieFragment.class.getSimpleName());
-            mFragments[3] = (BaseFragment) getSupportFragmentManager()
-                    .findFragmentByTag(PersonalFragment.class.getSimpleName());
+    protected void initData(Bundle saveInstanceState) {
+        super.initData(saveInstanceState);
+        if (saveInstanceState == null) {
+            mFragments.add(0, HomeFragment.newInstance());
+            mFragments.add(1, GankioFragment.newInstance());
+            mFragments.add(2, HotMovieFragment.newInstance());
+            mFragments.add(3, PersonalFragment.newInstance());
+        } else {
+            //这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
+            // 这里我们需要拿到mFragments的引用,也可以通过getSupportFragmentManager.getFragments()
+            // 自行进行判断查找(效率更高些),用下面的方法查找更方便些
+            mFragments.add(0, findFragment(HomeFragment.class));
+            mFragments.add(1, findFragment(GankioFragment.class));
+            mFragments.add(2, findFragment(HotMovieFragment.class));
+            mFragments.add(3, findFragment(PersonalFragment.class));
         }
     }
 
-    //初始化Drawlayout
-    private void initDrawerLayout() {
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(mActivity, mDrawerLayout,
-                mToolBar, 0, 0);
-        toggle.syncState();
-        mDrawerLayout.addDrawerListener(toggle);
+    @Override
+    protected void initView(Bundle saveInstanceState) {
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        bottomNavigationView.setSelected(true);
+        vpMain.setAdapter(new BaseFragmentAdapter(getSupportFragmentManager(), mFragments));
     }
-
-
 
 
     @Override
@@ -112,45 +119,48 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
                 return true;
             }
         });
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(0);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fl_container,mFragments[0],mFragments[0].getClass().getSimpleName())
-                .commit();
-        bottomNavigationView.setSelected(true);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottom_menu_item_home:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fl_container,mFragments[0],mFragments[0].getClass().getSimpleName())
-                                .commit();
+                        vpMain.setCurrentItem(0);
                         break;
                     case R.id.bottom_menu_item_gankio:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fl_container,mFragments[1],mFragments[1].getClass().getSimpleName())
-                                .commit();
+                        vpMain.setCurrentItem(1);
                         break;
                     case R.id.bottom_menu_item_movie:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fl_container,mFragments[2],mFragments[2].getClass().getSimpleName())
-                                .commit();
+                        vpMain.setCurrentItem(2);
                         break;
                     case R.id.bottom_menu_item_personal:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fl_container,mFragments[3],mFragments[3].getClass().getSimpleName())
-                                .commit();
+                        vpMain.setCurrentItem(3);
                         break;
                 }
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressedSupport() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+            mDrawerLayout.closeDrawer(Gravity.START);
+            return;
+        }
+        long currentPressBackTime = System.currentTimeMillis();
+        if (currentPressBackTime - mLastPressBackTime > 1500) {
+            mLastPressBackTime = currentPressBackTime;
+            ToastUtil.shortMessage(mActivity, getString(R.string.main_exit_app_message));
+            return;
+        }
+        super.onBackPressedSupport();
+    }
+
+
+    @Override
+    public void onOpen() {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 
 
@@ -171,24 +181,13 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
         }
     }
 
-    //双击退出应用
-    @Override
-    public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
-            mDrawerLayout.closeDrawer(Gravity.START);
-            return;
-        }
-        long currentPressBackTime = System.currentTimeMillis();
-        if (currentPressBackTime - mLastPressBackTime > 1500) {
-            mLastPressBackTime = currentPressBackTime;
-            ToastUtil.shortMessage(mActivity, getString(R.string.main_exit_app_message));
-            return;
-        }
-        super.onBackPressed();
+    //初始化Drawlayout
+    private void initDrawerLayout() {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(mActivity, mDrawerLayout,
+                mToolBar, 0, 0);
+        toggle.syncState();
+        mDrawerLayout.addDrawerListener(toggle);
     }
 
-    @Override
-    public void onOpen() {
-        mDrawerLayout.openDrawer(Gravity.START);
-    }
+
 }

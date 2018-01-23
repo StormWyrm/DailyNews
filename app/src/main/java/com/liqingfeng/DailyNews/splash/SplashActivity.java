@@ -11,21 +11,22 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.main.MainActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SplashActivity extends BaseActivity {
-    private ImageView mIvSplash;
-    private TextView mTvName;
-    private TextView mTvVersion;
+    @BindView(R.id.iv_splash)
+    ImageView mIvSplash;
+    @BindView(R.id.tv_name)
+    TextView mTvName;
+    @BindView(R.id.tv_version)
+    TextView mTvVersion;
+
     private AlphaAnimation animation;
 
-    @Override
-    protected void initView(Bundle saveInstanceState) {
-        mIvSplash = (ImageView) findViewById(R.id.iv_splash);
-        mTvName = (TextView) findViewById(R.id.tv_name);
-        mTvVersion = (TextView) findViewById(R.id.tv_version);
-    }
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_splash;
     }
 
@@ -59,4 +60,5 @@ public class SplashActivity extends BaseActivity {
             }
         });
     }
+
 }

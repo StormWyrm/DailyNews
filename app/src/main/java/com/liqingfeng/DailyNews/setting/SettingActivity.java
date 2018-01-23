@@ -17,7 +17,7 @@ public class SettingActivity extends BaseActivity {
     private SettingFragment mSetttingFragment;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_setting;
     }
 

@@ -9,7 +9,7 @@ package com.liqingfeng.DailyNews.common.constant;
  * @DESC: 用于保存常量
  * @VERSION: V1.0
  */
-public  class Constant {
+public class Constant {
     public static class Config {
         public static final String WAY_OF_IMAGE_SHOW = "way_of_image_show";
         public static final String WAY_OF_BROWSER = "way_of_browser";

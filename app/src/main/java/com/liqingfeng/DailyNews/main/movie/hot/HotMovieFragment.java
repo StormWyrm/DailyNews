@@ -3,6 +3,7 @@ package com.liqingfeng.DailyNews.main.movie.hot;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
+import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
@@ -28,7 +30,10 @@ import butterknife.BindView;
  * Use the {@link HotMovieFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, HotMovieContract.Presenter> implements HotMovieContract.View {
+public class HotMovieFragment
+        extends BaseRecycleFragment<HotMovieContract.Model, HotMovieContract.Presenter>
+        implements HotMovieContract.View {
+
     @BindView(R.id.toolBar)
     Toolbar toolBar;
     @BindView(R.id.rv_hot_movie)
@@ -54,10 +59,15 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
     }
 
     @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
-        initRecyclerView(null);
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
         mPresenter.getHotMovie();
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
+        initRecyclerView(null);
     }
 
     @NonNull
@@ -77,7 +87,18 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
 
     @Override
     public void showNetworkError() {
+        mAdapter.setEmptyView(errorView);
         SnackBarUtil.showMessage(mActivity.getWindow().getDecorView(), getString(R.string.load_error_message));
+    }
+
+    @Override
+    protected void onErrorViewClick(View v) {
+        mPresenter.getHotMovie();
+    }
+
+    @Override
+    protected void showLoading() {
+        mAdapter.setEmptyView(loadingView);
     }
 
     @Override
@@ -116,4 +137,6 @@ public class HotMovieFragment extends BaseMvpFragment<HotMovieContract.Model, Ho
                     }
                 });
     }
+
+
 }

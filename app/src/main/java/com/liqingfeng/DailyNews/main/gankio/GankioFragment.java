@@ -15,8 +15,6 @@ import com.liqingfeng.DailyNews.main.gankio.tabs.GankioCustomFragment;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioDayFragment;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioWelfareFragment;
 
-import java.util.logging.Logger;
-
 import butterknife.BindView;
 
 public class GankioFragment extends BaseFragment {

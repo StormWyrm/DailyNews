@@ -10,8 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -80,34 +78,67 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
     private MovieDetailAdapter mAdapter;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_movie_detail;
     }
 
 
     @Override
-    protected void initView(Bundle saveInstanceState) {
-        super.initView(saveInstanceState);
+    protected void initData(Bundle saveInstanceState) {
+        super.initData(saveInstanceState);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             mSubjectBean = (SubjectsBean) extras.getSerializable("SubjectBean");
         }
+
+
+    }
+
+    @Override
+    protected void initView(Bundle saveInstanceState) {
+        super.initView(saveInstanceState);
+        initHeaderView(mSubjectBean);
+        initRecylerView(null);
+        mPresenter.getMovieDetail(mSubjectBean.getId());
+
         StatusBarUtils.setTransparent(this);
         addToolBar(mSubjectBean.getTitle(), true);
         toolbar.setBackgroundColor(Color.TRANSPARENT);
         nsvScrollView.bindAlphaView(ivToolbarBg);
         nsvScrollView.setNestedScrollingEnabled(false);
-        initHeaderView(mSubjectBean);
-        initRecylerView(null);
+
+
+    }
+
+
+    @NonNull
+    @Override
+    public IBasePresenter initPresenter() {
+        return new MovieDetailPresenter();
+    }
+
+    @Override
+    public void showMovieDetail(MovieDetailBean movieDetailBean) {
+        tvMovieCity.setText("制片国家/地区：" + movieDetailBean.getCountriesString());
+        tvMovieSubTitle.setText(movieDetailBean.getAkaString());
+        tvMoiveSummary.setText(movieDetailBean.getSummary());
+        initRecylerView(movieDetailBean);
+    }
+
+    @Override
+    public void startLoading() {
 
     }
 
     @Override
-    protected void initData(Bundle saveInstanceState) {
-        super.initData(saveInstanceState);
-        mPresenter.getMovieDetail(mSubjectBean.getId());
+    public void endLoading() {
+
     }
 
+    @Override
+    public void showNetworkError() {
+
+    }
 
     private void initRecylerView(MovieDetailBean movieDetailBean) {
         if (movieDetailBean == null) {
@@ -154,35 +185,6 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
         ViewGroup.MarginLayoutParams ivTitleHeadBgParams = (ViewGroup.MarginLayoutParams) ivToolbarBg.getLayoutParams();
         int marginTop = ivToolbarBg.getLayoutParams().height - headerBgHeight;
         ivTitleHeadBgParams.setMargins(0, -marginTop, 0, 0);
-
-    }
-
-    @NonNull
-    @Override
-    public IBasePresenter initPresenter() {
-        return new MovieDetailPresenter();
-    }
-
-    @Override
-    public void showMovieDetail(MovieDetailBean movieDetailBean) {
-        tvMovieCity.setText("制片国家/地区：" + movieDetailBean.getCountriesString());
-        tvMovieSubTitle.setText(movieDetailBean.getAkaString());
-        tvMoiveSummary.setText(movieDetailBean.getSummary());
-        initRecylerView(movieDetailBean);
-    }
-
-    @Override
-    public void startLoading() {
-
-    }
-
-    @Override
-    public void endLoading() {
-
-    }
-
-    @Override
-    public void showNetworkError() {
 
     }
 

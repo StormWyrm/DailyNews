@@ -37,31 +37,30 @@ public class ImageDetailActivity
     private String mImageUrl;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_gankio_welfare_detail;
-    }
-
-
-    @Override
-    protected void initView(Bundle saveInstanceState) {
-        super.initView(saveInstanceState);
-        Bundle extras = getIntent().getExtras();
-
-        if(extras != null){
-            mImageUrl =  extras.getString(BundleKeyConstant.BUNDLE_KEY_IMAGE_DETAIL_URL);
-        }
-        pvPic.enable();
-        addToolBar("",true);
-        mToolBar.setNavigationIcon(R.drawable.ic_vector_arrow_back_white);
-        StatusBarUtils.setBarColor(mActivity, Color.BLACK);
     }
 
     @Override
     protected void initData(Bundle saveInstanceState) {
         super.initData(saveInstanceState);
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null){
+            mImageUrl =  extras.getString(BundleKeyConstant.BUNDLE_KEY_IMAGE_DETAIL_URL);
+        }
 
         mPresenter.loadBitmap(mImageUrl);
+    }
 
+    @Override
+    protected void initView(Bundle saveInstanceState) {
+        super.initView(saveInstanceState);
+
+        pvPic.enable();
+        addToolBar("",true);
+        mToolBar.setNavigationIcon(R.drawable.ic_vector_arrow_back_white);
+        StatusBarUtils.setBarColor(mActivity, Color.BLACK);
     }
 
     @NonNull

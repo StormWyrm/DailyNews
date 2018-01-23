@@ -4,49 +4,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.liqingfeng.DailyNews.main.personal.PersonalFragment">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="?colorPrimary"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
             app:title="@string/personal_title" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@color/colorPrimary">
+            android:layout_height="150dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/img_default_head"
                 app:civ_border_color="#fff"
                 app:civ_border_width="2dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="峰峰啊"
+                android:text="凉薄时光葬空城"
                 android:textSize="@dimen/font_normal" />
 
-        </RelativeLayout>
-
+        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
 
+    <!--<TextView-->
+    <!--android:id="@+id/tv_setting"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:clickable="true"-->
+    <!--android:drawableLeft="@drawable/selector_setting"-->
+    <!--android:drawablePadding="16dp"-->
+    <!--android:drawableRight="@drawable/ic_vector_arrow_right"-->
+    <!--android:focusable="true"-->
+    <!--android:foreground="?attr/actionBarItemBackground"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:text="设置" />-->
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_about"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:clickable="true"-->
+    <!--android:drawableLeft="@drawable/selector_setting"-->
+    <!--android:drawablePadding="16dp"-->
+    <!--android:drawableRight="@drawable/ic_vector_arrow_right"-->
+    <!--android:focusable="true"-->
+    <!--android:foreground="?attr/actionBarItemBackground"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:text="关于" />-->
 
 
 </android.support.design.widget.CoordinatorLayout>

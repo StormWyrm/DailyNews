@@ -1,6 +1,5 @@
 package com.liqingfeng.DailyNews.main.gankio.adapter;
 
-import android.app.Application;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 

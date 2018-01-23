@@ -2,6 +2,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,6 +15,7 @@ import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
 import com.liqingfeng.DailyNews.common.rxbus.RxBus;
 import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
+import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioWelfareAdapter;
@@ -27,7 +29,7 @@ import butterknife.BindView;
  */
 
 public class GankioWelfareFragment
-        extends BaseMvpFragment<GankioWelfareContract.Model, GankioWelfareContract.Presenter>
+        extends BaseRecycleFragment<GankioWelfareContract.Model, GankioWelfareContract.Presenter>
         implements GankioWelfareContract.View, BaseQuickAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.rv_gankio_welfare)
@@ -36,16 +38,9 @@ public class GankioWelfareFragment
     private GankioWelfareAdapter mAdapter;
 
     @Override
-    protected int getViewId() {
-        return R.layout.fragment_gankio_welfare;
-    }
-
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         RxBus.get().register(this);
-        initRecycleView(null);
-        mPresenter.loadLastestList();
     }
 
     @Override
@@ -53,6 +48,24 @@ public class GankioWelfareFragment
         super.onDestroy();
         RxBus.get().unRegister(this);
     }
+
+    @Override
+    protected int getViewId() {
+        return R.layout.fragment_gankio_welfare;
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        mPresenter.loadLastestList();
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
+        initRecycleView(null);
+    }
+
 
     @Override
     public void onLoadMoreRequested() {
@@ -88,13 +101,19 @@ public class GankioWelfareFragment
 
     @Override
     public void showNetworkError() {
+        mAdapter.setEmptyView(errorView);
         SnackBarUtil.showMessage(getView().getRootView(),getString(R.string.load_error_message));
 
     }
 
     @Override
-    public void showLoading() {
+    protected void onErrorViewClick(View v) {
+        mPresenter.loadLastestList();
+    }
 
+    @Override
+    public void showLoading() {
+        mAdapter.setEmptyView(loadingView);
     }
 
     private void initRecycleView(List<GankIoWelfareItemBean> list) {

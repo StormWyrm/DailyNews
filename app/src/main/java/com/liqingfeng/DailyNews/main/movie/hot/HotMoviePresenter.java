@@ -1,18 +1,15 @@
 package com.liqingfeng.DailyNews.main.movie.hot;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
-import com.liqingfeng.DailyNews.main.movie.adapter.TopMovieAdapter;
 import com.liqingfeng.DailyNews.main.movie.top.TopMovieActivity;
 
 import io.reactivex.functions.Consumer;

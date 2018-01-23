@@ -66,7 +66,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        toolBar.setNavigationIcon(R.drawable.ic_drawer_home);
+        toolBar.setNavigationIcon(R.drawable.ic_vecotr_drawer_menu);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

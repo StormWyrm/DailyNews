@@ -3,13 +3,13 @@ package com.liqingfeng.DailyNews.common.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * @AUTHER: 李青峰
@@ -20,7 +20,7 @@ import butterknife.Unbinder;
  * @VERSION: V1.0
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends SupportFragment {
     protected Context mContext;
     protected BaseActivity mActivity;
     protected View mRootView;

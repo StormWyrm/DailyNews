@@ -20,7 +20,6 @@ import com.liqingfeng.DailyNews.main.movie.adapter.TopMovieAdapter;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by lonlife on 2018/1/5.
@@ -36,21 +35,21 @@ public class TopMovieActivity
     private TopMovieAdapter mAdapter;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_top_movie;
     }
 
     @Override
     protected void initData(Bundle saveInstanceState) {
         super.initData(saveInstanceState);
+        addToolBar("豆瓣电影Top250", true);
         initRecyclerView(null);
-        mPresenter.loadLastestTopMovie();
     }
 
     @Override
     protected void initView(Bundle saveInstanceState) {
         super.initView(saveInstanceState);
-        addToolBar("豆瓣电影Top250", true);
+        mPresenter.loadLastestTopMovie();
     }
 
     @NonNull

@@ -1,9 +1,9 @@
 package com.liqingfeng.DailyNews.browser;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -17,9 +17,9 @@ import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.util.NetworkUtil;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
-import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @AUTHER: 李青峰
@@ -35,13 +35,13 @@ public class BrowserActivity extends BaseActivity {
     @BindView(R.id.web_view)
     WebView mWebView;
 
+    private String imgUrl;
     private WebSettings mWebSetting;
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_browser;
     }
-
 
     @Override
     protected void initData(Bundle saveInstanceState) {
@@ -49,20 +49,24 @@ public class BrowserActivity extends BaseActivity {
             mWebView.restoreState(saveInstanceState);
             return;
         }
-        initWebView();
-        initWebViewSetting();
-        mActionBar.setTitle("加载中...");
+
         Bundle extrea = getIntent().getExtras();
         if (extrea != null) {
-            String url = extrea.getString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL);
-            mWebView.loadUrl(url);
-            mWebView.setBackgroundColor(0);
+            imgUrl = extrea.getString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL);
         }
     }
 
     @Override
     protected void initView(Bundle saveInstanceState) {
-        addToolBar("", true);
+        initWebView();
+        initWebViewSetting();
+
+        addToolBar("加载中...", true);
+        if (imgUrl != null) {
+            mWebView.loadUrl(imgUrl);
+            mWebView.setBackgroundColor(0);
+        }
+
     }
 
     //初始化WebView
@@ -119,14 +123,13 @@ public class BrowserActivity extends BaseActivity {
         }
     }
 
-
     @Override
-    public void onBackPressed() {
+    public void onBackPressedSupport() {
         if (mWebView.canGoBack()) {
             mWebView.goBack();
             return;
         }
-        super.onBackPressed();
+        super.onBackPressedSupport();
     }
 
     @Override

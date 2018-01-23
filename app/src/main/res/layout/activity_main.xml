@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/fl_container"
+        <com.liqingfeng.DailyNews.main.MyViewPager
+            android:id="@+id/vp_main"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

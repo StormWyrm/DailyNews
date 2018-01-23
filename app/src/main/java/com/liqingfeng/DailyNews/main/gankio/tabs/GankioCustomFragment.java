@@ -3,6 +3,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -19,6 +20,7 @@ import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
 import com.liqingfeng.DailyNews.common.rxbus.RxBus;
 import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
+import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
@@ -33,7 +35,7 @@ import butterknife.BindView;
  */
 
 public class GankioCustomFragment
-        extends BaseMvpFragment<GankioCustomContract.Model, GankioCustomContract.Presenter>
+        extends BaseRecycleFragment<GankioCustomContract.Model, GankioCustomContract.Presenter>
         implements GankioCustomContract.View, BaseMultiItemQuickAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.rv_gankio_custom)
@@ -44,16 +46,9 @@ public class GankioCustomFragment
     private GankioCustomAdapter mAdapter;
 
     @Override
-    protected int getViewId() {
-        return R.layout.fragment_gankio_custom;
-    }
-
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         RxBus.get().register(this);
-        initRecylerView(null);
-        mPresenter.loadLastestList();
     }
 
     @Override
@@ -63,8 +58,20 @@ public class GankioCustomFragment
     }
 
     @Override
+    protected int getViewId() {
+        return R.layout.fragment_gankio_custom;
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        mPresenter.loadLastestList();
+    }
+
+    @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
+        initRecylerView(null);
     }
 
 
@@ -105,6 +112,7 @@ public class GankioCustomFragment
 
     @Override
     public void showNetworkError() {
+        mAdapter.setEmptyView(errorView);
         SnackBarUtil.showMessage(getView().getRootView(), getString(R.string.load_error_message));
     }
 
@@ -119,8 +127,13 @@ public class GankioCustomFragment
     }
 
     @Override
-    public void showLoading() {
+    protected void onErrorViewClick(View v) {
+        mPresenter.loadLastestList();
+    }
 
+    @Override
+    public void showLoading() {
+        mAdapter.setEmptyView(loadingView);
     }
 
     private void initRecylerView(List<GankIoCustomItemBean> list) {

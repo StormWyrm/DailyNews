@@ -25,6 +25,7 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="591c23b3aed17938670014b0" />
+
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />
@@ -47,6 +48,7 @@
         <activity android:name=".detail.news.NewsDetailActivity" />
         <activity android:name=".detail.movie.MovieDetailActivity" />
         <activity android:name=".detail.gankio.ImageDetailActivity"/>
+        <activity android:name=".main.personal.HeadSettingActivity"/>
     </application>
 
 </manifest>

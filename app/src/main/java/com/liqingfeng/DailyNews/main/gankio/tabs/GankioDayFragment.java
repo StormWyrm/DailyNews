@@ -12,6 +12,7 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
 import com.liqingfeng.DailyNews.common.rxbus.RxBus;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
+import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
@@ -28,7 +29,7 @@ import butterknife.BindView;
  */
 
 public class GankioDayFragment
-        extends BaseMvpFragment<GankioDayContract.Model, GankioDayContract.Presenter>
+        extends BaseRecycleFragment<GankioDayContract.Model, GankioDayContract.Presenter>
         implements GankioDayContract.View {
 
 
@@ -38,22 +39,32 @@ public class GankioDayFragment
     private GankioDayAdapter mAdapter;
 
     @Override
-    protected int getViewId() {
-        return R.layout.fragment_gankio_recommend;
-    }
-
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         RxBus.get().register(this);
-        initRecyclerView(null);
-        mPresenter.loadLastestList();
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         RxBus.get().unRegister(this);
+    }
+    @Override
+    protected int getViewId() {
+        return R.layout.fragment_gankio_recommend;
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        mPresenter.loadLastestList();
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
+        initRecyclerView(null);
     }
 
     @NonNull
@@ -79,12 +90,18 @@ public class GankioDayFragment
 
     @Override
     public void showNetworkError() {
+        mAdapter.setEmptyView(errorView);
         SnackBarUtil.showMessage(getView().getRootView(),getString(R.string.load_error_message));
     }
 
     @Override
-    public void showLodding() {
+    public void showLoading() {
+        mAdapter.setEmptyView(loadingView);
+    }
 
+    @Override
+    protected void onErrorViewClick(View v) {
+        mPresenter.loadLastestList();
     }
 
     private void initRecyclerView(List<GankIoDayItemBean> list) {
@@ -118,6 +135,9 @@ public class GankioDayFragment
             rvGankioDay.setAdapter(mAdapter);
         }
     }
+
+
+
 
 
 }

@@ -37,6 +37,8 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
                 .subscribe(new Consumer<GankIoCustomListBean>() {
                     @Override
                     public void accept(GankIoCustomListBean gankIoCustomListBean) throws Exception {
+                        if(mView == null)
+                            return;
                         if (gankIoCustomListBean.isError()) {
                             mView.showNetworkError();
                         } else {
@@ -48,6 +50,8 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         throwable.printStackTrace();
+                        if(mView == null)
+                            return;
                         mView.showNetworkError();
                     }
                 });
@@ -55,6 +59,8 @@ public class GankioCustomPresenter extends GankioCustomContract.Presenter {
 
     @Override
     void loadMoreList() {
+        if(mView == null || mModel == null)
+            return;
         if (!isLoading) {
             isLoading = true;
             mModel.getGankIoCustomList(mView.getCustomType(), pre_page, mCurPage)

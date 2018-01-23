@@ -82,6 +82,8 @@
     <string name="gankio_custom">专属定制</string>
     <string name="gankio_welfare">福利</string>
     <string name="gankio_custom_select_category">选择分类</string>
+    <string name="empty_network_error">网络错误，点击重试</string>
+    <string name="empty_no_data">没有数据，点击重试</string>
 
 
 </resources>

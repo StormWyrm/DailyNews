@@ -8,7 +8,6 @@ import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.ui.IBaseView;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
 
 import java.util.List;
