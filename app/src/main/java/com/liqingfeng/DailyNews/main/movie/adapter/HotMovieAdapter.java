@@ -24,7 +24,7 @@ public class HotMovieAdapter extends BaseQuickAdapter<SubjectsBean,BaseViewHolde
 
     public HotMovieAdapter(@Nullable List<SubjectsBean> data) {
         super(R.layout.item_hot_movie, data);
-        openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
+        openLoadAnimation(BaseQuickAdapter.SCALEIN);
         isFirstOnly(false);
     }
 

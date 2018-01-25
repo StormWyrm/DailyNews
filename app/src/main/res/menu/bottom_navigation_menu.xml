@@ -4,13 +4,16 @@
         android:icon="@drawable/ic_vector_bottom_home"
         android:title="@string/main_bottom_home_title"/>
 
+
     <item android:id="@+id/bottom_menu_item_gankio"
         android:icon="@drawable/ic_vector_bottom_gankio"
         android:title="@string/main_bottom_gankio_title"/>
 
+
     <item android:id="@+id/bottom_menu_item_movie"
         android:icon="@drawable/ic_vector_bottom_movie"
         android:title="@string/main_bottom_movie_title"/>
+
 
     <item
         android:id="@+id/bottom_menu_item_personal"

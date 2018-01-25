@@ -7,35 +7,37 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.about.AboutActivity;
 import com.liqingfeng.DailyNews.common.AppApplication;
 import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseFragmentAdapter;
+import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.common.util.BottomNavigationViewHelper;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.hot.ZHHotActivity;
 import com.liqingfeng.DailyNews.main.gankio.GankioFragment;
-import com.liqingfeng.DailyNews.main.home.HomeFragment;
+import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
+import com.liqingfeng.DailyNews.main.home.HomeRootFragment;
+import com.liqingfeng.DailyNews.main.home.HomeViewPagerFragment;
+import com.liqingfeng.DailyNews.main.movie.MovieRootFragment;
 import com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment;
-import com.liqingfeng.DailyNews.main.personal.PersonalFragment;
+import com.liqingfeng.DailyNews.main.personal.PersonalRootFragment;
+import com.liqingfeng.DailyNews.main.personal.tab.PersonalFragment;
 import com.liqingfeng.DailyNews.setting.SettingActivity;
 import com.umeng.analytics.MobclickAgent;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
 
 /**
  * @AUTHER: 李青峰
@@ -45,17 +47,18 @@ import butterknife.BindView;
  * @DESC: 主页面模块 Activity
  * @VERSION: V1.0
  */
-public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerLayoutOpenListener {
-    @BindView(R.id.vp_main)
-    ViewPager vpMain;
+public class MainActivity extends BaseActivity
+        implements HomeViewPagerFragment.OnDrawerLayoutOpenListener {
+    public static final int TIME_OF_BACK = 1500;
+
     @BindView(R.id.bniv_bar)
-    BottomNavigationView bottomNavigationView;
+    BottomNavigationViewEx bottomNavigationView;
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
     @BindView(R.id.drawerLayout)
     DrawerLayout mDrawerLayout;
 
-    private List<Fragment> mFragments = new ArrayList<>(4);
+    private BaseFragment[] mFragments = new BaseFragment[4];
 
     private long mLastPressBackTime;
 
@@ -67,29 +70,30 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
     @Override
     protected void initData(Bundle saveInstanceState) {
         super.initData(saveInstanceState);
+
         if (saveInstanceState == null) {
-            mFragments.add(0, HomeFragment.newInstance());
-            mFragments.add(1, GankioFragment.newInstance());
-            mFragments.add(2, HotMovieFragment.newInstance());
-            mFragments.add(3, PersonalFragment.newInstance());
+            mFragments[0] = HomeRootFragment.newInstance();
+            mFragments[1] = GankioRootFragment.newInstance();
+            mFragments[2] = MovieRootFragment.newInstance();
+            mFragments[3] = PersonalRootFragment.newInstance();
+
+            // 加载多个同级根Fragment,类似Wechat, QQ主页的场景
+            loadMultipleRootFragment(R.id.fl_container, 0,
+                    mFragments[0],
+                    mFragments[1],
+                    mFragments[2],
+                    mFragments[3]);
+
         } else {
-            //这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
-            // 这里我们需要拿到mFragments的引用,也可以通过getSupportFragmentManager.getFragments()
-            // 自行进行判断查找(效率更高些),用下面的方法查找更方便些
-            mFragments.add(0, findFragment(HomeFragment.class));
-            mFragments.add(1, findFragment(GankioFragment.class));
-            mFragments.add(2, findFragment(HotMovieFragment.class));
-            mFragments.add(3, findFragment(PersonalFragment.class));
+            // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
+
+            // 这里我们需要拿到mFragments的引用
+            mFragments[0] = findFragment(HomeRootFragment.class);
+            mFragments[1] = findFragment(GankioRootFragment.class);
+            mFragments[2] = findFragment(MovieRootFragment.class);
+            mFragments[3] = findFragment(PersonalRootFragment.class);
         }
     }
-
-    @Override
-    protected void initView(Bundle saveInstanceState) {
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        bottomNavigationView.setSelected(true);
-        vpMain.setAdapter(new BaseFragmentAdapter(getSupportFragmentManager(), mFragments));
-    }
-
 
     @Override
     protected void initListener() {
@@ -120,21 +124,28 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
             }
         });
 
+        //支持3个以上fragment,关闭切换动画
+        bottomNavigationView.enableAnimation(true);
+        bottomNavigationView.enableShiftingMode(false);
+        bottomNavigationView.enableItemShiftingMode(false);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottom_menu_item_home:
-                        vpMain.setCurrentItem(0);
+                        showHideFragment(mFragments[0]);
                         break;
+
                     case R.id.bottom_menu_item_gankio:
-                        vpMain.setCurrentItem(1);
+                        showHideFragment(mFragments[1]);
                         break;
+
                     case R.id.bottom_menu_item_movie:
-                        vpMain.setCurrentItem(2);
+                        showHideFragment(mFragments[2]);
                         break;
+
                     case R.id.bottom_menu_item_personal:
-                        vpMain.setCurrentItem(3);
+                        showHideFragment(mFragments[3]);
                         break;
                 }
                 return true;
@@ -144,12 +155,21 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
 
     @Override
     public void onBackPressedSupport() {
+        //侧边栏关闭
         if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
             mDrawerLayout.closeDrawer(Gravity.START);
             return;
         }
+
+        //多个fragment返回栈
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            pop();
+            return;
+        }
+
+        //双击推出
         long currentPressBackTime = System.currentTimeMillis();
-        if (currentPressBackTime - mLastPressBackTime > 1500) {
+        if (currentPressBackTime - mLastPressBackTime > TIME_OF_BACK) {
             mLastPressBackTime = currentPressBackTime;
             ToastUtil.shortMessage(mActivity, getString(R.string.main_exit_app_message));
             return;
@@ -180,14 +200,5 @@ public class MainActivity extends BaseActivity implements HomeFragment.OnDrawerL
             return;
         }
     }
-
-    //初始化Drawlayout
-    private void initDrawerLayout() {
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(mActivity, mDrawerLayout,
-                mToolBar, 0, 0);
-        toggle.syncState();
-        mDrawerLayout.addDrawerListener(toggle);
-    }
-
 
 }

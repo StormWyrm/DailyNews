@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.personal;
+package com.liqingfeng.DailyNews.main.personal.tab;
 
 import android.Manifest;
 import android.app.Activity;

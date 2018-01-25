@@ -43,9 +43,6 @@ public class HotMovieFragment
     private View mheaderView;
 
 
-    public HotMovieFragment() {
-    }
-
     public static HotMovieFragment newInstance() {
         HotMovieFragment fragment = new HotMovieFragment();
         Bundle args = new Bundle();
@@ -54,7 +51,7 @@ public class HotMovieFragment
     }
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.fragment_movie;
     }
 

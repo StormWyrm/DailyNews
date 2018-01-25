@@ -1,27 +1,29 @@
 package com.liqingfeng.DailyNews.detail.news;
 
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.liqingfeng.DailyNews.R;
+import com.liqingfeng.DailyNews.bean.douban.news.DBNewsDetail;
+import com.liqingfeng.DailyNews.bean.zhihu.ZHNewsDetail;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
+import com.liqingfeng.DailyNews.common.AppApplication;
 import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.framework.HttpRequestCallback;
 import com.liqingfeng.DailyNews.common.framework.HttpRequestManager;
 import com.liqingfeng.DailyNews.common.net.HttpRequestByVolley;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.constant.Constant;
+import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.util.NetworkUtil;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
-import com.liqingfeng.DailyNews.bean.douban.news.DBNewsDetail;
-import com.liqingfeng.DailyNews.bean.zhihu.ZHNewsDetail;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -37,33 +39,28 @@ import static android.content.Context.CLIPBOARD_SERVICE;
  * @DESC: $TODO
  * @VERSION: V1.0
  */
-public class NewsDetailPresenter implements NewsDetailContract.Presenter {
+public class NewsDetailPresenter extends NewsDetailContract.Presenter {
     private static final int TYPE_ZHIHU = 0;
     private static final int TYPE_GUOKE = 1;
     private static final int TYPE_DOUBAN = 2;
 
-    private BaseActivity mActivity;
-    private NewsDetailContract.View mDetailView;
     private HttpRequestManager mManager = new HttpRequestByVolley();
     private Gson mGson = new Gson();
     private String mDetailUrl;
     private ZHNewsDetail zhNewsDetail;
     private DBNewsDetail dbNewsDetail;
 
-    public NewsDetailPresenter(BaseActivity content, NewsDetailContract.View view) {
-        this.mActivity = content;
-        this.mDetailView = view;
-        this.mDetailView.setPresenter(this);
-    }
 
+    @Override
+    public IBaseModel getModel() {
+        return new NewsDetailModel();
+    }
 
     @Override
     public void loadPage(final int type, String mDetailUrl) {
         this.mDetailUrl = mDetailUrl;
-        mDetailView.startRefresh();
-        if (!NetworkUtil.isNetworkAvailable(mActivity)) {
-            mDetailView.showError();
-            mDetailView.stopRefresh();
+        if (!NetworkUtil.isNetworkAvailable((Context) mView)) {
+            mView.showError();
             return;
         }
         mManager.getRequest(mDetailUrl, new HttpRequestCallback() {
@@ -86,19 +83,19 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
 
     @Override
     public void jumpToBrowser(String url) {
-        if ((Boolean) SPUtils.get(mActivity, Constant.Config.WAY_OF_BROWSER, true)) {
-            Intent intent = new Intent(mActivity, BrowserActivity.class);
+        if ((Boolean) SPUtils.get((Context) mView, Constant.Config.WAY_OF_BROWSER, true)) {
             Bundle extra = new Bundle();
-            extra.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL,url);
-            mActivity.startActivity(intent);
+            extra.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL, url);
+
+            mView.startNewActivity(BrowserActivity.class, extra);
         } else {
-            mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            ((Context) mView).startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }
     }
 
     @Override
     public void share(int type) {
-        String shareText = mDetailView.getActionBarTitle();
+        String shareText = mView.getActionBarTitle();
         if (type == 0) {
             shareText += zhNewsDetail.share_url + "分享至 DailyNews";
         }
@@ -111,13 +108,13 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, shareText);
         intent.setType("text/plain");
-        mActivity.startActivity(intent);
+        ((Context) mView).startActivity(intent);
     }
 
 
     @Override
     public void copyLink(int type) {
-        ClipboardManager cmb = (ClipboardManager) mActivity.getSystemService(CLIPBOARD_SERVICE);
+        ClipboardManager cmb = (ClipboardManager) AppApplication.getInstance().getSystemService(CLIPBOARD_SERVICE);
 
         String shareText = "";
         if (type == 0) {
@@ -130,7 +127,8 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
             shareText = dbNewsDetail.short_url;
         }
         cmb.setText(shareText.trim());
-        ToastUtil.shortMessage(mActivity, mActivity.getString(R.string.detail_copy_link_message));
+        ToastUtil.shortMessage(AppApplication.getInstance(),
+                AppApplication.getInstance().getString(R.string.detail_copy_link_message));
     }
 
     @Override
@@ -145,7 +143,7 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
         if (type == 2) {
             shareText = dbNewsDetail.short_url;
         }
-        mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(shareText)));
+        ((Context) mView).startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(shareText)));
     }
 
     //显示知乎详细页面数据
@@ -155,14 +153,14 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
         Type type = new TypeToken<ZHNewsDetail>() {
         }.getType();
         zhNewsDetail = mGson.fromJson(result, type);
-        mDetailView.showImage(zhNewsDetail.image);
-        mDetailView.loadDataToWebView(convertZhihuContent(zhNewsDetail.body));
+        mView.showImage(zhNewsDetail.image);
+        mView.loadDataToWebView(convertZhihuContent(zhNewsDetail.body));
 
     }
 
     //显示果壳精选详细页面数据
     private void showGKPage(String result) {
-        mDetailView.loadDataToWebView(convertGuokrContent(result));
+        mView.loadDataToWebView(convertGuokrContent(result));
     }
 
     //显示豆瓣一刻页面数据
@@ -174,10 +172,10 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
         if (dbNewsDetail.thumbs != null && dbNewsDetail.thumbs.size() != 0) {
             DBNewsDetail.ThumbsBean thumbsBean = dbNewsDetail.thumbs.get(0);
             if (thumbsBean.small != null) {
-                mDetailView.showImage(thumbsBean.small.url);
+                mView.showImage(thumbsBean.small.url);
             }
         }
-        mDetailView.loadDataToWebView(convertDoubanContent());
+        mView.loadDataToWebView(convertDoubanContent());
 
     }
 
@@ -199,7 +197,7 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
         // 根据主题的不同确定不同的加载内容
         // load content judging by different theme
         String theme = "<body className=\"\" onload=\"onLoaded()\">";
-        if ((mActivity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
+        if ((AppApplication.getInstance().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
                 == Configuration.UI_MODE_NIGHT_YES) {
             theme = "<body className=\"\" onload=\"onLoaded()\" class=\"night\">";
         }
@@ -247,7 +245,7 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
         // 替换js文件为本地文件
         content.replace("<script src=\"http://static.guokr.com/apps/handpick/scripts/9c661fc7.base.js\"></script>",
                 "<script src=\"file:///android_asset/guokr.base.js\"></script>");
-        if ((mActivity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
+        if ((AppApplication.getInstance().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
                 == Configuration.UI_MODE_NIGHT_YES) {
             content.replace("<div class=\"article\" id=\"contentMain\">",
                     "<div class=\"article \" id=\"contentMain\" style=\"background-color:#212b30; color:#878787\">");
@@ -262,7 +260,7 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
             return null;
         }
         String css;
-        if ((mActivity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
+        if ((AppApplication.getInstance().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
                 == Configuration.UI_MODE_NIGHT_YES) {
             css = "<link rel=\"stylesheet\" href=\"file:///android_asset/douban_dark.css\" type=\"text/css\">";
         } else {

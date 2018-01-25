@@ -1,6 +1,5 @@
-package com.liqingfeng.DailyNews.main.personal;
+package com.liqingfeng.DailyNews.main.personal.tab;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,10 +10,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.view.menu.MenuPresenter;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.RxEventHeadBean;
@@ -26,6 +23,7 @@ import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.AppUtils;
 import com.liqingfeng.DailyNews.common.util.FileUtils;
+import com.liqingfeng.DailyNews.main.HeadSettingActivity;
 import com.liqingfeng.DailyNews.main.personal.widget.PersonalPopupWindow;
 
 import java.io.File;
@@ -70,7 +68,7 @@ public class PersonalFragment
     }
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.fragment_personal;
     }
 

@@ -38,10 +38,12 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
-        mRootView = inflater.inflate(getViewId(),container,false);
+        mRootView = inflater.inflate(getLayoutId(),container,false);
         unbinder = ButterKnife.bind(this, mRootView);
         return mRootView;
     }
+
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -60,11 +62,23 @@ public abstract class BaseFragment extends SupportFragment {
         }
     }
 
+    @Override
+    public boolean onBackPressedSupport() {
+        if (getFragmentManager().getBackStackEntryCount() > 1) {
+            //如果当前存在fragment>1，当前fragment出栈
+            pop();
+        } else {
+            //已经退栈到root fragment，交由Activity处理回退事件
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 返回Fragment的布局文件
      * @return
      */
-    protected abstract int getViewId();
+    protected abstract int getLayoutId();
 
     /**
      * 初始化监听器

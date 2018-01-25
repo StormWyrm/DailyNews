@@ -2,6 +2,10 @@ package com.liqingfeng.DailyNews.detail.news;
 
 import com.liqingfeng.DailyNews.common.ui.BasePresenter;
 import com.liqingfeng.DailyNews.common.ui.BaseView;
+import com.liqingfeng.DailyNews.common.ui.IBaseActivity;
+import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
+import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
 /**
  * @AUTHER: 李青峰
@@ -12,30 +16,30 @@ import com.liqingfeng.DailyNews.common.ui.BaseView;
  * @VERSION: V1.0
  */
 public interface NewsDetailContract {
-    interface Presenter extends BasePresenter {
-        void loadPage(int type, String mDetailUrl);
 
-        void jumpToBrowser(String url);
+    interface Model extends IBaseModel{}
 
-        void share(int type);
-
-        void copyLink(int type);
-
-        void openLinkInBrowser(int type);
-
-    }
-
-    interface View extends BaseView<Presenter> {
+    interface View extends IBaseActivity {
         String getActionBarTitle();
 
         void showImage(String imageUrl);
 
         void loadDataToWebView(String detailData);
 
-        void startRefresh();
-
-        void stopRefresh();
 
         void showError();
+    }
+
+    abstract class Presenter extends IBasePresenter<Model,View> {
+        abstract void loadPage(int type, String mDetailUrl);
+
+        abstract void jumpToBrowser(String url);
+
+        abstract void share(int type);
+
+        abstract void copyLink(int type);
+
+        abstract void openLinkInBrowser(int type);
+
     }
 }

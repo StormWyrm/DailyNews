@@ -10,7 +10,7 @@ import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
-import com.liqingfeng.DailyNews.main.movie.top.TopMovieActivity;
+import com.liqingfeng.DailyNews.main.movie.top.TopMovieFragment;
 
 import io.reactivex.functions.Consumer;
 
@@ -58,7 +58,7 @@ public class HotMoviePresenter extends HotMovieContract.Presenter {
 
     @Override
     void onTopMovieClick() {
-        mView.startNewActivity(TopMovieActivity.class);
-        ToastUtil.shortMessage(AppApplication.getInstance(),"Top Movie: ");
+        mView.startNewFragment(TopMovieFragment.newInstance());
+//        ToastUtil.shortMessage(AppApplication.getInstance(),"Top Movie: ");
     }
 }

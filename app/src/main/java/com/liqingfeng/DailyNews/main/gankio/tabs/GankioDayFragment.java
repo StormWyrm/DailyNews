@@ -51,7 +51,7 @@ public class GankioDayFragment
         RxBus.get().unRegister(this);
     }
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.fragment_gankio_recommend;
     }
 

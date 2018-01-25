@@ -42,7 +42,7 @@ public class GankioFragment extends BaseFragment {
 
 
     @Override
-    protected int getViewId() {
+    protected int getLayoutId() {
         return R.layout.fragment_goods;
     }
 

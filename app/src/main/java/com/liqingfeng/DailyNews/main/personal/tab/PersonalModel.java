@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.personal;
+package com.liqingfeng.DailyNews.main.personal.tab;
 
 /**
  * Created by lonlife on 2018/1/23.

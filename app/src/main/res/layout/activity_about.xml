@@ -9,6 +9,6 @@
 
     <include layout="@layout/layout_toolbar"/>
 
-    <include layout="@layout/layout_container"/>
+    <include layout="@layout/fragment_about"/>
 
 </LinearLayout>

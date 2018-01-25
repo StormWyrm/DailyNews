@@ -17,6 +17,8 @@ import com.umeng.analytics.MobclickAgent;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 
 /**
@@ -47,6 +49,13 @@ public abstract class BaseActivity  extends SupportActivity {
         initListener();
         AppApplication.getInstance().addActivity(this);
     }
+
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        //fragment切换使用默认Vertical动画
+        return new DefaultVerticalAnimator();
+    }
+
 
     @Override
     protected void onResume() {

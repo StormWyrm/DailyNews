@@ -3,6 +3,8 @@ package com.liqingfeng.DailyNews.common.ui;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import me.yokeyword.fragmentation.SupportFragment;
+
 /**
  * Created by lonlife on 2018/1/3.
  * 实现mvp模式绑定的Fragment
@@ -35,6 +37,30 @@ public abstract class BaseMvpFragment<M extends IBaseModel,P extends IBasePresen
         }
     }
 
+    @Override
+    public void popToFragment(Class<?> targetFragmentClass, boolean includeTargetFragment) {
+        popTo(targetFragmentClass,includeTargetFragment);
+    }
+
+    @Override
+    public void startNewFragment(@NonNull SupportFragment supportFragment) {
+        start(supportFragment);
+    }
+
+    @Override
+    public void startNewFragmentWithPop(@NonNull SupportFragment supportFragment) {
+        startWithPop(supportFragment);
+    }
+
+    @Override
+    public void startNewFragmentForResult(@NonNull SupportFragment supportFragment, int requestCode) {
+        startForResult(supportFragment,requestCode);
+    }
+
+    @Override
+    public void setOnFragmentResult(int resultCode, Bundle data) {
+        setOnFragmentResult(resultCode,data);
+    }
 
     @Override
     public void startNewActivity(@NonNull Class<?> clz) {

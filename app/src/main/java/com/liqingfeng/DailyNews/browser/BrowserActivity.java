@@ -95,7 +95,8 @@ public class BrowserActivity extends BaseActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                progressBar.setProgress(newProgress);
+                if (progressBar != null)
+                    progressBar.setProgress(newProgress);
             }
 
             @Override

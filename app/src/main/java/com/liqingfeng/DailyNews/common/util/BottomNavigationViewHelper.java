@@ -22,10 +22,8 @@ public class BottomNavigationViewHelper {
             shiftingMode.setAccessible(false);
             for (int i = 0; i < menuView.getChildCount(); i++) {
                 BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                //noinspection RestrictedApi
+                //去除shift效果
                 item.setShiftingMode(false);
-                // set once again checked value, so view will be updated
-                //noinspection RestrictedApi
                 item.setChecked(item.getItemData().isChecked());
             }
         } catch (NoSuchFieldException e) {

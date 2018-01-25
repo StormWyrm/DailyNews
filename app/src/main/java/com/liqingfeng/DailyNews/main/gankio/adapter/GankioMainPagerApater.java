@@ -13,6 +13,7 @@ import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 public class GankioMainPagerApater extends FragmentPagerAdapter {
     private BaseFragment[] fragments;
     private String[] titles;
+
     public GankioMainPagerApater(FragmentManager fm, BaseFragment[] fragments,String[] titles) {
         super(fm);
         this.fragments = fragments;

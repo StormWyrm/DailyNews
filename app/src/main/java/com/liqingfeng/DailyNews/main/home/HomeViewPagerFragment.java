@@ -17,7 +17,7 @@ import butterknife.BindView;
 /**
  * 主页Fragment
  */
-public class HomeFragment extends BaseFragment {
+public class HomeViewPagerFragment extends BaseFragment {
     @BindView(R.id.toolBar)
     Toolbar toolBar;
     @BindView(R.id.tabLayout)
@@ -29,12 +29,12 @@ public class HomeFragment extends BaseFragment {
     private HomePagerAdapter mAdapter;
     private String[] titles;
 
-    public HomeFragment() {
+    public HomeViewPagerFragment() {
 
     }
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
+    public static HomeViewPagerFragment newInstance() {
+        HomeViewPagerFragment fragment = new HomeViewPagerFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -51,7 +51,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public int getViewId() {
+    public int getLayoutId() {
         return R.layout.fragment_home;
     }
 

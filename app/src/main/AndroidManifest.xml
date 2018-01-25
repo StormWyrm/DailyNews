@@ -40,7 +40,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.MainActivity" />
-        <activity android:name=".main.movie.top.TopMovieActivity"/>
         <activity android:name=".setting.SettingActivity" />
         <activity android:name=".about.AboutActivity" />
         <activity android:name=".hot.ZHHotActivity" />
@@ -48,7 +47,7 @@
         <activity android:name=".detail.news.NewsDetailActivity" />
         <activity android:name=".detail.movie.MovieDetailActivity" />
         <activity android:name=".detail.gankio.ImageDetailActivity"/>
-        <activity android:name=".main.personal.HeadSettingActivity"/>
+        <activity android:name=".main.HeadSettingActivity"/>
     </application>
 
 </manifest>

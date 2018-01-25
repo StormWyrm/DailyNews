@@ -43,7 +43,7 @@ public class GankioDayAdapter extends BaseMultiItemQuickAdapter<GankIoDayItemBea
     }
 
     private void init() {
-        openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+        openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 
         addItemType(GankIoDayItemBean.GANK_IO_DAY_ITEM_DAY_NORMAL, R.layout.item_gankio_day_nomal);
         addItemType(GankIoDayItemBean.GANK_IO_DAY_ITEM_DAY_REFESH, R.layout.item_gankio_day_refresh);

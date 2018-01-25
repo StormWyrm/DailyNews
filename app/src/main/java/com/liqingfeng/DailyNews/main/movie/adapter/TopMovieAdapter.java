@@ -26,6 +26,7 @@ public class TopMovieAdapter extends BaseQuickAdapter<SubjectsBean, BaseViewHold
     public TopMovieAdapter(@Nullable List<SubjectsBean> data) {
         super(R.layout.item_top_movie, data);
         openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        isFirstOnly(false);
 
         setEnableLoadMore(true);
 

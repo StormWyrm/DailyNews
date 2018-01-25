@@ -30,7 +30,7 @@ public class SettingFragment extends BaseFragment implements SettingContract.Vie
     private SettingContract.Presenter mPresenter;
 
     @Override
-    public int getViewId() {
+    public int getLayoutId() {
         return R.layout.fragment_setting;
     }
 

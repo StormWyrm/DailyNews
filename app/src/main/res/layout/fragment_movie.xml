@@ -1,9 +1,10 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment">
 
     <android.support.design.widget.AppBarLayout
@@ -20,9 +21,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="@string/movie_title"
-                android:textSize="@dimen/font_larger"
-                android:layout_gravity="center" />
+                android:textSize="@dimen/font_larger" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -32,7 +33,6 @@
         android:id="@+id/rv_hot_movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

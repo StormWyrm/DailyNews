@@ -1,4 +1,4 @@
-package com.liqingfeng.DailyNews.main.personal;
+package com.liqingfeng.DailyNews.main;
 
 import android.graphics.Bitmap;
 import android.net.Uri;

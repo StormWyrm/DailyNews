@@ -32,13 +32,17 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                 .subscribe(new Consumer<HotMovieBean>() {
                     @Override
                     public void accept(HotMovieBean hotMovieBean) {
+                        if (mView == null)
+                            return;
                         mStart += mCount;
                         mView.updateTopMovieContent(hotMovieBean.getSubjects());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable)  {
+                    public void accept(Throwable throwable) {
                         throwable.printStackTrace();
+                        if (mView == null)
+                            return;
                         mView.showNetworkError();
                     }
                 });
@@ -55,6 +59,8 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                 @Override
                 public void accept(HotMovieBean hotMovieBean) throws Exception {
                     isLoading = false;
+                    if(mView == null)
+                        return;
                     if (hotMovieBean != null && hotMovieBean.getSubjects() != null &&
                             hotMovieBean.getSubjects().size() > 0) {
                         mStart += mCount;
@@ -68,6 +74,8 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                 public void accept(Throwable throwable) throws Exception {
                     throwable.printStackTrace();
                     isLoading = false;
+                    if(mView == null)
+                        return;
                     mView.showLoadMoreError();
                 }
             });
