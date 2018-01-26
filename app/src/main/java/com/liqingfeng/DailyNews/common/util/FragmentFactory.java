@@ -2,10 +2,11 @@ package com.liqingfeng.DailyNews.common.util;
 
 import android.util.SparseArray;
 
+import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.common.ui.BaseLazyLoadFragment;
-import com.liqingfeng.DailyNews.main.home.tabs.DBFragment;
-import com.liqingfeng.DailyNews.main.home.tabs.GKFragment;
-import com.liqingfeng.DailyNews.main.home.tabs.ZHFragment;
+import com.liqingfeng.DailyNews.main.home.tabs.DoubanNewsFragment;
+import com.liqingfeng.DailyNews.main.home.tabs.GuokeNewsFragment;
+import com.liqingfeng.DailyNews.main.home.tabs.ZhihuNewsFragment;
 
 /**
  * @AUTHER: 李青峰
@@ -17,20 +18,20 @@ import com.liqingfeng.DailyNews.main.home.tabs.ZHFragment;
  */
 
 public class FragmentFactory {
-    private static SparseArray<BaseLazyLoadFragment> fragments = new SparseArray<>();
+    private static SparseArray<BaseFragment> fragments = new SparseArray<>();
 
-    public static BaseLazyLoadFragment getFragment(int position) {
-        BaseLazyLoadFragment fragment = fragments.get(position);
+    public static BaseFragment getFragment(int position) {
+        BaseFragment fragment = fragments.get(position);
         if (fragment == null) {
             switch (position) {
                 case 0:
-                    fragment = new ZHFragment();
+                    fragment = new ZhihuNewsFragment();
                     break;
                 case 1:
-                    fragment = new GKFragment();
+                    fragment = new GuokeNewsFragment();
                     break;
                 case 2:
-                    fragment = new DBFragment();
+                    fragment = new DoubanNewsFragment();
                     break;
             }
         }

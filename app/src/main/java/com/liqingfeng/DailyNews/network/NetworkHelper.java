@@ -33,19 +33,19 @@ public class NetworkHelper {
         return networkHelper;
     }
 
-    public ZhihuServer getZhihuService() {
+    public ZhihuNewsServer getZhihuService() {
         Retrofit retrofit = mBuilder.baseUrl(Api.ZHIHU_BASE).build();
-        return retrofit.create(ZhihuServer.class);
+        return retrofit.create(ZhihuNewsServer.class);
     }
 
-    public GuokeService getGuokeServer() {
+    public GuokeNewsService getGuokeServer() {
         Retrofit retrofit = mBuilder.baseUrl(Api.GUOKE_BASE).build();
-        return retrofit.create(GuokeService.class);
+        return retrofit.create(GuokeNewsService.class);
     }
 
-    public DoubanService getDoubanService() {
+    public DoubanNewsService getDoubanService() {
         Retrofit retrofit = mBuilder.baseUrl(Api.DOUBAN_BASE).build();
-        return retrofit.create(DoubanService.class);
+        return retrofit.create(DoubanNewsService.class);
     }
 
     public <T> T getService(Class<T> clazz,String host){

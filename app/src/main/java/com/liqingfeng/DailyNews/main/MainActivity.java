@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -20,24 +19,17 @@ import com.liqingfeng.DailyNews.common.AppApplication;
 import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
-import com.liqingfeng.DailyNews.common.util.BottomNavigationViewHelper;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
-import com.liqingfeng.DailyNews.hot.ZHHotActivity;
-import com.liqingfeng.DailyNews.main.gankio.GankioFragment;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
 import com.liqingfeng.DailyNews.main.home.HomeRootFragment;
 import com.liqingfeng.DailyNews.main.home.HomeViewPagerFragment;
 import com.liqingfeng.DailyNews.main.movie.MovieRootFragment;
-import com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment;
 import com.liqingfeng.DailyNews.main.personal.PersonalRootFragment;
-import com.liqingfeng.DailyNews.main.personal.tab.PersonalFragment;
 import com.liqingfeng.DailyNews.setting.SettingActivity;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
-import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
-import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
 
 /**
  * @AUTHER: 李青峰
@@ -103,7 +95,7 @@ public class MainActivity extends BaseActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_zh_hot:
-                        startActivity(new Intent(mActivity, ZHHotActivity.class));
+//                        startActivity(new Intent(mActivity, ZHHotActivity.class));
                         break;
                     case R.id.nav_change_theme:
                         changeUiTheme();

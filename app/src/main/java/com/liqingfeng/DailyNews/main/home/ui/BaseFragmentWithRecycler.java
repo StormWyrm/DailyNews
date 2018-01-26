@@ -11,10 +11,15 @@ import com.daimajia.slider.library.SliderLayout;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.framework.OnRecyclerViewClickListener;
 import com.liqingfeng.DailyNews.common.ui.BaseLazyLoadFragment;
+import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
+import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.BaseRecyclerAdapter;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
+import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
 /**
  * @AUTHER: 李青峰
@@ -25,7 +30,8 @@ import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
  * @VERSION: V1.0
  */
 
-public abstract class BaseFragmentWithRecycler extends BaseLazyLoadFragment {
+public abstract class BaseFragmentWithRecycler<M extends IBaseModel, P extends IBasePresenter>
+        extends BaseMvpFragment<M, P> {
     private static final String TAG = "BaseFragmentWithRecycle";
 
     protected TwinklingRefreshLayout mRefreshLayout;
@@ -38,24 +44,28 @@ public abstract class BaseFragmentWithRecycler extends BaseLazyLoadFragment {
     protected BaseRecyclerAdapter mAdapter;
     protected OnRecyclerViewClickListener mListener;
 
-
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_base, container, false);
-        mRefreshLayout = (TwinklingRefreshLayout) view.findViewById(R.id.refreshLayout);
-        mRefreshLayout.setFloatRefresh(true);//设置为浮动下拉刷新模式
-        mRefreshLayout.setHeaderView(new ProgressLayout(mActivity));
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        initRecyclerHeaderView();//初始化Slider头布局
-        return view;
+    protected int getLayoutId() {
+        return R.layout.layout_recycler_view;
     }
 
-
-    @Override
-    protected void initData() {
-        super.initData();
-        initSliderLayout();
-    }
+    //    @Override
+//    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_base, container, false);
+//        mRefreshLayout = (TwinklingRefreshLayout) view.findViewById(R.id.refreshLayout);
+//        mRefreshLayout.setFloatRefresh(true);//设置为浮动下拉刷新模式
+//        mRefreshLayout.setHeaderView(new ProgressLayout(mActivity));
+//        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+//        initRecyclerHeaderView();//初始化Slider头布局
+//        return view;
+//    }
+//
+//
+//    @Override
+//    protected void initData() {
+//        super.initData();
+//        initSliderLayout();
+//    }
 
 
     @Override

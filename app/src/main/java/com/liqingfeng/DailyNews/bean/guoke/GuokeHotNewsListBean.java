@@ -1,5 +1,6 @@
-package com.liqingfeng.DailyNews.bean.gk;
+package com.liqingfeng.DailyNews.bean.guoke;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @DESC: 果壳轮播图
  * @VERSION: V1.0
  */
-public class GKHotNews {
+public class GuokeHotNewsListBean implements Serializable {
 
     /**
      * now : 2017-04-04T13:43:01.234788+08:00
@@ -30,19 +31,29 @@ public class GKHotNews {
 
     public String now;
     public boolean ok;
-    public List<ResultBean> result;
+    public List<GuokeHotNewsItemBean> result;
 
-    public static class ResultBean {
-        /**
-         * ordinal : 0
-         * picture : http://1.im.guokr.com/jpWXLL4xFrd0anUZNs9VeG-kDyydzA8ZV65UYKoGPjJKAgAAEgEAAFBO.png
-         * custom_title : 揭开毒品背后的秘密：瘾君子竟是这样诞生的！
-         * article_id : 81658
-         */
+    public String getNow() {
+        return now;
+    }
 
-        public int ordinal;
-        public String picture;
-        public String custom_title;
-        public int article_id;
+    public void setNow(String now) {
+        this.now = now;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean ok) {
+        this.ok = ok;
+    }
+
+    public List<GuokeHotNewsItemBean> getResult() {
+        return result;
+    }
+
+    public void setResult(List<GuokeHotNewsItemBean> result) {
+        this.result = result;
     }
 }

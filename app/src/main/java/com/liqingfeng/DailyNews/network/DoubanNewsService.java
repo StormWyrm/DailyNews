@@ -1,6 +1,6 @@
 package com.liqingfeng.DailyNews.network;
 
-import com.liqingfeng.DailyNews.bean.douban.news.DBNews;
+import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsListBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -15,9 +15,10 @@ import retrofit2.http.Path;
  * @DESC: $TODO
  * @VERSION: V1.0
  */
-public interface DoubanService {
+public interface DoubanNewsService {
+    public static final String HOST = "https://moment.douban.com/";
 
     @GET("/api/stream/date/{date}")
-    Observable<DBNews> getDBNews(@Path("date") String date);
+    Observable<DoubanNewsListBean> getDoubanNews(@Path("date") String date);
 
 }

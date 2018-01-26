@@ -11,8 +11,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.bean.douban.news.DBNewsDetail;
-import com.liqingfeng.DailyNews.bean.zhihu.ZHNewsDetail;
+import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsDetailBean;
+import com.liqingfeng.DailyNews.bean.douban.news.ThumbsBean;
+import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsDetailBean;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
 import com.liqingfeng.DailyNews.common.AppApplication;
 import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
@@ -47,8 +48,8 @@ public class NewsDetailPresenter extends NewsDetailContract.Presenter {
     private HttpRequestManager mManager = new HttpRequestByVolley();
     private Gson mGson = new Gson();
     private String mDetailUrl;
-    private ZHNewsDetail zhNewsDetail;
-    private DBNewsDetail dbNewsDetail;
+    private ZhihuNewsDetailBean zhNewsDetail;
+    private DoubanNewsDetailBean dbNewsDetail;
 
 
     @Override
@@ -150,7 +151,7 @@ public class NewsDetailPresenter extends NewsDetailContract.Presenter {
     private void showZHPage(String result) {
 
         Log.d(TAG, "onSuccess: " + result);
-        Type type = new TypeToken<ZHNewsDetail>() {
+        Type type = new TypeToken<ZhihuNewsDetailBean>() {
         }.getType();
         zhNewsDetail = mGson.fromJson(result, type);
         mView.showImage(zhNewsDetail.image);
@@ -166,11 +167,11 @@ public class NewsDetailPresenter extends NewsDetailContract.Presenter {
     //显示豆瓣一刻页面数据
     private void showDBPage(String result) {
 
-        Type type = new TypeToken<DBNewsDetail>() {
+        Type type = new TypeToken<DoubanNewsDetailBean>() {
         }.getType();
         dbNewsDetail = mGson.fromJson(result, type);
         if (dbNewsDetail.thumbs != null && dbNewsDetail.thumbs.size() != 0) {
-            DBNewsDetail.ThumbsBean thumbsBean = dbNewsDetail.thumbs.get(0);
+            ThumbsBean thumbsBean = dbNewsDetail.thumbs.get(0);
             if (thumbsBean.small != null) {
                 mView.showImage(thumbsBean.small.url);
             }
@@ -267,7 +268,7 @@ public class NewsDetailPresenter extends NewsDetailContract.Presenter {
             css = "<link rel=\"stylesheet\" href=\"file:///android_asset/douban_light.css\" type=\"text/css\">";
         }
         String content = dbNewsDetail.content;
-        List<DBNewsDetail.ThumbsBean> imageList = dbNewsDetail.thumbs;
+        List<ThumbsBean> imageList = dbNewsDetail.thumbs;
         for (int i = 0; i < imageList.size(); i++) {
             String old = "<img id=\"" + imageList.get(i).tag_name + "\" />";
             String newStr = "<img id=\"" + imageList.get(i).tag_name + "\" "

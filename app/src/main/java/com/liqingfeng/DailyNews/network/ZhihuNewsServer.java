@@ -1,7 +1,7 @@
 package com.liqingfeng.DailyNews.network;
 
 import com.liqingfeng.DailyNews.bean.zhihu.ZHHotNews;
-import com.liqingfeng.DailyNews.bean.zhihu.ZHNews;
+import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsListBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -16,13 +16,14 @@ import retrofit2.http.Path;
  * @DESC: Api接口
  * @VERSION: V1.0
  */
-public interface ZhihuServer {
+public interface ZhihuNewsServer {
+    public static final String HOST = "http://news-at.zhihu.com/";
 
     //根据日期获取知乎日报新闻
     @GET("/api/4/news/before/{date}")
-    Observable<ZHNews> getZHNews(@Path("date") String date);
+    Observable<ZhihuNewsListBean> getZhihuNews(@Path("date") String date);
 
     //获取知乎热搜
     @GET("/api/3/news/hot")
-    Observable<ZHHotNews> getZHHotNews();
+    Observable<ZHHotNews> getZhihuHotNews();
 }
