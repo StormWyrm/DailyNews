@@ -6,10 +6,10 @@
 
     <!-- 间隔 -->
     <padding
-        android:bottom="2dp"
-        android:left="10dp"
-        android:right="10dp"
-        android:top="2dp" /><!-- 各方向的间隔 -->
+        android:bottom="5dp"
+        android:left="15dp"
+        android:right="15dp"
+        android:top="5dp" /><!-- 各方向的间隔 -->
 
 
     <!-- 填充 -->

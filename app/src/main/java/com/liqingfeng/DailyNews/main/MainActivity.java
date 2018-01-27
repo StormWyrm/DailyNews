@@ -20,6 +20,7 @@ import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
+import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
 import com.liqingfeng.DailyNews.main.home.HomeRootFragment;

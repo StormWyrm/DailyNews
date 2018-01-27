@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.AppApplication;
+import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
@@ -40,7 +41,7 @@ public abstract class BaseActivity  extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //        initTransparentStatusBar();
-//        StatusBarUtils.setTransparent(this);
+        StatusBarUtils.setTransparent(this);
         setContentView(getLayoutId());
         unbinder = ButterKnife.bind(this);
         mActivity = this;
