@@ -31,8 +31,8 @@ public class GlideUtils {
         Glide.with(context)
                 .load(imagePath)
                 .asBitmap()
-                .placeholder(R.drawable.icon_load_default)
-                .error(R.drawable.icon_load_error)
+                .placeholder(R.drawable.ic_vector_load_default)
+                .error(R.drawable.ic_vector_load_default)
                 .centerCrop()
                 .into(imageView);
 

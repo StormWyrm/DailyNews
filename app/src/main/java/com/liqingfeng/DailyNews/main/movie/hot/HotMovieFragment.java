@@ -118,7 +118,6 @@ public class HotMovieFragment
                     mPresenter.onMovieItemClick((HotMovieAdapter) adapter, view, position, (SubjectsBean) adapter.getData().get(position));
                 }
             });
-            rvHotMovie.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
             rvHotMovie.setLayoutManager(new LinearLayoutManager(mContext));
             rvHotMovie.setAdapter(mAdapter);
         }

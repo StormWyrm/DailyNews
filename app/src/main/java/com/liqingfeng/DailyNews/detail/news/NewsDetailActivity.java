@@ -68,12 +68,14 @@ public class NewsDetailActivity
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        Intent intent = mActivity.getIntent();
-        title = intent.getStringExtra("title");
-        imageUrl = intent.getStringExtra("image");
-        type = intent.getIntExtra("type", 0);
-        mDetailUrl = intent.getStringExtra("url");
-
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            type = intent.getIntExtra("type", 0);
+            title = intent.getStringExtra("title");
+            imageUrl = intent.getStringExtra("image");
+            mDetailUrl = intent.getStringExtra("url");
+        }
         initWebView();
     }
 

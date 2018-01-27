@@ -2,8 +2,15 @@ package com.liqingfeng.DailyNews.setting;
 
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
 import com.liqingfeng.DailyNews.R;
+import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
+import com.liqingfeng.DailyNews.common.util.SPUtils;
+import com.liqingfeng.DailyNews.common.util.ToastUtil;
+import com.liqingfeng.DailyNews.setting.widget.SettingItemView;
+
+import butterknife.BindView;
 
 /**
  * @AUTHER: 李青峰
@@ -14,7 +21,12 @@ import com.liqingfeng.DailyNews.common.ui.BaseActivity;
  * @VERSION: V1.0
  */
 public class SettingActivity extends BaseActivity {
-    private SettingFragment mSetttingFragment;
+    @BindView(R.id.sv_browser)
+    SettingItemView svBrowser;
+    @BindView(R.id.sv_clear_cache)
+    SettingItemView svClearCache;
+    @BindView(R.id.sv_update)
+    SettingItemView svUpdate;
 
     @Override
     protected int getLayoutId() {
@@ -24,20 +36,28 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void initView(Bundle saveInstanceState) {
         addToolBar(getString(R.string.setting), true);
+    }
 
-        mSetttingFragment = (SettingFragment) getSupportFragmentManager().findFragmentById(R.id.fl_container);
-
-        if (mSetttingFragment == null) {
-            mSetttingFragment = new SettingFragment();
-
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fl_container, mSetttingFragment)
-                    .commit();
-        }
-
-
-        new SettingPresenter(mActivity, mSetttingFragment);
+    @Override
+    protected void initListener() {
+        svBrowser.setOnCheckedChangeListener(new SettingItemView.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(boolean isChecked) {
+                SPUtils.put(mActivity, Constant.Config.WAY_OF_BROWSER, isChecked);
+            }
+        });
+        svClearCache.setOnClickListener(new SettingItemView.OnClickListener() {
+            @Override
+            public void onClick() {
+                Glide.get(mActivity).clearDiskCache();
+            }
+        });
+        svUpdate.setOnClickListener(new SettingItemView.OnClickListener() {
+            @Override
+            public void onClick() {
+                ToastUtil.shortMessage(mActivity, "检查更新");
+            }
+        });
     }
 
 }

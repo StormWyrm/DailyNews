@@ -72,10 +72,10 @@
     <string name="movie_title">豆瓣热搜</string>
     <string name="movie_top_movie_title">豆瓣电影Top250</string>
     <string name="movie_top_movie_content">从前过去了再不来~</string>
-    <string name="movie_hot_movie_director">导演：$1%s</string>
-    <string name="movie_hot_movie_starring">主演：$1%s</string>
-    <string name="movie_hot_movie_type">类型：$1%s</string>
-    <string name="movie_hot_movie_score">评分：$1%s</string>
+    <string name="movie_hot_movie_director">导演：%1$s</string>
+    <string name="movie_hot_movie_starring">主演：%1$s</string>
+    <string name="movie_hot_movie_type">类型：%1$s</string>
+    <string name="movie_hot_movie_score">评分：%1$s</string>
     <string name="movie_hot_movie_title">热映榜</string>
     <string name="transition_movie_img">transition_movie_img</string>
     <string name="gankio_day">每日推荐</string>

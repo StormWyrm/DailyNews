@@ -32,7 +32,6 @@ public class GankioDayFragment
         extends BaseRecycleFragment<GankioDayContract.Model, GankioDayContract.Presenter>
         implements GankioDayContract.View {
 
-
     @BindView(R.id.rv_gankio_day)
     RecyclerView rvGankioDay;
 
@@ -40,9 +39,8 @@ public class GankioDayFragment
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        RxBus.get().register(this);
         super.onCreate(savedInstanceState);
-
+        RxBus.get().register(this);
     }
 
     @Override
@@ -56,15 +54,15 @@ public class GankioDayFragment
     }
 
     @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
-        mPresenter.loadLastestList();
-    }
-
-    @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
         initRecyclerView(null);
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        mPresenter.loadLastestList();
     }
 
     @NonNull

@@ -31,13 +31,13 @@
     <!--水平线-->
     <style name="HorizontalLine">
         <item name="android:background">@color/gray</item>
-        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_height">1px</item>
         <item name="android:layout_width">match_parent</item>
     </style>
 
     <!--垂直线-->
     <style name="VerticalLine">
         <item name="android:background">@color/gray</item>
-        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_width">1px</item>
     </style>
 </resources>

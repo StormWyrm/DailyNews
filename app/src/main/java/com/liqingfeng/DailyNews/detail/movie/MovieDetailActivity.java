@@ -170,7 +170,7 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
             tvMovieGenres.setText(subjectsBean.getGenresString());
             tvMovieDate.setText(subjectsBean.getYear());
         }
-        GlideUtils.loadImage(mActivity, ivMoviePhoto, subjectsBean.getImages().getLarge());
+        GlideUtils.loadImage(mActivity, ivMoviePhoto, subjectsBean.getImages().getLarge(),R.mipmap.img_default_movie);
         GlideUtils.displayBlurImg(mActivity, subjectsBean.getImages().getLarge(), ivHeaderBg);
         GlideUtils.displayBlurImg(mActivity, subjectsBean.getImages().getLarge(), ivToolbarBg);
 

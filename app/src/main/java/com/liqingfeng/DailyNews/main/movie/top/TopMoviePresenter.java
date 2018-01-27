@@ -1,10 +1,12 @@
 package com.liqingfeng.DailyNews.main.movie.top;
 
+import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
 
 import io.reactivex.functions.Consumer;
 
@@ -84,7 +86,9 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
 
     @Override
     void onItemClick(int position, SubjectsBean subjectsBean, ImageView imageView) {
-
+        Bundle extra = new Bundle();
+        extra.putSerializable("SubjectBean",subjectsBean);
+        mView.startNewActivity(MovieDetailActivity.class,extra);
     }
 
 }

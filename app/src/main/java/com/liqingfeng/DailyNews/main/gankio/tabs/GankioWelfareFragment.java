@@ -14,7 +14,6 @@ import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareItemBean;
 import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
 import com.liqingfeng.DailyNews.common.rxbus.RxBus;
 import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
@@ -55,17 +54,16 @@ public class GankioWelfareFragment
     }
 
     @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
-        mPresenter.loadLastestList();
-    }
-
-    @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
         initRecycleView(null);
     }
 
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        mPresenter.loadLastestList();
+    }
 
     @Override
     public void onLoadMoreRequested() {
@@ -98,7 +96,6 @@ public class GankioWelfareFragment
         mAdapter.loadMoreFail();
     }
 
-
     @Override
     public void showNetworkError() {
         mAdapter.setEmptyView(errorView);
@@ -121,6 +118,7 @@ public class GankioWelfareFragment
             //设置一个空的adapter
             mAdapter = new GankioWelfareAdapter();
             rvGankioWelfare.setLayoutManager(new LinearLayoutManager(mActivity));
+            rvGankioWelfare.setAdapter(mAdapter);
         } else {
             //第一次加载网络是重新初始化数据并绑定recyclerview
             mAdapter = new GankioWelfareAdapter(list);
@@ -132,9 +130,10 @@ public class GankioWelfareFragment
                     mPresenter.onItemClick(position, (GankIoWelfareItemBean) adapter.getItem(position));
                 }
             });
-            rvGankioWelfare.setAdapter(mAdapter);
             rvGankioWelfare.setLayoutManager(new StaggeredGridLayoutManager(2,
                     StaggeredGridLayoutManager.VERTICAL));
+            rvGankioWelfare.setAdapter(mAdapter);
+
         }
     }
 

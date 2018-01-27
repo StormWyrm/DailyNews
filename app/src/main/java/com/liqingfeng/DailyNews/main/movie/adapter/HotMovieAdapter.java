@@ -36,21 +36,20 @@ public class HotMovieAdapter extends BaseQuickAdapter<SubjectsBean,BaseViewHolde
 
         holder.setText(R.id.tv_movie_name,item.getTitle());
 
-        String directors = mContext.getResources().
-                getString(R.string.movie_hot_movie_director,item.getDirectorsString());
-        holder.setText(R.id.tv_movie_director,directors);
+        String directors = mContext.getResources().getString(R.string.movie_hot_movie_director);
+        holder.setText(R.id.tv_movie_director,String.format(directors,item.getDirectorsString()));
 
         String actors = mContext.getResources().
                 getString(R.string.movie_hot_movie_starring,item.getActorsString());
-        holder.setText(R.id.tv_movie_director,actors);
+        holder.setText(R.id.tv_movie_starring,actors);
 
         String type = mContext.getResources().
                 getString(R.string.movie_hot_movie_type,item.getGenresString());
-        holder.setText(R.id.tv_movie_director,type);
+        holder.setText(R.id.tv_movie_type,type);
 
         String score = mContext.getResources().
-                getString(R.string.movie_hot_movie_director,String.valueOf(item.getRating().getAverage()));
-        holder.setText(R.id.tv_movie_director,score);
+                getString(R.string.movie_hot_movie_score,String.valueOf(item.getRating().getAverage()));
+        holder.setText(R.id.tv_movie_score,score);
     }
 
 }

@@ -1,25 +1,18 @@
 package com.liqingfeng.DailyNews.main.home.ui;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
-import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.framework.OnRecyclerViewClickListener;
-import com.liqingfeng.DailyNews.common.ui.BaseLazyLoadFragment;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
-import com.liqingfeng.DailyNews.common.ui.BaseRecyclerAdapter;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.liqingfeng.DailyNews.R;
+import com.liqingfeng.DailyNews.common.framework.OnRecyclerViewClickListener;
+import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
+import com.liqingfeng.DailyNews.common.ui.BaseRecyclerAdapter;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.ui.IBaseView;
 
 /**
  * @AUTHER: 李青峰

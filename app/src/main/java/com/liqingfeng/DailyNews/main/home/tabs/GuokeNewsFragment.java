@@ -39,7 +39,7 @@ import butterknife.BindView;
  */
 public class GuokeNewsFragment
         extends BaseRecycleFragment<GuokeNewsContract.Model, GuokeNewsContract.Presenter>
-        implements GuokeNewsContract.View{
+        implements GuokeNewsContract.View {
 
     private static final String TAG = "GuokeNewsFragment";
 
@@ -111,26 +111,18 @@ public class GuokeNewsFragment
             for (int i = 0; i < list.size(); i++) {
                 final GuokeHotNewsItemBean resultBean = list.get(i);
                 TextSliderView textSliderView = new TextSliderView(mActivity);
-                textSliderView.empty(R.drawable.icon_load_default)
-                        .error(R.drawable.icon_load_error)
+                textSliderView.empty(R.drawable.ic_vector_load_default)
+                        .error(R.drawable.ic_vector_load_default)
                         .description(resultBean.custom_title)
                         .setScaleType(BaseSliderView.ScaleType.CenterCrop);
 
-                if (NetworkUtil.isWifi(mActivity)) {
-                    if (resultBean != null && !TextUtils.isEmpty(resultBean.picture))
-                        textSliderView.image(resultBean.picture);
-                    else
-                        textSliderView.image(R.drawable.icon_load_default);
-                } else {
-                    //判断是否允许非WIFT网络加载图片
-                    if (!(Boolean) SPUtils.get(mActivity, Constant.Config
-                            .WAY_OF_IMAGE_SHOW, false)) {
-                        if (resultBean != null && !TextUtils.isEmpty(resultBean.picture))
-                            textSliderView.image(resultBean.picture);
-                    } else {
-                        textSliderView.image(R.drawable.icon_load_default);
-                    }
-                }
+
+                if (resultBean != null && !TextUtils.isEmpty(resultBean.picture))
+                    textSliderView.image(resultBean.picture);
+                else
+                    textSliderView.image(R.drawable.ic_vector_load_default);
+
+
                 mSlider.addSlider(textSliderView);
             }
         }
@@ -178,7 +170,6 @@ public class GuokeNewsFragment
         mSlider.setCustomAnimation(new DescriptionAnimation());
         mSlider.setDuration(4000);
     }
-
 
 
 }

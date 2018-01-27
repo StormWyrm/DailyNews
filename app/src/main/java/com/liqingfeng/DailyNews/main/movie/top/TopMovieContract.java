@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
+import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.ui.IBaseView;
@@ -22,7 +23,7 @@ public interface TopMovieContract {
         Observable<HotMovieBean> getMovieTop250(int start, int end);
     }
 
-    interface View extends IBaseView {
+    interface View extends IBaseFragment {
         void updateTopMovieContent(List<SubjectsBean> list);
 
         void showNetworkError();
