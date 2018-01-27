@@ -2,6 +2,8 @@ package com.liqingfeng.DailyNews.main.movie.hot;
 
 
 
+import android.widget.ImageView;
+
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
@@ -40,7 +42,7 @@ public interface HotMovieContract {
          */
         abstract void getHotMovie();
 
-        abstract void onMovieItemClick(HotMovieAdapter adapter, android.view.View view, int position,SubjectsBean subjectsBean);
+        abstract void onItemClick(int position, SubjectsBean subjectsBean, ImageView imageView);
 
         abstract void onTopMovieClick();
     }

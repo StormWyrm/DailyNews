@@ -2,6 +2,7 @@ package com.liqingfeng.DailyNews.main.movie.hot;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
@@ -47,12 +48,12 @@ public class HotMoviePresenter extends HotMovieContract.Presenter {
                 });
     }
 
-
     @Override
-    void onMovieItemClick(HotMovieAdapter adapter, View view, int position, SubjectsBean subjectsBean) {
-        Bundle extra = new Bundle();
-        extra.putSerializable("SubjectBean",subjectsBean);
-        mView.startNewActivity(MovieDetailActivity.class,extra);
+    void onItemClick(int position, SubjectsBean subjectsBean, ImageView imageView) {
+//        Bundle extra = new Bundle();
+//        extra.putSerializable("SubjectBean",subjectsBean);
+//        mView.startActivity(MovieDetailActivity.class,extra);
+        MovieDetailActivity.start(mView.getBindActivity(),subjectsBean,imageView);
     }
 
 

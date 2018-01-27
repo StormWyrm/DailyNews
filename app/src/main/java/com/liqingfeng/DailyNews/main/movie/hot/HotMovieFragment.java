@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
 import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
@@ -115,7 +114,10 @@ public class HotMovieFragment
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    mPresenter.onMovieItemClick((HotMovieAdapter) adapter, view, position, (SubjectsBean) adapter.getData().get(position));
+                    mPresenter.onItemClick(position + 1,
+                            (SubjectsBean) adapter.getData().get(position),
+                            (ImageView) view.findViewById(R.id.iv_movie)
+                    );
                 }
             });
             rvHotMovie.setLayoutManager(new LinearLayoutManager(mContext));

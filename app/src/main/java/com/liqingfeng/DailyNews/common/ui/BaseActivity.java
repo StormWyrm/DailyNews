@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -34,8 +33,9 @@ public abstract class BaseActivity  extends SupportActivity {
     protected BaseActivity mActivity;
     protected Toolbar mToolBar;
     protected ActionBar mActionBar;
-    private Unbinder unbinder;
+    protected boolean isTransAnim = true;
 
+    private Unbinder unbinder;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,17 +138,9 @@ public abstract class BaseActivity  extends SupportActivity {
      */
     public void startActivity(Class<?> clz) {
         startActivity(new Intent(this, clz));
-    }
-
-    /**
-     * [页面跳转]
-     *
-     * @param clz    要跳转的Activity
-     * @param intent intent
-     */
-    public void startActivity(Class<?> clz, Intent intent) {
-        intent.setClass(this, clz);
-        startActivity(intent);
+        if (isTransAnim)
+            overridePendingTransition(R.anim.activity_start_zoom_in, R.anim
+                    .activity_start_zoom_out);
     }
 
     /**
@@ -164,6 +156,9 @@ public abstract class BaseActivity  extends SupportActivity {
             intent.putExtras(bundle);
         }
         startActivity(intent);
+        if (isTransAnim)
+            overridePendingTransition(R.anim.activity_start_zoom_in, R.anim
+                    .activity_start_zoom_out);
     }
 
     /**
@@ -173,7 +168,7 @@ public abstract class BaseActivity  extends SupportActivity {
      * @param bundle      bundel数据
      * @param requestCode requestCode
      */
-    public void startNewActivityForResult(Class<?> clz, Bundle bundle,
+    public void startActivityForResult(Class<?> clz, Bundle bundle,
                                        int requestCode) {
         Intent intent = new Intent();
         intent.setClass(this, clz);
@@ -181,6 +176,31 @@ public abstract class BaseActivity  extends SupportActivity {
             intent.putExtras(bundle);
         }
         startActivityForResult(intent, requestCode);
+        if (isTransAnim)
+            overridePendingTransition(R.anim.activity_start_zoom_in, R.anim
+                    .activity_start_zoom_out);
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        if (isTransAnim)
+            overridePendingTransition(R.anim.activity_finish_trans_in, R.anim
+                    .activity_finish_trans_out);
+    }
+
+    /**
+     * 是否使用overridePendingTransition过度动画
+     * @return 是否使用overridePendingTransition过度动画，默认使用
+     */
+    protected boolean isTransAnim() {
+        return isTransAnim;
+    }
+
+    /**
+     * 设置是否使用overridePendingTransition过度动画
+     */
+    protected void setIsTransAnim(boolean b){
+        isTransAnim = b;
     }
 
 }

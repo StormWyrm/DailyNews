@@ -76,8 +76,8 @@ public class GlideUtils {
         // "23":模糊度；"4":图片缩放4倍后再进行模糊
         Glide.with(context)
                 .load(imgUrl)
-                .error(R.drawable.stackblur_default)
                 .placeholder(R.drawable.stackblur_default)
+                .error(R.drawable.stackblur_default)
                 .crossFade(300)
                 .bitmapTransform(new BlurTransformation(context, 23, 4))
                 .into(imageView);

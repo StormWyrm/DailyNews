@@ -35,17 +35,17 @@ public abstract class BaseMvpActivity<M extends IBaseModel,P extends IBasePresen
 
     @Override
     public void startNewActivity(@NonNull Class<?> clz) {
-        startActivity(clz);
+        this.startActivity(clz);
     }
 
     @Override
     public void startNewActivity(@NonNull Class<?> clz, Bundle bundle) {
-        startActivity(clz, bundle);
+        this.startActivity(clz, bundle);
     }
 
     @Override
     public void startNewActivityForResult(@NonNull Class<?> clz, Bundle bundle, int requestCode) {
-        startNewActivityForResult(clz, bundle, requestCode);
+        startActivityForResult(clz, bundle, requestCode);
     }
 
 }

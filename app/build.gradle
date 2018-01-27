@@ -6,11 +6,13 @@ android {
 
     defaultConfig {
         applicationId "com.liqingfeng.DailyNews"
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true//支持svg
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true//高斯模糊图支持
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -83,6 +85,9 @@ dependencies {
     //Rxjava2
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //RxPermission
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 
     //fragment
     compile 'me.yokeyword:fragmentation:1.2.5'

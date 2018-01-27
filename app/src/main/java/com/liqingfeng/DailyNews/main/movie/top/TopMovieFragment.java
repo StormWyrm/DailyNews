@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
+import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
@@ -109,6 +110,11 @@ public class TopMovieFragment
     @Override
     public void showNoMoreData() {
         mAdapter.loadMoreEnd();
+    }
+
+    @Override
+    public BaseActivity getBindActivity() {
+        return mActivity;
     }
 
     @Override

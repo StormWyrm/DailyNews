@@ -1,14 +1,14 @@
 package com.liqingfeng.DailyNews.detail.news;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -18,17 +18,15 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.GlideUtils;
 import com.liqingfeng.DailyNews.common.util.NetworkImageUtil;
-import com.liqingfeng.DailyNews.common.util.NetworkUtil;
-import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @AUTHER: 李青峰
@@ -48,10 +46,10 @@ public class NewsDetailActivity
     Toolbar toolBar;
     @BindView(R.id.web_view)
     WebView webView;
-    @BindView(R.id.scrollView)
-    NestedScrollView scrollView;
     @BindView(R.id.fab_share)
     FloatingActionButton fabShare;
+    @BindView(R.id.pb)
+    ContentLoadingProgressBar pb;
 
     private String title;
     private int type;//链接过来的地址类型
@@ -70,13 +68,13 @@ public class NewsDetailActivity
         super.initData(savedInstanceState);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        if(extras != null){
+        if (extras != null) {
             type = intent.getIntExtra("type", 0);
             title = intent.getStringExtra("title");
             imageUrl = intent.getStringExtra("image");
             mDetailUrl = intent.getStringExtra("url");
         }
-        initWebView();
+
     }
 
     @Override
@@ -84,14 +82,9 @@ public class NewsDetailActivity
         super.initView(saveInstanceState);
         StatusBarUtils.setTransparent(this);
         addToolBar(title, true);
+        initWebView();
 
-        if (!TextUtils.isEmpty(imageUrl)) {
-            NetworkImageUtil.loadNetImageDependNet(mActivity, imageView, imageUrl, R
-                    .drawable.bg_main_nav_header);
-        } else {
-            GlideUtils.loadPlaceHolder(mActivity, imageView, R.drawable.bg_main_nav_header);
-        }
-
+        GlideUtils.loadImage(mActivity, imageView, imageUrl, R.drawable.bg_main_nav_header);
         mPresenter.loadPage(type, mDetailUrl);
 
     }
@@ -140,7 +133,7 @@ public class NewsDetailActivity
 
     @Override
     public void showImage(String imageUrl) {
-        NetworkImageUtil.loadNetImageDependNet(mActivity, imageView, imageUrl);
+        GlideUtils.loadImage(mActivity, imageView, imageUrl, R.drawable.bg_main_nav_header);
     }
 
     @Override
@@ -150,12 +143,10 @@ public class NewsDetailActivity
         webView.setBackgroundColor(0);
     }
 
-
     @Override
     public void showError() {
         SnackBarUtil.showMessage(mActivity.getWindow().getDecorView(), getString(R.string.load_error_message));
     }
-
 
     //初始化WebView
     private void initWebView() {
@@ -173,17 +164,7 @@ public class NewsDetailActivity
         //开启application Cache功能
         mWebSetting.setAppCacheEnabled(false);
 
-        if (NetworkUtil.isWifi(mActivity)) {
-            mWebSetting.setBlockNetworkImage(false);
-        } else {
-            if ((Boolean) SPUtils.get(mActivity, Constant.Config
-                    .WAY_OF_IMAGE_SHOW, false)) {
-                mWebSetting.setBlockNetworkImage(true);
-            } else {
-                mWebSetting.setBlockNetworkImage(false);
-            }
-        }
-
+        mWebSetting.setBlockNetworkImage(false);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -193,10 +174,29 @@ public class NewsDetailActivity
             }
 
             @Override
-            public void onPageFinished(WebView view, String url) {
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                if (pb != null)
+                    pb.setVisibility(View.VISIBLE);
+            }
 
+            @Override
+            public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                if (pb != null)
+                    pb.setVisibility(View.GONE);
+                mToolBar.setTitle(title);
+            }
+        });
+        webView.setWebChromeClient(new WebChromeClient() {
+
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                if (pb != null)
+                    pb.setProgress(newProgress);
             }
         });
     }
+
 }

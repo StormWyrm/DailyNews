@@ -13,12 +13,13 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="240dp"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleGravity="left|bottom"
-            app:expandedTitleMargin="20dp"
+            app:expandedTitleMargin="15dp"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
+            app:statusBarScrim="@android:color/transparent">
 
             <ImageView
                 android:id="@+id/image_view"
@@ -42,22 +43,28 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/scrollView"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadeScrollbars="true"
-        android:scrollbarFadeDuration="1"
-        android:scrollbars="vertical"
+        android:descendantFocusability="blocksDescendants"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <WebView
+        <com.liqingfeng.DailyNews.detail.news.widget.NestedScrollWebView
             android:id="@+id/web_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent" />
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:overScrollMode="never"
+            android:scrollbars="vertical" />
 
-    </android.support.v4.widget.NestedScrollView>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/pb"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+    </FrameLayout>
 
 
     <android.support.design.widget.FloatingActionButton

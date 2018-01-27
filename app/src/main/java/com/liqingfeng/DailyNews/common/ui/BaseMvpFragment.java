@@ -74,6 +74,6 @@ public abstract class BaseMvpFragment<M extends IBaseModel,P extends IBasePresen
 
     @Override
     public void startNewActivityForResult(@NonNull Class<?> clz, Bundle bundle, int requestCode) {
-        mActivity.startNewActivityForResult(clz,bundle,requestCode);
+        mActivity.startActivityForResult(clz,bundle,requestCode);
     }
 }

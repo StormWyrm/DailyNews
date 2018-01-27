@@ -1,9 +1,13 @@
 package com.liqingfeng.DailyNews.detail.movie;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,9 +23,11 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.PersonBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.GlideUtils;
+import com.liqingfeng.DailyNews.common.util.ResourcesUtils;
 import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 import com.liqingfeng.DailyNews.detail.movie.adapter.MovieDetailAdapter;
 import com.liqingfeng.DailyNews.detail.movie.view.CompatNestedScrollView;
@@ -82,16 +88,13 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
         return R.layout.activity_movie_detail;
     }
 
-
     @Override
     protected void initData(Bundle saveInstanceState) {
         super.initData(saveInstanceState);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            mSubjectBean = (SubjectsBean) extras.getSerializable("SubjectBean");
+            mSubjectBean = (SubjectsBean) extras.getSerializable(BundleKeyConstant.BUNDLE_KEY_MOVIE_SUBJECTBEAN);
         }
-
-
     }
 
     @Override
@@ -106,10 +109,21 @@ public class MovieDetailActivity extends BaseMvpActivity<MovieDetailContract.Mod
         toolbar.setBackgroundColor(Color.TRANSPARENT);
         nsvScrollView.bindAlphaView(ivToolbarBg);
         nsvScrollView.setNestedScrollingEnabled(false);
-
-
     }
 
+    /**
+     * @param context      activity
+     * @param subjectsBean bean
+     * @param imageView    imageView
+     */
+    public static void start(Activity context, SubjectsBean subjectsBean, ImageView imageView) {
+        Intent intent = new Intent(context, MovieDetailActivity.class);
+        intent.putExtra(BundleKeyConstant.BUNDLE_KEY_MOVIE_SUBJECTBEAN, subjectsBean);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation
+                (context, imageView, ResourcesUtils.getString(R.string.transition_movie_img));
+        //与xml文件对应
+        ActivityCompat.startActivity(context, intent, options.toBundle());
+    }
 
     @NonNull
     @Override

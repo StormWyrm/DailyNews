@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
+import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
@@ -32,7 +33,7 @@ public interface TopMovieContract {
 
         void showNoMoreData();
 
-
+        BaseActivity getBindActivity();
     }
 
     abstract class Presenter extends IBasePresenter<Model, View> {

@@ -1,12 +1,19 @@
 package com.liqingfeng.DailyNews.main.movie.top;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.widget.ImageView;
 
+import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
 import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
+
+import java.io.Serializable;
 
 import io.reactivex.functions.Consumer;
 
@@ -61,7 +68,7 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                 @Override
                 public void accept(HotMovieBean hotMovieBean) throws Exception {
                     isLoading = false;
-                    if(mView == null)
+                    if (mView == null)
                         return;
                     if (hotMovieBean != null && hotMovieBean.getSubjects() != null &&
                             hotMovieBean.getSubjects().size() > 0) {
@@ -76,7 +83,7 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
                 public void accept(Throwable throwable) throws Exception {
                     throwable.printStackTrace();
                     isLoading = false;
-                    if(mView == null)
+                    if (mView == null)
                         return;
                     mView.showLoadMoreError();
                 }
@@ -86,9 +93,17 @@ public class TopMoviePresenter extends TopMovieContract.Presenter {
 
     @Override
     void onItemClick(int position, SubjectsBean subjectsBean, ImageView imageView) {
-        Bundle extra = new Bundle();
-        extra.putSerializable("SubjectBean",subjectsBean);
-        mView.startNewActivity(MovieDetailActivity.class,extra);
+//        Intent intent = new Intent(mView.getBindActivity(), MovieDetailActivity.class);
+//        Bundle extra = new Bundle();
+//        extra.putSerializable("SubjectBean", subjectsBean);
+//        intent.putExtras(extra);
+//
+//        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(mView.getBindActivity(),
+//                imageView, mView.getBindActivity().getString(R.string.transition_movie_img));
+//
+//        ActivityCompat.startActivity(mView.getBindActivity(), intent, options.toBundle());
+        MovieDetailActivity.start(mView.getBindActivity(), subjectsBean, imageView);
+
     }
 
 }
