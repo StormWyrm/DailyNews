@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.ContentLoadingProgressBar;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +20,10 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
 import com.liqingfeng.DailyNews.common.util.GlideUtils;
-import com.liqingfeng.DailyNews.common.util.NetworkImageUtil;
 import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @AUTHER: 李青峰
@@ -103,7 +100,7 @@ public class NewsDetailActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.detail_menu, menu);
+        getMenuInflater().inflate(R.menu.news_detail_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

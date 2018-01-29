@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Theme Light -->
+    <style name="BaseAppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="colorPrimary">?attr/themeColor</item>
+        <item name="colorPrimaryDark">?attr/themeColor</item>
+        <item name="colorAccent">?attr/themeColor</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/window_background_light</item>
+        <item name="android:listDivider">@color/list_divider_light</item>
+        <item name="widgetBackground">@color/selectable_item_background_general_light_normal</item>
+        <item name="widgetBackgroundDark">@color/selectable_item_background_general_light_pressed
+        </item>
+        <item name="widgetBackgroundTitle">@android:color/white</item>
+    </style>
+
+    <style name="AppThemeLight" parent="BaseAppThemeLight">
+        <item name="themeColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppThemeLight.NoTranslucent" parent="BaseAppThemeLight">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <!-- App Theme Dark -->
+    <style name="BaseAppThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="colorPrimary">?attr/themeColor</item>
+        <item name="colorPrimaryDark">?attr/themeColor</item>
+        <item name="colorAccent">?attr/themeColor</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/window_background_dark</item>
+        <item name="android:listDivider">@color/list_divider_dark</item>
+        <item name="widgetBackground">@color/selectable_item_background_general_dark_normal</item>
+        <item name="widgetBackgroundDark">@color/selectable_item_background_general_dark_pressed
+        </item>
+        <item name="widgetBackgroundTitle">?attr/colorPrimary</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppThemeDark" parent="BaseAppThemeDark">
+        <item name="themeColor">@color/colorPrimary</item>
+    </style>
+
+</resources>

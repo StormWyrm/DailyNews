@@ -27,7 +27,7 @@ public class SnackBarUtil {
 
         Snackbar snackbar = Snackbar.make(container, message, Snackbar.LENGTH_SHORT);
         View view = snackbar.getView();
-        view.setBackgroundColor(view.getContext().getResources().getColor(R.color.viewBackground));
+        view.setBackgroundColor(view.getContext().getResources().getColor(R.color.windowBackground));
 
         snackbar.setAction(todoTitle, new View
                 .OnClickListener() {

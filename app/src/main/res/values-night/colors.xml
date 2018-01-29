@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">@color/themeColor</color>
 
-    <color name="colorPrimary">#35464e</color>
-    <color name="colorPrimaryDark">#35464e</color>
+    <color name="themeColor">#35464e</color>
     <color name="colorAccent">#183341</color>
-
     <color name="textColorPrimary">#a9a9a9</color>
-    <color name="viewBackground">#212a2f</color>
-    <color name="textTitleColor">#000</color>
-    <color name="textContentColor">#A9A9A9</color>
+    <color name="windowBackground">#212a2f</color>
+    <color name="listDividerColor">#d2d2d2</color>
+    <color name="selectable_item_background_normal">@color/themeColor</color>
+    <color name="selectable_item_background_pressed">@color/windowBackground</color>
+    <color name="textTitleColor">@color/textColorPrimary</color>
+    <color name="textContentColor">#fff</color>
 
 </resources>

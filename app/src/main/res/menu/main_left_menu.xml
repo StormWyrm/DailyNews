@@ -2,34 +2,38 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <group
-        android:id="@+id/first_group"
-        >
+        android:id="@+id/first_group">
         <item
-            android:id="@+id/nav_zh_hot"
-            android:icon="@drawable/icon_main_nav_zhhot"
-            android:title="@string/main_nav_zhhot"
-            />
+            android:id="@+id/nav_project_repository"
+            android:icon="@drawable/ic_vector_project"
+            android:title="@string/main_nav_project_repository" />
+
         <item
-            android:id="@+id/nav_change_theme"
-            android:icon="@drawable/icon_main_nav_theme"
-            android:title="@string/main_nav_change_theme"/>
+            android:id="@+id/nav_project_qrcode"
+            android:icon="@drawable/ic_vector_qrcode"
+            android:title="@string/main_nav_project_qrcode" />
+
+        <item
+            android:id="@+id/nav_share_project"
+            android:icon="@drawable/ic_vector_share"
+            android:title="@string/main_nav_share_repository" />
 
     </group>
     <group
-        android:id="@+id/second_group"
-        >
+        android:id="@+id/second_group">
+
         <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/icon_main_nav_setting"
-            android:title="@string/main_nav_setting"
-            />
+            android:id="@+id/nav_change_theme"
+            android:icon="@drawable/ic_vector_theme"
+            android:title="@string/main_nav_change_theme"/>
+
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/icon_main_nav_about"
+            android:icon="@drawable/ic_vector_setting"
             android:title="@string/main_nav_about"/>
         <item
             android:id="@+id/nav_exit"
-            android:icon="@drawable/icon_main_nav_exit"
+            android:icon="@drawable/ic_vector_exit"
             android:title="@string/main_nav_exit"/>
     </group>
 

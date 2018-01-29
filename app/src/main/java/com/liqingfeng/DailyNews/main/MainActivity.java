@@ -15,12 +15,13 @@ import android.view.MenuItem;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.about.AboutActivity;
+import com.liqingfeng.DailyNews.browser.BrowserActivity;
 import com.liqingfeng.DailyNews.common.AppApplication;
+import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseActivity;
 import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
-import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
 import com.liqingfeng.DailyNews.main.home.HomeRootFragment;
@@ -95,18 +96,26 @@ public class MainActivity extends BaseActivity
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.nav_zh_hot:
-//                        startActivity(new Intent(mActivity, ZHHotActivity.class));
+                    case R.id.nav_project_repository:
+                        Bundle extra = new Bundle();
+                        extra.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL,
+                                "https://github.com/StormWyrm/DailyNews");
+                        startActivity(BrowserActivity.class,extra);
+                        break;
+                    case R.id.nav_project_qrcode:
+                        startActivity(QrcodeActivity.class);
+                        break;
+                    case R.id.nav_share_project:
+
                         break;
                     case R.id.nav_change_theme:
                         changeUiTheme();
                         break;
-                    case R.id.nav_setting:
-                        startActivity(new Intent(mActivity, SettingActivity.class));
-                        break;
+
                     case R.id.nav_about:
                         startActivity(new Intent(mActivity, AboutActivity.class));
                         break;
+
                     case R.id.nav_exit:
                         MobclickAgent.onKillProcess(mActivity);
                         AppApplication.getInstance().exit();
@@ -187,11 +196,12 @@ public class MainActivity extends BaseActivity
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             SPUtils.put(mActivity, Constant.Config.UI_MODE_NIGHT, true);
         }
-        recreate();
+
         if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
             mDrawerLayout.closeDrawer(Gravity.START);
             return;
         }
+        recreate();
     }
 
 }
