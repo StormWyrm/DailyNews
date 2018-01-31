@@ -24,11 +24,10 @@ import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.common.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
+import com.liqingfeng.DailyNews.main.home.HomeFragment;
 import com.liqingfeng.DailyNews.main.home.HomeRootFragment;
-import com.liqingfeng.DailyNews.main.home.HomeViewPagerFragment;
 import com.liqingfeng.DailyNews.main.movie.MovieRootFragment;
 import com.liqingfeng.DailyNews.main.personal.PersonalRootFragment;
-import com.liqingfeng.DailyNews.setting.SettingActivity;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
@@ -42,7 +41,7 @@ import butterknife.BindView;
  * @VERSION: V1.0
  */
 public class MainActivity extends BaseActivity
-        implements HomeViewPagerFragment.OnDrawerLayoutOpenListener {
+        implements HomeFragment.OnDrawerLayoutOpenListener {
     public static final int TIME_OF_BACK = 1500;
 
     @BindView(R.id.bniv_bar)
@@ -64,8 +63,8 @@ public class MainActivity extends BaseActivity
     @Override
     protected void initData(Bundle saveInstanceState) {
         super.initData(saveInstanceState);
-
-        if (saveInstanceState == null) {
+        BaseFragment firstFragment = findFragment(HomeRootFragment.class);
+        if (firstFragment == null) {
             mFragments[0] = HomeRootFragment.newInstance();
             mFragments[1] = GankioRootFragment.newInstance();
             mFragments[2] = MovieRootFragment.newInstance();
@@ -82,7 +81,7 @@ public class MainActivity extends BaseActivity
             // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
 
             // 这里我们需要拿到mFragments的引用
-            mFragments[0] = findFragment(HomeRootFragment.class);
+            mFragments[0] = firstFragment;
             mFragments[1] = findFragment(GankioRootFragment.class);
             mFragments[2] = findFragment(MovieRootFragment.class);
             mFragments[3] = findFragment(PersonalRootFragment.class);
@@ -179,7 +178,6 @@ public class MainActivity extends BaseActivity
         super.onBackPressedSupport();
     }
 
-
     @Override
     public void onOpen() {
         mDrawerLayout.openDrawer(Gravity.START);
@@ -197,11 +195,12 @@ public class MainActivity extends BaseActivity
             SPUtils.put(mActivity, Constant.Config.UI_MODE_NIGHT, true);
         }
 
+
         if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
             mDrawerLayout.closeDrawer(Gravity.START);
-            return;
         }
-        recreate();
+
+        reload();
     }
 
 }

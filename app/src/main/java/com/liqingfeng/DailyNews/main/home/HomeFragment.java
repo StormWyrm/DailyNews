@@ -3,6 +3,7 @@ package com.liqingfeng.DailyNews.main.home;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +18,7 @@ import butterknife.BindView;
 /**
  * 主页Fragment
  */
-public class HomeViewPagerFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
     @BindView(R.id.toolBar)
     Toolbar toolBar;
     @BindView(R.id.tabLayout)
@@ -29,12 +30,12 @@ public class HomeViewPagerFragment extends BaseFragment {
     private HomePagerAdapter mAdapter;
     private String[] titles;
 
-    public HomeViewPagerFragment() {
+    public HomeFragment() {
 
     }
 
-    public static HomeViewPagerFragment newInstance() {
-        HomeViewPagerFragment fragment = new HomeViewPagerFragment();
+    public static HomeFragment newInstance() {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -74,10 +75,14 @@ public class HomeViewPagerFragment extends BaseFragment {
             }
         });
 
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
         mAdapter = new HomePagerAdapter(getChildFragmentManager(),titles);
         vpHome.setAdapter(mAdapter);
         tabLayout.setupWithViewPager(vpHome);
-
     }
 
     public interface OnDrawerLayoutOpenListener{

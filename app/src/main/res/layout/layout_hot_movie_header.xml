@@ -12,7 +12,7 @@
         android:clickable="true"
         android:focusable="true"
         app:cardElevation="1dp"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:background="?attr/actionBarItemBackground"
         app:cardCornerRadius="5dp">
 
         <RelativeLayout

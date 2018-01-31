@@ -30,9 +30,10 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
+                android:textColor="@color/textTitleColor"
                 android:gravity="center_vertical"
                 android:text="Android"
-                android:textSize="16sp"/>
+                android:textSize="@dimen/font_normal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +51,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="更多"
-                android:textSize="16sp"/>
+                android:textColor="@color/textTitleColor"
+                android:textSize="@dimen/font_normal"/>
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/iv_more"
@@ -88,6 +90,7 @@
             android:background="@color/text_translucent"
             android:padding="8dp"
             android:text="content"
-            android:textColor="@color/white"/>
+            android:textSize="@dimen/font_small"
+            android:textColor="@color/textContentColor"/>
     </FrameLayout>
 </LinearLayout>

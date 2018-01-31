@@ -22,6 +22,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="8dp"
+        android:textColor="@color/textContentColor"
         android:gravity="center_vertical"
         android:text="@string/main_recycler_loading_more" />
 

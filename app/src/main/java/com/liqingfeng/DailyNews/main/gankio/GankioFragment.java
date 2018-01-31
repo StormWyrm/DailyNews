@@ -1,6 +1,7 @@
 package com.liqingfeng.DailyNews.main.gankio;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -40,6 +41,18 @@ public class GankioFragment extends BaseFragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        RxBus.get().register(this);
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        RxBus.get().unRegister(this);
+        super.onDestroy();
+    }
 
     @Override
     protected int getLayoutId() {
@@ -49,7 +62,7 @@ public class GankioFragment extends BaseFragment {
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        RxBus.get().register(this);
+
         titles = new String[]{
                 getString(R.string.gankio_day),
                 getString(R.string.gankio_custom),
@@ -61,22 +74,17 @@ public class GankioFragment extends BaseFragment {
         fragments[1] = new GankioCustomFragment();
         fragments[2] = new GankioWelfareFragment();
 
+
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
         mAdapter = new GankioMainPagerApater(getChildFragmentManager(), fragments, titles);
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RxBus.get().unRegister(this);
-    }
-
-    @Override
-    protected void initView(Bundle savedInstanceState) {
-        super.initView(savedInstanceState);
         vpGank.setAdapter(mAdapter);
         tabGank.setupWithViewPager(vpGank);
     }
+
 
     /**
      * 切换tabs

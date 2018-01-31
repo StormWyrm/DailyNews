@@ -54,6 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@color/windowBackground"
             android:focusableInTouchMode="true"
             android:overScrollMode="never"
             android:scrollbars="vertical" />
@@ -72,8 +74,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:background="@color/colorPrimary"
         android:clickable="true"
-        android:src="@drawable/icon_detail_share"
+        android:src="@drawable/ic_vector_share"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="right|bottom" />
 </android.support.design.widget.CoordinatorLayout>

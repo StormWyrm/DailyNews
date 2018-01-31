@@ -81,7 +81,7 @@ public class NewsDetailActivity
         addToolBar(title, true);
         initWebView();
 
-        GlideUtils.loadImage(mActivity, imageView, imageUrl, R.drawable.bg_main_nav_header);
+        GlideUtils.loadImage(mActivity, imageView, imageUrl, R.mipmap.bg_main_nav_header);
         mPresenter.loadPage(type, mDetailUrl);
 
     }
@@ -130,7 +130,7 @@ public class NewsDetailActivity
 
     @Override
     public void showImage(String imageUrl) {
-        GlideUtils.loadImage(mActivity, imageView, imageUrl, R.drawable.bg_main_nav_header);
+        GlideUtils.loadImage(mActivity, imageView, imageUrl, R.mipmap.bg_main_nav_header);
     }
 
     @Override

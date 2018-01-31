@@ -29,8 +29,8 @@ public class HomeRootFragment extends BaseFragment {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         //懒加载
-        if(findChildFragment(HomeViewPagerFragment.class) == null){
-            loadRootFragment(R.id.fl_container,HomeViewPagerFragment.newInstance());
+        if(findChildFragment(HomeFragment.class) == null){
+            loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
         }
     }
 }

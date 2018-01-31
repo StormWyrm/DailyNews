@@ -31,8 +31,8 @@ public class GlideUtils {
         Glide.with(context)
                 .load(imagePath)
                 .asBitmap()
-                .placeholder(R.drawable.ic_vector_load_default)
-                .error(R.drawable.ic_vector_load_default)
+                .placeholder(R.drawable.ic_vector_news_default)
+                .error(R.drawable.ic_vector_news_default)
                 .centerCrop()
                 .into(imageView);
 
@@ -76,8 +76,8 @@ public class GlideUtils {
         // "23":模糊度；"4":图片缩放4倍后再进行模糊
         Glide.with(context)
                 .load(imgUrl)
-                .placeholder(R.drawable.stackblur_default)
-                .error(R.drawable.stackblur_default)
+                .placeholder(R.mipmap.img_stackblur_default)
+                .error(R.mipmap.img_stackblur_default)
                 .crossFade(300)
                 .bitmapTransform(new BlurTransformation(context, 23, 4))
                 .into(imageView);
@@ -94,8 +94,8 @@ public class GlideUtils {
         // "23":模糊度；"4":图片缩放4倍后再进行模糊
         Glide.with(context)
                 .load(file)
-                .error(R.drawable.stackblur_default)
-                .placeholder(R.drawable.stackblur_default)
+                .error(R.mipmap.img_stackblur_default)
+                .placeholder(R.mipmap.img_stackblur_default)
                 .crossFade(300)
                 .bitmapTransform(new BlurTransformation(context, 23, 4))
                 .into(imageView);
@@ -112,8 +112,8 @@ public class GlideUtils {
         // "23":模糊度；"4":图片缩放4倍后再进行模糊
         Glide.with(context)
                 .load(resourceId)
-                .error(R.drawable.stackblur_default)
-                .placeholder(R.drawable.stackblur_default)
+                .error(R.mipmap.img_stackblur_default)
+                .placeholder(R.mipmap.img_stackblur_default)
                 .crossFade(300)
                 .bitmapTransform(new BlurTransformation(context, 23, 4))
                 .into(imageView);

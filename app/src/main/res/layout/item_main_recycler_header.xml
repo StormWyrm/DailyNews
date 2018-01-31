@@ -6,7 +6,7 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginTop="5dp"
-    android:foreground="?attr/actionBarItemBackground"
+    android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="5dp"
     app:cardElevation="1dp"
     app:cardPreventCornerOverlap="true">

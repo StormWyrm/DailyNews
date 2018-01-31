@@ -9,7 +9,7 @@
     android:layout_marginTop="5dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="5dp"
     app:cardElevation="1dp"
     app:cardPreventCornerOverlap="true">
@@ -29,7 +29,7 @@
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="3"
-            android:textColor="@color/black"
+            android:textColor="@color/textTitleColor"
             android:textSize="@dimen/font_normal"/>
 
         <ImageView

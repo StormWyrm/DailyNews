@@ -38,7 +38,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/layout_main_left_header"
-        app:itemBackground="?attr/selectableItemBackground"
         app:itemTextAppearance="@style/MyTabLayoutTextAppearance"
         app:itemIconTint="@color/textColorPrimary"
         app:menu="@menu/main_left_menu" />

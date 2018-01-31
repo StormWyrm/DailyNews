@@ -3,7 +3,6 @@ package com.liqingfeng.DailyNews.browser;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.ContentLoadingProgressBar;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -19,7 +18,6 @@ import com.liqingfeng.DailyNews.common.util.NetworkUtil;
 import com.liqingfeng.DailyNews.common.util.SPUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @AUTHER: 李青峰

@@ -7,7 +7,7 @@
     android:layout_marginTop="5dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="5dp"
     app:cardElevation="1dp"
     app:cardPreventCornerOverlap="true">
@@ -29,7 +29,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="标题"
-            android:textColor="@color/black"
+            android:textColor="@color/textTitleColor"
             android:textSize="@dimen/font_normal" />
 
         <TextView
@@ -40,6 +40,7 @@
             android:ellipsize="end"
             android:gravity="left|bottom"
             android:maxLines="3"
+            android:textColor="@color/textContentColor"
             android:text="内容"
             android:textSize="@dimen/font_small" />
 

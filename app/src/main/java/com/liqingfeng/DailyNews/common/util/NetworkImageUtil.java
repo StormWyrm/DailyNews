@@ -1,7 +1,6 @@
 package com.liqingfeng.DailyNews.common.util;
 
 import android.content.Context;
-import android.content.MutableContextWrapper;
 import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.R;
@@ -33,7 +32,7 @@ public class NetworkImageUtil {
         } else {
             //判断是否允许非WIFT网络加载图片
             if (!(Boolean) SPUtils.get(context, Constant.Config.WAY_OF_IMAGE_SHOW, true)) {
-                GlideUtils.loadPlaceHolder(context, imageView, R.drawable.icon_load_default);
+                GlideUtils.loadPlaceHolder(context, imageView, R.drawable.ic_vector_news_default);
             } else {
                 GlideUtils.loadImage(context, imageView, imageUrl);
             }
@@ -56,7 +55,7 @@ public class NetworkImageUtil {
         } else {
             //判断是否允许非WIFT网络加载图片
             if (!(Boolean) SPUtils.get(context, Constant.Config.WAY_OF_IMAGE_SHOW, false)) {
-                GlideUtils.loadPlaceHolder(context, imageView, R.drawable.bg_main_nav_header);
+                GlideUtils.loadPlaceHolder(context, imageView, R.mipmap.bg_main_nav_header);
             } else {
                 GlideUtils.loadPlaceHolder(context, imageView, resourceId);
             }

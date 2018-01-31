@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:clickable="true"
-        android:src="@drawable/icon_detail_share"
+        android:src="@drawable/ic_vector_share"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="right|bottom" />
 </android.support.design.widget.CoordinatorLayout>

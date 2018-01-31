@@ -3,9 +3,7 @@ package com.liqingfeng.DailyNews.main.home.tabs;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,11 +16,8 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeHotNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
-import com.liqingfeng.DailyNews.common.constant.Constant;
 import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.NetworkUtil;
-import com.liqingfeng.DailyNews.common.util.SPUtils;
 import com.liqingfeng.DailyNews.main.home.adapter.GuokeNewsAdapter;
 
 import java.util.List;
@@ -111,8 +106,8 @@ public class GuokeNewsFragment
             for (int i = 0; i < list.size(); i++) {
                 final GuokeHotNewsItemBean resultBean = list.get(i);
                 TextSliderView textSliderView = new TextSliderView(mActivity);
-                textSliderView.empty(R.drawable.ic_vector_load_default)
-                        .error(R.drawable.ic_vector_load_default)
+                textSliderView.empty(R.drawable.ic_vector_news_default)
+                        .error(R.drawable.ic_vector_news_default)
                         .description(resultBean.custom_title)
                         .setScaleType(BaseSliderView.ScaleType.CenterCrop);
 
@@ -120,7 +115,7 @@ public class GuokeNewsFragment
                 if (resultBean != null && !TextUtils.isEmpty(resultBean.picture))
                     textSliderView.image(resultBean.picture);
                 else
-                    textSliderView.image(R.drawable.ic_vector_load_default);
+                    textSliderView.image(R.drawable.ic_vector_news_default);
 
 
                 mSlider.addSlider(textSliderView);

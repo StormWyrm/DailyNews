@@ -9,5 +9,4 @@
         android:width="1px"
         android:color="@color/textContentColor" />
 
-
 </shape>
