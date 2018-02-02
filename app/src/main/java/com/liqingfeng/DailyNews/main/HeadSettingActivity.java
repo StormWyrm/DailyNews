@@ -9,11 +9,12 @@ import android.view.View;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.RxEventHeadBean;
-import com.liqingfeng.DailyNews.common.constant.HeadConstant;
-import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
-import com.liqingfeng.DailyNews.common.rxbus.RxBus;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.main.personal.widget.ClipViewLayout;
+import com.liqingfeng.DailyNews.constant.HeadConstant;
+import com.liqingfeng.DailyNews.constant.RxBusCodeCanstant;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
+import com.liqingfeng.sdk.rxbus.RxBus;
+import com.liqingfeng.sdk.widgets.headclip.ClipViewLayout;
+
 
 import java.io.File;
 import java.io.IOException;

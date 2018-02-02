@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.util.GlideUtils;
+import com.liqingfeng.DailyNews.util.GlideUtils;
 
 import java.util.List;
 

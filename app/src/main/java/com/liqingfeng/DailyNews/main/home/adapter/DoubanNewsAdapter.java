@@ -7,8 +7,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.util.NetworkImageUtil;
+import com.liqingfeng.DailyNews.AppApplication;
+import com.liqingfeng.DailyNews.util.NetworkImageUtil;
 
 import java.util.List;
 

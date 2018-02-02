@@ -2,12 +2,11 @@ package com.liqingfeng.DailyNews.main.home.tabs;
 
 import android.text.TextUtils;
 
-import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeHotNewsListBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsListBean;
 import com.liqingfeng.DailyNews.network.GuokeNewsService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class GuokeNewsModel implements GuokeNewsContract.Model {
     private GuokeNewsService guokeNewsService;
 
     public GuokeNewsModel() {
-        guokeNewsService = NetworkHelper.getInstance()
+        guokeNewsService = RetrofitHelper.getInstance()
                 .getService(GuokeNewsService.class, GuokeNewsService.HOST);
     }
 

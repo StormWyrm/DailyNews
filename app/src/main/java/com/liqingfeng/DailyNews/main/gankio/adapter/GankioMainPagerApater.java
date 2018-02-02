@@ -4,7 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.liqingfeng.DailyNews.common.ui.BaseFragment;
+import com.liqingfeng.sdk.base.fragment.BaseFragment;
+
 
 /**
  * Created by lonlife on 2018/1/11.

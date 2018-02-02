@@ -11,12 +11,12 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareItemBean;
-import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
-import com.liqingfeng.DailyNews.common.rxbus.RxBus;
-import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
-import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
+import com.liqingfeng.DailyNews.constant.RxBusCodeCanstant;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.rxbus.RxBus;
+import com.liqingfeng.sdk.rxbus.Subscribe;
+import com.liqingfeng.sdk.base.fragment.BaseRecycleFragment;
+import com.liqingfeng.DailyNews.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioWelfareAdapter;
 
 import java.util.List;

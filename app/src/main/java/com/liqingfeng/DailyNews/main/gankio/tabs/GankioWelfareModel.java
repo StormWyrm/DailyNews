@@ -2,7 +2,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 
 import com.liqingfeng.DailyNews.bean.gankio.GankIoWelfareListBean;
 import com.liqingfeng.DailyNews.network.GankioService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,7 +17,7 @@ public class GankioWelfareModel implements GankioWelfareContract.Model {
     private GankioService mGankioService;
 
     public GankioWelfareModel() {
-        mGankioService = NetworkHelper.getInstance().getService(GankioService.class, GankioService.HOST);
+        mGankioService = RetrofitHelper.getInstance().getService(GankioService.class, GankioService.HOST);
     }
 
     @Override

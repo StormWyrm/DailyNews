@@ -3,7 +3,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomListBean;
 import com.liqingfeng.DailyNews.network.GankioService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 
 import io.reactivex.Observable;
@@ -20,7 +20,7 @@ public class GankioCustomModel implements GankioCustomContract.Model {
     private GankioService mGankioService;
 
     public GankioCustomModel() {
-        mGankioService = NetworkHelper.getInstance().getService(GankioService.class, GankioService.HOST);
+        mGankioService = RetrofitHelper.getInstance().getService(GankioService.class, GankioService.HOST);
     }
 
     @Override

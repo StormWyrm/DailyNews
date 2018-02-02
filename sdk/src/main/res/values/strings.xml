@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">sdk</string>
+    <string name="empty_no_data">没有数据，点击重试</string>
+    <string name="empty_network_error">网络错误，点击重试</string>
+    <string name="dialog_positive">确定</string>
+    <string name="dialog_negative">取消</string>
 </resources>

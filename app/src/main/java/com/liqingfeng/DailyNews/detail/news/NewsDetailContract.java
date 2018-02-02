@@ -1,11 +1,8 @@
 package com.liqingfeng.DailyNews.detail.news;
 
-import com.liqingfeng.DailyNews.common.ui.BasePresenter;
-import com.liqingfeng.DailyNews.common.ui.BaseView;
-import com.liqingfeng.DailyNews.common.ui.IBaseActivity;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.ui.IBaseView;
+import com.liqingfeng.sdk.base.IBaseActivity;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.base.IBasePresenter;
 
 /**
  * @AUTHER: 李青峰
@@ -17,7 +14,7 @@ import com.liqingfeng.DailyNews.common.ui.IBaseView;
  */
 public interface NewsDetailContract {
 
-    interface Model extends IBaseModel{}
+    interface Model extends IBaseModel {}
 
     interface View extends IBaseActivity {
         String getActionBarTitle();

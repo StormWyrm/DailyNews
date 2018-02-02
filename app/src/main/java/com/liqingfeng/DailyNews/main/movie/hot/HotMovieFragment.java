@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
+import com.liqingfeng.sdk.base.fragment.BaseRecycleFragment;
+import com.liqingfeng.DailyNews.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
 
 import java.util.List;

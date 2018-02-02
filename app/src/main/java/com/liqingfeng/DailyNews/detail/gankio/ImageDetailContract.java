@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.bumptech.glide.DrawableTypeRequest;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.ui.IBaseView;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.IBaseView;
+
 
 /**
  * Created by lonlife on 2018/1/13.

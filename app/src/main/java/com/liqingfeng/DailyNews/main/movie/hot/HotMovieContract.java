@@ -6,11 +6,10 @@ import android.widget.ImageView;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.main.movie.adapter.HotMovieAdapter;
+import com.liqingfeng.sdk.base.IBaseFragment;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
 
 import java.util.List;
 

@@ -2,16 +2,13 @@ package com.liqingfeng.DailyNews.main.home.tabs;
 
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsListBean;
-import com.liqingfeng.DailyNews.bean.zhihu.ZHHotNews;
-import com.liqingfeng.DailyNews.common.ui.IBaseFragment;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.ui.IBaseView;
+import com.liqingfeng.sdk.base.IBaseFragment;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.base.IBasePresenter;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.http.Path;
 
 /**
  * @AUTHER: 李青峰

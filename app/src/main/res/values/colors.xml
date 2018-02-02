@@ -3,7 +3,7 @@
     <color name="colorPrimary">@color/themeColor</color>
 
     <color name="themeColor">#3F51B5</color>
-    <color name="colorAccent">#413d3d</color>
+    <color name="colorAccent">#fc7474</color>
     <color name="textColorPrimary">@color/black</color>
     <color name="windowBackground">#ffeeeeee</color>
     <color name="listDividerColor">@color/grey</color>

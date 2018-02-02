@@ -6,9 +6,7 @@ import android.text.TextUtils;
 import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsItemBean;
 import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsListBean;
 import com.liqingfeng.DailyNews.network.DoubanNewsService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
-
-import org.w3c.dom.Text;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class DoubanNewsModel implements DoubanNewsContract.Model {
     private DoubanNewsService doubanNewsService;
 
     public DoubanNewsModel() {
-        doubanNewsService = NetworkHelper.getInstance()
+        doubanNewsService = RetrofitHelper.getInstance()
                 .getService(DoubanNewsService.class, DoubanNewsService.HOST);
     }
 

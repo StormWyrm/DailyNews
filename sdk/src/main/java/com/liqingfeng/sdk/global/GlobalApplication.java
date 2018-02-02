@@ -9,9 +9,10 @@ import android.os.Handler;
  */
 
 public class GlobalApplication extends Application {
-    protected static GlobalApplication mApp;
+    private static GlobalApplication mApp;
     protected static Context mContext;
     protected static Handler mHandler;
+    protected static int mainThreadId;
 
     @Override
     public void onCreate() {
@@ -19,6 +20,7 @@ public class GlobalApplication extends Application {
         mApp = this;
         mContext = getApplicationContext();
         mHandler = new Handler();
+        mainThreadId = android.os.Process.myTid();
     }
 
 
@@ -42,6 +44,15 @@ public class GlobalApplication extends Application {
      */
     public static Handler getHandler() {
         return mHandler;
+    }
+
+    /**
+     * 获取主线程id
+     *
+     * @return 主线程id
+     */
+    public static int getMainThreadId() {
+        return mainThreadId;
     }
 
 }

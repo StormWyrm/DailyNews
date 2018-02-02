@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.ui.BaseFragment;
-import com.liqingfeng.DailyNews.main.movie.MovieRootFragment;
-import com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment;
 import com.liqingfeng.DailyNews.main.personal.tab.PersonalFragment;
+import com.liqingfeng.sdk.base.fragment.BaseFragment;
 
 /**
  * Created by lonlife on 2018/1/25.

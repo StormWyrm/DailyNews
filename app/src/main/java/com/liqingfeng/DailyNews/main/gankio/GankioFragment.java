@@ -7,10 +7,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
-import com.liqingfeng.DailyNews.common.rxbus.RxBus;
-import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
-import com.liqingfeng.DailyNews.common.ui.BaseFragment;
+import com.liqingfeng.DailyNews.constant.RxBusCodeCanstant;
+import com.liqingfeng.sdk.base.fragment.BaseFragment;
+import com.liqingfeng.sdk.rxbus.RxBus;
+import com.liqingfeng.sdk.rxbus.Subscribe;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioMainPagerApater;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioCustomFragment;
 import com.liqingfeng.DailyNews.main.gankio.tabs.GankioDayFragment;

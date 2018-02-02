@@ -15,16 +15,16 @@ import android.view.View;
 
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.RxEventHeadBean;
-import com.liqingfeng.DailyNews.common.constant.HeadConstant;
-import com.liqingfeng.DailyNews.common.constant.RxBusCodeCanstant;
-import com.liqingfeng.DailyNews.common.rxbus.RxBus;
-import com.liqingfeng.DailyNews.common.rxbus.Subscribe;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.AppUtils;
-import com.liqingfeng.DailyNews.common.util.FileUtils;
+import com.liqingfeng.DailyNews.constant.HeadConstant;
+import com.liqingfeng.DailyNews.constant.RxBusCodeCanstant;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.fragment.BaseMvpFragment;
+import com.liqingfeng.sdk.rxbus.RxBus;
+import com.liqingfeng.sdk.rxbus.Subscribe;
+import com.liqingfeng.sdk.utils.AppUtils;
+import com.liqingfeng.sdk.utils.FileUtils;
 import com.liqingfeng.DailyNews.main.HeadSettingActivity;
-import com.liqingfeng.DailyNews.main.personal.widget.PersonalPopupWindow;
+import com.liqingfeng.sdk.widgets.PersonalPopupWindow;
 
 import java.io.File;
 

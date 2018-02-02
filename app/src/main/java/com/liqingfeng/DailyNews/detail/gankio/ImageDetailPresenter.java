@@ -6,7 +6,8 @@ import android.graphics.drawable.Drawable;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.sdk.base.IBaseModel;
+
 
 /**
  * Created by lonlife on 2018/1/13.

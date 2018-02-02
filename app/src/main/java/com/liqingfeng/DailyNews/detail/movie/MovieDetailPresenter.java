@@ -5,8 +5,9 @@ import android.os.Bundle;
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.PersonBean;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
+import com.liqingfeng.sdk.base.IBaseModel;
+
 
 import io.reactivex.functions.Consumer;
 

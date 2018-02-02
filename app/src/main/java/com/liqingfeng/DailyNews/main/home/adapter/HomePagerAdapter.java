@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.liqingfeng.DailyNews.common.util.FragmentFactory;
+import com.liqingfeng.DailyNews.util.FragmentFactory;
 
 /**
  * @AUTHER: 李青峰

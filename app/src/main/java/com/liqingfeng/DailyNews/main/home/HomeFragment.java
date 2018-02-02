@@ -10,8 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.ui.BaseFragment;
 import com.liqingfeng.DailyNews.main.home.adapter.HomePagerAdapter;
+import com.liqingfeng.sdk.base.fragment.BaseFragment;
 
 import butterknife.BindView;
 

@@ -2,18 +2,13 @@ package com.liqingfeng.DailyNews.main.home.adapter;
 
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsItemBean;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.util.NetworkImageUtil;
-import com.liqingfeng.DailyNews.main.movie.hot.HotMovieFragment;
+import com.liqingfeng.DailyNews.AppApplication;
+import com.liqingfeng.DailyNews.util.NetworkImageUtil;
 
 import java.util.List;
 

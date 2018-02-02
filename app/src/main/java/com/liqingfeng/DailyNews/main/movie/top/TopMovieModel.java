@@ -2,7 +2,7 @@ package com.liqingfeng.DailyNews.main.movie.top;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.network.DoubanMovieService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,7 +17,7 @@ public class TopMovieModel implements TopMovieContract.Model {
     private DoubanMovieService doubanMovieService;
 
     public TopMovieModel() {
-        this.doubanMovieService = NetworkHelper.getInstance()
+        this.doubanMovieService = RetrofitHelper.getInstance()
                 .getService(DoubanMovieService.class, DoubanMovieService.HOST);
     }
 

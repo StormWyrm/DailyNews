@@ -8,25 +8,21 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
+import com.liqingfeng.sdk.base.fragment.BaseRecycleFragment;
+import com.liqingfeng.DailyNews.util.SnackBarUtil;
 import com.liqingfeng.DailyNews.main.movie.adapter.TopMovieAdapter;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by lonlife on 2018/1/5.

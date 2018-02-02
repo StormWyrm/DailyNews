@@ -7,10 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.RxHelper;
-import com.liqingfeng.DailyNews.common.util.ToastUtil;
+import com.liqingfeng.DailyNews.AppApplication;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
+import com.liqingfeng.sdk.helper.RxHelper;
+import com.liqingfeng.DailyNews.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.MainActivity;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

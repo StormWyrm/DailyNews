@@ -20,7 +20,7 @@
      -->
 
     <!--矩形裁剪框示例 -->
-    <com.liqingfeng.DailyNews.main.personal.widget.ClipViewLayout
+    <com.liqingfeng.sdk.widgets.headclip.ClipViewLayout
         android:id="@+id/cvl_rect"
         android:layout_width="match_parent"
         android:layout_height="0dp"

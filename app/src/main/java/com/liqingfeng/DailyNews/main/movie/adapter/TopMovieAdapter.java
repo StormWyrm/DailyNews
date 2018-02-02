@@ -3,13 +3,12 @@ package com.liqingfeng.DailyNews.main.movie.adapter;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.util.GlideUtils;
+import com.liqingfeng.DailyNews.AppApplication;
+import com.liqingfeng.DailyNews.util.GlideUtils;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@ import android.content.Context;
 import java.util.Stack;
 
 /**
- * Created by Horrarndoo on 2017/4/5.
+ *
  * <p>
  * AppManager 管理Activity栈
  */
@@ -95,11 +95,10 @@ public class AppManager {
     public void AppExit(Context context) {
         try {
             finishAllActivity();
-            ActivityManager activityMgr =
-                    (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            activityMgr.killBackgroundProcesses(context.getPackageName());
+
             System.exit(0);
         } catch (Exception e) {
+
         }
     }
 

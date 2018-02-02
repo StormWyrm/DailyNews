@@ -2,7 +2,7 @@ package com.liqingfeng.DailyNews.detail.gankio;
 
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
-import com.liqingfeng.DailyNews.common.AppApplication;
+import com.liqingfeng.DailyNews.AppApplication;
 
 /**
  * Created by lonlife on 2018/1/13.

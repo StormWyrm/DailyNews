@@ -4,21 +4,15 @@ package com.liqingfeng.DailyNews.main.home.tabs;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.daimajia.slider.library.SliderLayout;
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
-import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.main.home.adapter.GuokeNewsAdapter;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.fragment.BaseRecycleFragment;
 import com.liqingfeng.DailyNews.main.home.adapter.ZhihuNewsAdapter;
 
 import java.util.List;

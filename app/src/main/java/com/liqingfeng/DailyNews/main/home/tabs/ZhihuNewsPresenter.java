@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsListBean;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.util.Api;
-import com.liqingfeng.DailyNews.common.util.DateFormatter;
+import com.liqingfeng.DailyNews.util.Api;
+import com.liqingfeng.DailyNews.util.DateFormatter;
 import com.liqingfeng.DailyNews.detail.news.NewsDetailActivity;
 import com.liqingfeng.DailyNews.main.home.cache.ZhihuCache;
+import com.liqingfeng.sdk.base.IBaseModel;
 
 import java.util.Calendar;
 import java.util.List;

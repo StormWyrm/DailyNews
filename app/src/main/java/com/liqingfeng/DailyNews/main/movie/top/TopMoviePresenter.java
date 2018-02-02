@@ -1,19 +1,11 @@
 package com.liqingfeng.DailyNews.main.movie.top;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.widget.ImageView;
 
-import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.HotMovieBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.detail.movie.MovieDetailActivity;
-
-import java.io.Serializable;
+import com.liqingfeng.sdk.base.IBaseModel;
 
 import io.reactivex.functions.Consumer;
 

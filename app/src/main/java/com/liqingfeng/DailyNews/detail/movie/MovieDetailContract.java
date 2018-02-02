@@ -2,10 +2,10 @@ package com.liqingfeng.DailyNews.detail.movie;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.PersonBean;
-import com.liqingfeng.DailyNews.common.ui.IBaseActivity;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.ui.IBaseView;
+import com.liqingfeng.sdk.base.IBaseActivity;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.base.IBasePresenter;
+
 
 import io.reactivex.Observable;
 

@@ -15,16 +15,16 @@ import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsDetailBean;
 import com.liqingfeng.DailyNews.bean.douban.news.ThumbsBean;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsDetailBean;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.constant.Constant;
-import com.liqingfeng.DailyNews.common.framework.HttpRequestCallback;
-import com.liqingfeng.DailyNews.common.framework.HttpRequestManager;
-import com.liqingfeng.DailyNews.common.net.HttpRequestByVolley;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.util.NetworkUtil;
-import com.liqingfeng.DailyNews.common.util.SPUtils;
-import com.liqingfeng.DailyNews.common.util.ToastUtil;
+import com.liqingfeng.DailyNews.AppApplication;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.constant.SPConstant;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.volley.HttpRequestCallback;
+import com.liqingfeng.sdk.volley.HttpRequestManager;
+import com.liqingfeng.sdk.volley.HttpRequestByVolley;
+import com.liqingfeng.DailyNews.util.NetworkUtil;
+import com.liqingfeng.DailyNews.util.SPUtils;
+import com.liqingfeng.DailyNews.util.ToastUtil;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -84,7 +84,7 @@ public class NewsDetailPresenter extends NewsDetailContract.Presenter {
 
     @Override
     public void jumpToBrowser(String url) {
-        if ((Boolean) SPUtils.get((Context) mView, Constant.Config.WAY_OF_BROWSER, true)) {
+        if ((Boolean) SPUtils.get((Context) mView, SPConstant.WAY_OF_BROWSER, true)) {
             Bundle extra = new Bundle();
             extra.putString(BundleKeyConstant.BUNDLE_KEY_BROWSER_URL, url);
 

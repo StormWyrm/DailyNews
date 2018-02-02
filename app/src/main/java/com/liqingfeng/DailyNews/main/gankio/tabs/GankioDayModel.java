@@ -4,7 +4,7 @@ package com.liqingfeng.DailyNews.main.gankio.tabs;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
 import com.liqingfeng.DailyNews.network.GankioService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class GankioDayModel implements GankioDayContract.Model {
     private GankIoDayBean mGankIoDayBean;
 
     public GankioDayModel() {
-        mGankioService = NetworkHelper.getInstance().getService(GankioService.class, GankioService.HOST);
+        mGankioService = RetrofitHelper.getInstance().getService(GankioService.class, GankioService.HOST);
     }
 
     @Override

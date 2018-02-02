@@ -2,7 +2,7 @@ package com.liqingfeng.DailyNews.main.home.tabs;
 
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsListBean;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 import com.liqingfeng.DailyNews.network.ZhihuNewsServer;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class ZhihuNewsModel implements ZhihuNewsContract.Model {
     private ZhihuNewsServer zhihuNewsServer;
 
     public ZhihuNewsModel() {
-        zhihuNewsServer = NetworkHelper.getInstance()
+        zhihuNewsServer = RetrofitHelper.getInstance()
                 .getService(ZhihuNewsServer.class, ZhihuNewsServer.HOST);
     }
 

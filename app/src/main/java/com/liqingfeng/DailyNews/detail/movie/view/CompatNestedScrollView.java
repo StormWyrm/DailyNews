@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.util.DisplayUtils;
-import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
+import com.liqingfeng.DailyNews.AppApplication;
+import com.liqingfeng.sdk.utils.DisplayUtils;
+import com.liqingfeng.sdk.utils.StatusBarUtils;
 
 /**
  * Created by lonlife on 2018/1/5.

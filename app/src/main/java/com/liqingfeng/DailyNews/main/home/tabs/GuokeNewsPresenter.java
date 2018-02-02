@@ -1,16 +1,15 @@
 package com.liqingfeng.DailyNews.main.home.tabs;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.liqingfeng.DailyNews.bean.guoke.GuokeHotNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeHotNewsListBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsListBean;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
 import com.liqingfeng.DailyNews.detail.news.NewsDetailActivity;
 import com.liqingfeng.DailyNews.main.home.cache.GuokeCache;
 import com.liqingfeng.DailyNews.main.home.cache.GuokeHotCache;
+import com.liqingfeng.sdk.base.IBaseModel;
 
 import java.util.List;
 

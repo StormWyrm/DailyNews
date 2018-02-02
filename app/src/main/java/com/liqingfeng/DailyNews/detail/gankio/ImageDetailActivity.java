@@ -12,11 +12,11 @@ import android.widget.ProgressBar;
 
 import com.bm.library.PhotoView;
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
-import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.util.SnackBarUtil;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.activity.BaseMvpActivity;
+import com.liqingfeng.sdk.utils.StatusBarUtils;
 
 import butterknife.BindView;
 

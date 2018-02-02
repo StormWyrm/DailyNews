@@ -10,9 +10,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.util.FileUtils;
-import com.liqingfeng.DailyNews.common.util.MD5Utils;
+
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.utils.FileUtils;
+import com.liqingfeng.sdk.utils.MD5Utils;
 
 import java.io.File;
 

@@ -11,11 +11,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.constant.Constant;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.util.NetworkUtil;
-import com.liqingfeng.DailyNews.common.util.SPUtils;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.constant.SPConstant;
+import com.liqingfeng.DailyNews.util.NetworkUtil;
+import com.liqingfeng.DailyNews.util.SPUtils;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
 
 import butterknife.BindView;
 
@@ -115,7 +115,7 @@ public class BrowserActivity extends BaseActivity {
         if (NetworkUtil.isWifi(mActivity)) {
             mWebSetting.setBlockNetworkImage(false);
         } else {
-            if ((Boolean) SPUtils.get(mActivity, Constant.Config
+            if ((Boolean) SPUtils.get(mActivity, SPConstant
                     .WAY_OF_IMAGE_SHOW, false)) {
                 mWebSetting.setBlockNetworkImage(true);
             } else {

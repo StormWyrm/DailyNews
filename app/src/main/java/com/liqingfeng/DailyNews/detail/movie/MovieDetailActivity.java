@@ -23,12 +23,12 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.PersonBean;
 import com.liqingfeng.DailyNews.bean.douban.movie.SubjectsBean;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpActivity;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.GlideUtils;
-import com.liqingfeng.DailyNews.common.util.ResourcesUtils;
-import com.liqingfeng.DailyNews.common.util.StatusBarUtils;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.util.GlideUtils;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.activity.BaseMvpActivity;
+import com.liqingfeng.sdk.utils.ResourcesUtils;
+import com.liqingfeng.sdk.utils.StatusBarUtils;
 import com.liqingfeng.DailyNews.detail.movie.adapter.MovieDetailAdapter;
 import com.liqingfeng.DailyNews.detail.movie.view.CompatNestedScrollView;
 

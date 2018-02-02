@@ -10,11 +10,11 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoDayItemBean;
-import com.liqingfeng.DailyNews.common.rxbus.RxBus;
-import com.liqingfeng.DailyNews.common.ui.BaseRecycleFragment;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
-import com.liqingfeng.DailyNews.common.util.SnackBarUtil;
-import com.liqingfeng.DailyNews.common.util.ToastUtil;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.rxbus.RxBus;
+import com.liqingfeng.sdk.base.fragment.BaseRecycleFragment;
+import com.liqingfeng.DailyNews.util.SnackBarUtil;
+import com.liqingfeng.DailyNews.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.adapter.GankioDayAdapter;
 
 
@@ -111,7 +111,6 @@ public class GankioDayFragment
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    ToastUtil.shortMessage(mActivity,"position:"+position);
                     mPresenter.onItemClick(position, (GankIoDayItemBean) adapter.getItem(position));
                 }
             });

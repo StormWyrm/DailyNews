@@ -2,7 +2,7 @@ package com.liqingfeng.DailyNews.detail.movie;
 
 import com.liqingfeng.DailyNews.bean.douban.movie.MovieDetailBean;
 import com.liqingfeng.DailyNews.network.DoubanMovieService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
+import com.liqingfeng.sdk.helper.RetrofitHelper;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,7 +17,7 @@ public class MovieDetailModel implements MovieDetailContract.Model {
     private DoubanMovieService doubanMovieService;
 
     public MovieDetailModel() {
-        this.doubanMovieService = NetworkHelper.getInstance().
+        this.doubanMovieService = RetrofitHelper.getInstance().
                 getService(DoubanMovieService.class, DoubanMovieService.HOST);
     }
 

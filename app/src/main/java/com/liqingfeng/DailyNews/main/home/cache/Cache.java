@@ -3,7 +3,7 @@ package com.liqingfeng.DailyNews.main.home.cache;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.liqingfeng.DailyNews.common.AppApplication;
+import com.liqingfeng.DailyNews.AppApplication;
 
 /**
  * @AUTHER: 李青峰

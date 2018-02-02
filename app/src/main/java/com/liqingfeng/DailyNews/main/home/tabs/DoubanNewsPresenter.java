@@ -2,30 +2,18 @@ package com.liqingfeng.DailyNews.main.home.tabs;
 
 
 import android.os.Bundle;
-import android.text.TextUtils;
 
 import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsItemBean;
-import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.util.Api;
-import com.liqingfeng.DailyNews.common.util.DateFormatter;
-import com.liqingfeng.DailyNews.common.util.NetworkUtil;
+import com.liqingfeng.DailyNews.util.Api;
+import com.liqingfeng.DailyNews.util.DateFormatter;
 import com.liqingfeng.DailyNews.detail.news.NewsDetailActivity;
-import com.liqingfeng.DailyNews.main.home.cache.DoubanCache;
 import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsListBean;
-import com.liqingfeng.DailyNews.network.DoubanNewsService;
-import com.liqingfeng.DailyNews.network.NetworkHelper;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.liqingfeng.sdk.base.IBaseModel;
 
-import java.lang.reflect.Type;
 import java.util.Calendar;
 import java.util.List;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**

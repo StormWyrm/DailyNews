@@ -16,18 +16,18 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.about.AboutActivity;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
-import com.liqingfeng.DailyNews.common.AppApplication;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.constant.Constant;
-import com.liqingfeng.DailyNews.common.ui.BaseActivity;
-import com.liqingfeng.DailyNews.common.ui.BaseFragment;
-import com.liqingfeng.DailyNews.common.util.SPUtils;
-import com.liqingfeng.DailyNews.common.util.ToastUtil;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
+import com.liqingfeng.DailyNews.constant.SPConstant;
+import com.liqingfeng.DailyNews.util.SPUtils;
+import com.liqingfeng.DailyNews.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
 import com.liqingfeng.DailyNews.main.home.HomeFragment;
 import com.liqingfeng.DailyNews.main.home.HomeRootFragment;
 import com.liqingfeng.DailyNews.main.movie.MovieRootFragment;
 import com.liqingfeng.DailyNews.main.personal.PersonalRootFragment;
+import com.liqingfeng.sdk.AppManager;
+import com.liqingfeng.sdk.base.activity.BaseActivity;
+import com.liqingfeng.sdk.base.fragment.BaseFragment;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
@@ -90,6 +90,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     protected void initListener() {
+        super.initListener();
         mNavigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
             @Override
@@ -117,7 +118,7 @@ public class MainActivity extends BaseActivity
 
                     case R.id.nav_exit:
                         MobclickAgent.onKillProcess(mActivity);
-                        AppApplication.getInstance().exit();
+                        AppManager.getAppManager().AppExit(mActivity);
                         break;
                 }
                 mDrawerLayout.closeDrawer(Gravity.START);
@@ -189,10 +190,10 @@ public class MainActivity extends BaseActivity
         int mode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (mode == Configuration.UI_MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            SPUtils.put(mActivity, Constant.Config.UI_MODE_NIGHT, false);
+            SPUtils.put(mActivity, SPConstant.UI_MODE_NIGHT, false);
         } else if (mode == Configuration.UI_MODE_NIGHT_NO) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            SPUtils.put(mActivity, Constant.Config.UI_MODE_NIGHT, true);
+            SPUtils.put(mActivity, SPConstant.UI_MODE_NIGHT, true);
         }
 
 

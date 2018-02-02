@@ -8,11 +8,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.liqingfeng.DailyNews.R;
-import com.liqingfeng.DailyNews.common.framework.OnRecyclerViewClickListener;
-import com.liqingfeng.DailyNews.common.ui.BaseMvpFragment;
-import com.liqingfeng.DailyNews.common.ui.BaseRecyclerAdapter;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
-import com.liqingfeng.DailyNews.common.ui.IBasePresenter;
+import com.liqingfeng.sdk.base.IBaseModel;
+import com.liqingfeng.sdk.base.IBasePresenter;
+import com.liqingfeng.sdk.base.fragment.BaseMvpFragment;
+import com.liqingfeng.sdk.recyclerview.OnRecyclerViewClickListener;
+import com.liqingfeng.sdk.recyclerview.BaseRecyclerAdapter;
 
 /**
  * @AUTHER: 李青峰

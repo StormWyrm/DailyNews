@@ -5,9 +5,9 @@ import android.os.Bundle;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomItemBean;
 import com.liqingfeng.DailyNews.bean.gankio.GankIoCustomListBean;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
-import com.liqingfeng.DailyNews.common.constant.BundleKeyConstant;
-import com.liqingfeng.DailyNews.common.ui.IBaseModel;
+import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.detail.gankio.ImageDetailActivity;
+import com.liqingfeng.sdk.base.IBaseModel;
 
 import io.reactivex.functions.Consumer;
 
