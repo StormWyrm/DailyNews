@@ -169,7 +169,7 @@ public class GankioCustomFragment
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToastUtil.shortMessage(mActivity, "选择分类");
+//                        ToastUtil.shortMessage(mActivity, "选择分类");
                         showBottomSheet(tvHeadName);
                     }
                 });

@@ -8,7 +8,8 @@ import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.douban.news.DoubanNewsItemBean;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
 import com.liqingfeng.DailyNews.AppApplication;
-import com.liqingfeng.DailyNews.util.NetworkImageUtil;
+import com.liqingfeng.DailyNews.util.GlideUtils;
+
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class DoubanNewsAdapter extends BaseMultiItemQuickAdapter<DoubanNewsItemB
         helper.setText(R.id.tv_content,item.getAbstractX());
 
         if(item.getItemType() == GuokeNewsItemBean.GUOKE_NEWS_NORMAL){
-            NetworkImageUtil.loadNetImageDependNet(AppApplication.getInstance()
+            GlideUtils.loadImage(AppApplication.getInstance()
                     , (ImageView) helper.getView(R.id.iv_cover), item.getShare_pic_url());
         }
     }

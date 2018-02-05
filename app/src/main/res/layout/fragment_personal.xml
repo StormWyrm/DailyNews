@@ -46,36 +46,22 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <!--<TextView-->
-    <!--android:id="@+id/tv_setting"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:clickable="true"-->
-    <!--android:drawableLeft="@drawable/selector_setting"-->
-    <!--android:drawablePadding="16dp"-->
-    <!--android:drawableRight="@drawable/ic_vector_arrow_right"-->
-    <!--android:focusable="true"-->
-    <!--android:foreground="?attr/actionBarItemBackground"-->
-    <!--android:gravity="center_vertical"-->
-    <!--android:paddingLeft="16dp"-->
-    <!--android:paddingRight="16dp"-->
-    <!--android:text="设置" />-->
+    <TextView
+        android:id="@+id/tv_setting"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="?attr/actionBarItemBackground"
+        android:clickable="true"
+        android:drawablePadding="16dp"
+        android:textColor="@color/textTitleColor"
+        android:drawableRight="@drawable/ic_vector_arrow_right"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="设置" />
 
-
-    <!--<TextView-->
-    <!--android:id="@+id/tv_about"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:clickable="true"-->
-    <!--android:drawableLeft="@drawable/selector_setting"-->
-    <!--android:drawablePadding="16dp"-->
-    <!--android:drawableRight="@drawable/ic_vector_arrow_right"-->
-    <!--android:focusable="true"-->
-    <!--android:foreground="?attr/actionBarItemBackground"-->
-    <!--android:gravity="center_vertical"-->
-    <!--android:paddingLeft="16dp"-->
-    <!--android:paddingRight="16dp"-->
-    <!--android:text="关于" />-->
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -36,7 +36,7 @@ public class DoubanNewsFragment
     private DoubanNewsAdapter mAdapter;
 
 
-    public static DoubanNewsFragment getInstance() {
+    public static DoubanNewsFragment newInstance() {
         Bundle arugs = new Bundle();
         DoubanNewsFragment instance = new DoubanNewsFragment();
         instance.setArguments(arugs);

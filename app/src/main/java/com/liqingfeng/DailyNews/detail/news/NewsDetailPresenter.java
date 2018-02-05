@@ -18,11 +18,11 @@ import com.liqingfeng.DailyNews.browser.BrowserActivity;
 import com.liqingfeng.DailyNews.AppApplication;
 import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.constant.SPConstant;
+import com.liqingfeng.DailyNews.util.NetworkUtil;
 import com.liqingfeng.sdk.base.IBaseModel;
 import com.liqingfeng.sdk.volley.HttpRequestCallback;
 import com.liqingfeng.sdk.volley.HttpRequestManager;
 import com.liqingfeng.sdk.volley.HttpRequestByVolley;
-import com.liqingfeng.DailyNews.util.NetworkUtil;
 import com.liqingfeng.DailyNews.util.SPUtils;
 import com.liqingfeng.DailyNews.util.ToastUtil;
 

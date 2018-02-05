@@ -40,11 +40,18 @@ public class GuokeNewsFragment
 
     @BindView(R.id.rv)
     RecyclerView rv;
-
     private View mHeaderView;
     private SliderLayout mSlider;
 
     private GuokeNewsAdapter mAdapter;
+
+
+    public static GuokeNewsFragment newInstance() {
+        Bundle arugs = new Bundle();
+        GuokeNewsFragment instance = new GuokeNewsFragment();
+        instance.setArguments(arugs);
+        return instance;
+    }
 
     @Override
     public void onDestroyView() {

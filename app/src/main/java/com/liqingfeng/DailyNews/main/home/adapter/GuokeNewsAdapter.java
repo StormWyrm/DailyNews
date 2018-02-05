@@ -8,7 +8,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.guoke.GuokeNewsItemBean;
 import com.liqingfeng.DailyNews.AppApplication;
-import com.liqingfeng.DailyNews.util.NetworkImageUtil;
+import com.liqingfeng.DailyNews.util.GlideUtils;
+
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class GuokeNewsAdapter extends BaseMultiItemQuickAdapter<GuokeNewsItemBea
         helper.setText(R.id.tv_content,item.getSummary());
 
         if(item.getItemType() == GuokeNewsItemBean.GUOKE_NEWS_NORMAL){
-            NetworkImageUtil.loadNetImageDependNet(AppApplication.getInstance()
+            GlideUtils.loadImage(AppApplication.getInstance()
                     , (ImageView) helper.getView(R.id.iv_cover), item.getHeadline_img());
         }
     }

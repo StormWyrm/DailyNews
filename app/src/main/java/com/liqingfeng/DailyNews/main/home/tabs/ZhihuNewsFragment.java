@@ -38,7 +38,7 @@ public class ZhihuNewsFragment
 
     private ZhihuNewsAdapter mAdapter;
 
-    public static ZhihuNewsFragment getInstance() {
+    public static ZhihuNewsFragment newInstance() {
         ZhihuNewsFragment instance = new ZhihuNewsFragment();
         Bundle args = new Bundle();
         instance.setArguments(args);

@@ -114,6 +114,8 @@ public interface PersonalContract {
          * @param intent
          */
         public abstract void onActivityResult(int requestCode, int resultCode, Intent intent);
+
+        public abstract void onSettingClick();
     }
 
 

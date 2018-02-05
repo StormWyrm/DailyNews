@@ -99,5 +99,14 @@ public static final int *;
     public static ** valueOf(java.lang.String);
 }
 
+#Bugly
+
+
+#Share Sdk
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class **.R$* {*;}
+-keep class **.R{*;}
+-keep class com.mob.**{*;}
 
 

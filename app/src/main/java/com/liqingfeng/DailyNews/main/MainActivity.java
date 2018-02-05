@@ -18,6 +18,7 @@ import com.liqingfeng.DailyNews.about.AboutActivity;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
 import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.constant.SPConstant;
+import com.liqingfeng.DailyNews.util.OneKeyShare;
 import com.liqingfeng.DailyNews.util.SPUtils;
 import com.liqingfeng.DailyNews.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
@@ -31,6 +32,7 @@ import com.liqingfeng.sdk.base.fragment.BaseFragment;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
+
 
 /**
  * @AUTHER: 李青峰
@@ -102,12 +104,15 @@ public class MainActivity extends BaseActivity
                                 "https://github.com/StormWyrm/DailyNews");
                         startActivity(BrowserActivity.class,extra);
                         break;
+
                     case R.id.nav_project_qrcode:
                         startActivity(QrcodeActivity.class);
                         break;
-                    case R.id.nav_share_project:
 
+                    case R.id.nav_share_project:
+                        OneKeyShare.showShare(mActivity,"DailyNews","https://github.com/StormWyrm/DailyNews");
                         break;
+
                     case R.id.nav_change_theme:
                         changeUiTheme();
                         break;

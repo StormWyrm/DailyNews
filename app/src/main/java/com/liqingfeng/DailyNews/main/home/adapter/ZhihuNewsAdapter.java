@@ -8,7 +8,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.liqingfeng.DailyNews.R;
 import com.liqingfeng.DailyNews.bean.zhihu.ZhihuNewsItemBean;
 import com.liqingfeng.DailyNews.AppApplication;
-import com.liqingfeng.DailyNews.util.NetworkImageUtil;
+import com.liqingfeng.DailyNews.util.GlideUtils;
+
 
 import java.util.List;
 
@@ -37,10 +38,9 @@ public class ZhihuNewsAdapter extends BaseMultiItemQuickAdapter<ZhihuNewsItemBea
 
         helper.setText(R.id.tv_title,item.getTitle());
         if(item.getItemType() == ZhihuNewsItemBean.ZHIHU_NEWS_NORMAL){
-            NetworkImageUtil.loadNetImageDependNet(AppApplication.getInstance(),
+            GlideUtils.loadImage(AppApplication.getInstance(),
                     (ImageView) helper.getView(R.id.iv_cover),
                     item.getImages().get(0));
-
         }
 
     }

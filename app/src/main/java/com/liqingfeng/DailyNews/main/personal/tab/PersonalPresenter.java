@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 
+import com.liqingfeng.DailyNews.setting.SettingActivity;
 import com.liqingfeng.sdk.base.IBaseModel;
 import com.liqingfeng.sdk.utils.FileUtils;
 import com.liqingfeng.sdk.utils.MD5Utils;
@@ -109,5 +110,10 @@ public class PersonalPresenter extends PersonalContract.Presenter {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onSettingClick() {
+        mView.startNewActivity(SettingActivity.class);
     }
 }

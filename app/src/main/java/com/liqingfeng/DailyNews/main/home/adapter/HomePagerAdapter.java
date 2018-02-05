@@ -2,9 +2,7 @@ package com.liqingfeng.DailyNews.main.home.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-
-import com.liqingfeng.DailyNews.util.FragmentFactory;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 /**
  * @AUTHER: 李青峰
@@ -15,12 +13,13 @@ import com.liqingfeng.DailyNews.util.FragmentFactory;
  * @VERSION: V1.0
  */
 
-public class HomePagerAdapter extends FragmentPagerAdapter {
+public class HomePagerAdapter extends FragmentStatePagerAdapter {
     private String[] titles;
-
-    public HomePagerAdapter(FragmentManager fm, String[] titles) {
+    private Fragment[] fragments;
+    public HomePagerAdapter(FragmentManager fm, String[] titles,Fragment[] fragments) {
         super(fm);
         this.titles = titles;
+        this.fragments = fragments;
     }
 
     @Override
@@ -30,7 +29,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return FragmentFactory.getFragment(position);
+        return fragments[position];
     }
 
     @Override
