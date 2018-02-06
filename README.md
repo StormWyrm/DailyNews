@@ -2,9 +2,16 @@
 一款基于开源新闻数据的新闻类APP。  
 
 ### 一、简介
-DailyNews是一款新闻资讯类App,主要包含知乎热搜、果壳精选、豆瓣一刻中的热点新闻。该项目的目的主要用练习使用MaterialDesign+Mvp+Retorfit+Rxjava+Glide等最新的Android开发技术来进行开发。
+DailyNews是一款新闻资讯类App,主要包含内容：
+  
+1. 主页（知乎热搜、果壳精选、豆瓣一刻）
+2. 干货（每日推荐，干货定制，福利）
+3. 电影（热门电影、Top250电影推荐）
+4. 个人（头像设置，设置）
 
-### 二、主要内容
+使用MaterialDesign+Mvp+Retorfit2+Rxjava2+Glide+Rxbus等最新的Android开发技术来进行开发。对自己所学的Android知识进行汇总,总结。
+
+### 二、应用截图
 1. 资讯,资讯详情
 	
 	主要练习使用Retrofit+Rxjava来获取网络数据，并显示到RecyclerView上。  
@@ -16,26 +23,53 @@ DailyNews是一款新闻资讯类App,主要包含知乎热搜、果壳精选、�
 		AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)，然后重新启动;
 		存在的主要问题是会重新加载数据以及闪屏
 
-3. 新闻缓存
-
-	 App默认会进行新闻数据的缓存，在没有网络的时候依然可以显示。
-
-4.混淆
+4.混淆,Crash上报
 
      学习混淆相关概念，以及对应用混淆的规则
 
 ### 三、截屏
- * 白天模式
+ * 运行时权限
 
-	![](screenshot/day_1.png)![](screenshot/day_2.png) 
+	![](screenshot/splash1.gif) 
  
-	![](screenshot/day_3.png)![](screenshot/day_4.png)  
+ * 首页
+ 
+    ![](screenshot/home1.gif) 
+     
+    ![](screenshot/home2.gif)  
+    
+    ![](screenshot/home3.gif) 
+     
+    ![](screenshot/home4.gif) 
+     
+    ![](screenshot/home5.gif)  
+    
+    ![](screenshot/home6.gif)  
+    
+    ![](screenshot/home7.gif)  
+    
+    ![](screenshot/home8.gif)  
+    
+    
+ * 干货
+ 
+   ![](screenshot/gankio1.gif) 
+   
+   ![](screenshot/gankio2.gif) 
+   
+ * 电影
+   ![](screenshot/movie1.gif) 
+    
+   ![](screenshot/movie2.gif) 
+   
+ * 个人
+ 
+  ![](screenshot/personal1.gif) 
+ 
+  
 
- * 夜晚模式
+### 四、开源项目
+    
+    [link]: http://www.google.com/ "Google"
 
-	![](screenshot/night_1.png) ![](screenshot/night_2.png)  
-
-	![](screenshot/night_3.png) ![](screenshot/night_4.png)  
-
-### 四、使用
 
