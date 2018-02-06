@@ -28,7 +28,7 @@ DailyNews是一款新闻资讯类App,主要包含内容：
    
  * 电影
  
-    ![](screenshot/movie2.gif) ![](screenshot/movie2.gif) 
+    ![](screenshot/movie1.gif) ![](screenshot/movie2.gif) 
     
  * 个人
  
