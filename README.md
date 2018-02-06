@@ -18,14 +18,12 @@ DailyNews是一款新闻资讯类App,主要包含内容：
  
  * 首页
  
-    ![](screenshot/home1.gif)  ![](screenshot/home2.gif) 
+    ![](screenshot/home1.gif) ![](screenshot/home2.gif)      
      
-    ![](screenshot/home3.gif)  ![](screenshot/home4.gif) 
+    ![](screenshot/home3.gif) ![](screenshot/home4.gif)   
      
-    ![](screenshot/home5.gif)  ![](screenshot/home6.gif)
-    
-    ![](screenshot/home7.gif)  ![](screenshot/home8.gif)
-    
+    ![](screenshot/home5.gif) ![](screenshot/home6.gif)  
+        
  * 干货
  
     ![](screenshot/gankio1.gif)  ![](screenshot/gankio2.gif) 
