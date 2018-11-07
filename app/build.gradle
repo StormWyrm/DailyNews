@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.mob.sdk'
+//apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -79,33 +79,33 @@ dependencies {
     compile project(':sdk')
 }
 
-MobSDK {
-    appKey "2421ae363ec40"
-    appSecret "a5c5e4fe57ed6558f635a41b78f491e6"
-
-    ShareSDK {
-        //平台配置信息
-        devInfo {
-            SinaWeibo {
-                appKey "568898243"
-                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
-                callbackUri "http://www.sharesdk.cn"
-                shareByAppClient false
-            }
-            Wechat {
-                appId "wx4868b35061f87885"
-                appSecret "64020361b8ec4c99936c0e3999a9f249"
-            }
-            QQ {
-                appId "100371282"
-                appKey "aed9b0303e3ed1e27bae87c33761161d"
-            }
-            Facebook {
-                appKey "1412473428822331"
-                appSecret "a42f4f3f867dc947b9ed6020c2e93558"
-                callbackUri "https://mob.com"
-            }
-        }
-    }
-
-}
+//MobSDK {
+//    appKey "2421ae363ec40"
+//    appSecret "a5c5e4fe57ed6558f635a41b78f491e6"
+//
+//    ShareSDK {
+//        //平台配置信息
+//        devInfo {
+//            SinaWeibo {
+//                appKey "568898243"
+//                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+//                callbackUri "http://www.sharesdk.cn"
+//                shareByAppClient false
+//            }
+//            Wechat {
+//                appId "wx4868b35061f87885"
+//                appSecret "64020361b8ec4c99936c0e3999a9f249"
+//            }
+//            QQ {
+//                appId "100371282"
+//                appKey "aed9b0303e3ed1e27bae87c33761161d"
+//            }
+//            Facebook {
+//                appKey "1412473428822331"
+//                appSecret "a42f4f3f867dc947b9ed6020c2e93558"
+//                callbackUri "https://mob.com"
+//            }
+//        }
+//    }
+//
+//}

@@ -3,11 +3,9 @@ package com.liqingfeng.DailyNews;
 
 import android.support.v7.app.AppCompatDelegate;
 
-
 import com.liqingfeng.DailyNews.constant.SPConstant;
 import com.liqingfeng.DailyNews.util.SPUtils;
 import com.liqingfeng.sdk.global.GlobalApplication;
-import com.mob.MobSDK;
 import com.tencent.bugly.crashreport.CrashReport;
 
 
@@ -26,7 +24,7 @@ public class AppApplication extends GlobalApplication {
         //Bugly Crash上报
         CrashReport.initCrashReport(getApplicationContext(), "c39db1a0c9", false);
 
-        MobSDK.init(this);
+//        MobSDK.init(this);
 
         if((Boolean) SPUtils.get(mContext, SPConstant.UI_MODE_NIGHT,false)){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);

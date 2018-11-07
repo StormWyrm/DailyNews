@@ -18,14 +18,13 @@ import com.liqingfeng.DailyNews.about.AboutActivity;
 import com.liqingfeng.DailyNews.browser.BrowserActivity;
 import com.liqingfeng.DailyNews.constant.BundleKeyConstant;
 import com.liqingfeng.DailyNews.constant.SPConstant;
-import com.liqingfeng.DailyNews.util.OneKeyShare;
-import com.liqingfeng.DailyNews.util.SPUtils;
-import com.liqingfeng.DailyNews.util.ToastUtil;
 import com.liqingfeng.DailyNews.main.gankio.GankioRootFragment;
 import com.liqingfeng.DailyNews.main.home.HomeFragment;
 import com.liqingfeng.DailyNews.main.home.HomeRootFragment;
 import com.liqingfeng.DailyNews.main.movie.MovieRootFragment;
 import com.liqingfeng.DailyNews.main.personal.PersonalRootFragment;
+import com.liqingfeng.DailyNews.util.SPUtils;
+import com.liqingfeng.DailyNews.util.ToastUtil;
 import com.liqingfeng.sdk.AppManager;
 import com.liqingfeng.sdk.base.activity.BaseActivity;
 import com.liqingfeng.sdk.base.fragment.BaseFragment;
@@ -110,7 +109,7 @@ public class MainActivity extends BaseActivity
                         break;
 
                     case R.id.nav_share_project:
-                        OneKeyShare.showShare(mActivity,"DailyNews","https://github.com/StormWyrm/DailyNews");
+//                        OneKeyShare.showShare(mActivity,"DailyNews","https://github.com/StormWyrm/DailyNews");
                         break;
 
                     case R.id.nav_change_theme:
